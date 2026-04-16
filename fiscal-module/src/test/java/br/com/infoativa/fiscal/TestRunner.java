@@ -105,15 +105,15 @@ public class TestRunner {
         // Test 7: XmlDocumentInfo helpers
         try {
             XmlDocumentInfo nfce = new XmlDocumentInfo(
-                Path.of("test.xml"), "chave123", null, "65", "1", "1",
-                "AUTORIZADO", "proto", false, false);
+                Path.of("test.xml"), "chave123", null, null, "65", "1", "1",
+                "AUTORIZADO", "proto", false, false, false, null);
             assert nfce.isNfce();
             assert !nfce.isNfe();
             assert nfce.isAutorizado();
 
             XmlDocumentInfo nfe = new XmlDocumentInfo(
-                Path.of("test.xml"), "chave456", null, "55", "2", "1",
-                "100", "proto", false, false);
+                Path.of("test.xml"), "chave456", null, null, "55", "2", "1",
+                "100", "proto", false, false, false, null);
             assert nfe.isNfe();
             assert !nfe.isNfce();
             assert nfe.isAutorizado();

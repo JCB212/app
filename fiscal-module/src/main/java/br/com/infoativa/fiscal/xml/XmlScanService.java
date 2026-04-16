@@ -81,12 +81,14 @@ public class XmlScanService {
         Path comprasPath = outputDir.resolve("Compras");
         Path canceladosPath = outputDir.resolve("Cancelados");
         Path inutilizadosPath = outputDir.resolve("Inutilizados");
+        Path contingenciaPath = outputDir.resolve("Contingencia");
 
         Files.createDirectories(nfePath);
         Files.createDirectories(nfcePath);
         Files.createDirectories(comprasPath);
         Files.createDirectories(canceladosPath);
         Files.createDirectories(inutilizadosPath);
+        Files.createDirectories(contingenciaPath);
 
         for (XmlDocumentInfo xml : xmls) {
             Path dest;
@@ -94,6 +96,8 @@ public class XmlScanService {
                 dest = canceladosPath;
             } else if (xml.inutilizado()) {
                 dest = inutilizadosPath;
+            } else if (xml.contingencia()) {
+                dest = contingenciaPath;
             } else if (xml.isNfe()) {
                 // Check if it's a purchase (entrada) based on path
                 String pathStr = xml.filePath().toString().toLowerCase();
