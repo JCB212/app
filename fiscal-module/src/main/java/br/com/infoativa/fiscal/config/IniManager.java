@@ -57,14 +57,34 @@ public class IniManager {
             destinatarios.addAll(Arrays.asList(destStr.split(";")));
         }
 
+        int diaEnvio = getIntSafe(xmlCont, "CONFIG", "DIA_ENVIO_AUTOMATICO", 5);
+        int diaLimite = getIntSafe(xmlCont, "CONFIG", "DIA_LIMITE_ENVIO", 10);
+        String emailTecnico = xmlCont.get("CONFIG", "EMAIL_TECNICO", String.class);
+
         if (caminhoNfe == null) caminhoNfe = "C:\\TSD\\Host\\XML";
         if (caminhoNfce == null) caminhoNfce = "C:\\TSD\\Host\\XML_NFCe";
         if (caminhoCompras == null) caminhoCompras = "C:\\TSD\\Host\\XML_Fornecedores";
+        if (emailTecnico == null) emailTecnico = "";
 
         log.info("Configuracao carregada - IP: {}, Porta: {}, Base: {}", ip, porta, basePath);
         return new AppConfig(ip, porta, basePath, caminhoNfe, caminhoNfce, caminhoCompras,
                 utilizaSenha, senhaAcesso != null ? senhaAcesso : "", utilizaSat,
-                emailConfig, destinatarios);
+                emailConfig, destinatarios, diaEnvio, diaLimite, emailTecnico);
+    }
+
+    public void saveDbConfig(String ip, int porta, String basePath) throws IOException {
+        Wini ini = new Wini(conexaoPath.toFile());
+        ini.put("CONEXAO", "IP_SERVIDOR", ip);
+        ini.put("CONEXAO", "PORTA", porta);
+        ini.put("CONEXAO", "BASEHOST", basePath);
+        ini.store();
+        // Also update xmlContador
+        Wini xmlCont = new Wini(xmlContadorPath.toFile());
+        xmlCont.put("CONEXAO", "IP_SERVIDOR", ip);
+        xmlCont.put("CONEXAO", "PORTA", porta);
+        xmlCont.put("CONEXAO", "BASEHOST", basePath);
+        xmlCont.store();
+        log.info("Configuracao de banco salva: {}:{} - {}", ip, porta, basePath);
     }
 
     public void saveEmailConfig(EmailConfig config) throws IOException {
@@ -98,6 +118,21 @@ public class IniManager {
         ini.put("CONFIG", "UTILIZASENHA", utilizaSenha ? "SIM" : "NAO");
         ini.put("CONFIG", "SENHAACESSO", senha);
         ini.store();
+    }
+
+    public void saveAgendamento(int diaEnvio, int diaLimite) throws IOException {
+        Wini ini = new Wini(xmlContadorPath.toFile());
+        ini.put("CONFIG", "DIA_ENVIO_AUTOMATICO", diaEnvio);
+        ini.put("CONFIG", "DIA_LIMITE_ENVIO", diaLimite);
+        ini.store();
+        log.info("Agendamento salvo: envio dia {}, limite dia {}", diaEnvio, diaLimite);
+    }
+
+    public void saveEmailTecnico(String email) throws IOException {
+        Wini ini = new Wini(xmlContadorPath.toFile());
+        ini.put("CONFIG", "EMAIL_TECNICO", email);
+        ini.store();
+        log.info("Email tecnico salvo: {}", email);
     }
 
     private Path findConexaoIni() throws IOException {
@@ -158,6 +193,9 @@ public class IniManager {
                 SMTP_IMAP_PORT=993
                 SMTP_USUARIO=fiscal@infoativa.com.br
                 SMTP_SENHA=Info2024@#--
+                DIA_ENVIO_AUTOMATICO=5
+                DIA_LIMITE_ENVIO=10
+                EMAIL_TECNICO=
                 [CONEXAO]
                 IP_SERVIDOR=127.0.0.1
                 PORTA=3050

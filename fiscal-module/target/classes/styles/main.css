@@ -225,20 +225,21 @@
 
 /* ========== FORM ELEMENTS ========== */
 .field-label {
-    -fx-text-fill: #475569;
+    -fx-text-fill: #1e293b;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
 .text-field-custom {
     -fx-background-color: #ffffff;
-    -fx-border-color: #e2e8f0;
+    -fx-border-color: #cbd5e1;
     -fx-border-width: 1px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 8 12 8 12;
     -fx-font-size: 13px;
     -fx-text-fill: #1e293b;
+    -fx-prompt-text-fill: #94a3b8;
 }
 
 .text-field-custom:focused {
@@ -248,22 +249,57 @@
 
 .combo-custom {
     -fx-background-color: #ffffff;
-    -fx-border-color: #e2e8f0;
+    -fx-border-color: #cbd5e1;
     -fx-border-width: 1px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 4 8 4 8;
     -fx-font-size: 13px;
+    -fx-text-fill: #1e293b;
+}
+
+.combo-custom .list-cell {
+    -fx-text-fill: #1e293b;
+    -fx-background-color: #ffffff;
+}
+
+.combo-custom .list-cell:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+.combo-custom .combo-box-popup .list-view {
+    -fx-background-color: #ffffff;
+}
+
+.combo-custom .combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #1e293b;
 }
 
 .radio-custom {
-    -fx-text-fill: #334155;
+    -fx-text-fill: #1e293b;
     -fx-font-size: 12px;
 }
 
 .check-accent {
-    -fx-text-fill: #334155;
+    -fx-text-fill: #1e293b;
     -fx-font-size: 12px;
+}
+
+/* Fix checkbox and radio text on light backgrounds */
+.check-box {
+    -fx-text-fill: #1e293b;
+}
+
+.check-box .text {
+    -fx-fill: #1e293b;
+}
+
+.radio-button {
+    -fx-text-fill: #1e293b;
+}
+
+.radio-button .text {
+    -fx-fill: #1e293b;
 }
 
 /* ========== PROGRESS BAR ========== */
@@ -410,6 +446,74 @@
 /* ========== ALERT DIALOG ========== */
 .alert {
     -fx-background-color: #ffffff;
+}
+
+/* ========== CHARTS ========== */
+.chart-custom {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12px;
+    -fx-padding: 12;
+}
+
+.chart-custom .chart-plot-background {
+    -fx-background-color: #f8fafc;
+}
+
+.chart-custom .chart-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.chart-custom .axis-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+}
+
+.chart-custom .axis .tick-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 9px;
+}
+
+.chart-custom .chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-custom .chart-legend-item {
+    -fx-text-fill: #475569;
+}
+
+.chart-custom .chart-bar {
+    -fx-bar-fill: #3b82f6;
+    -fx-background-radius: 3 3 0 0;
+}
+
+.chart-custom .default-color0.chart-bar { -fx-bar-fill: #3b82f6; }
+.chart-custom .default-color1.chart-bar { -fx-bar-fill: #8b5cf6; }
+.chart-custom .default-color2.chart-bar { -fx-bar-fill: #10b981; }
+
+.chart-custom .default-color0.chart-pie { -fx-pie-color: #3b82f6; }
+.chart-custom .default-color1.chart-pie { -fx-pie-color: #10b981; }
+.chart-custom .default-color2.chart-pie { -fx-pie-color: #f59e0b; }
+.chart-custom .default-color3.chart-pie { -fx-pie-color: #8b5cf6; }
+.chart-custom .default-color4.chart-pie { -fx-pie-color: #ef4444; }
+
+.chart-custom .chart-series-line {
+    -fx-stroke: #f59e0b;
+    -fx-stroke-width: 2.5px;
+}
+
+.chart-custom .default-color0.chart-line-symbol {
+    -fx-background-color: #f59e0b, white;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.chart-custom .chart-vertical-grid-lines,
+.chart-custom .chart-horizontal-grid-lines {
+    -fx-stroke: #e2e8f0;
+    -fx-stroke-dash-array: 4 4;
 }
 
 .dialog-pane {

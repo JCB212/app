@@ -9,6 +9,7 @@ import br.com.infoativa.fiscal.mail.EmailService;
 import br.com.infoativa.fiscal.repository.ParametrosRepository;
 import br.com.infoativa.fiscal.repository.UsuarioRepository;
 import br.com.infoativa.fiscal.service.ClosingOrchestrator;
+import br.com.infoativa.fiscal.service.DashboardService;
 import br.com.infoativa.fiscal.service.PeriodService;
 import br.com.infoativa.fiscal.service.ProcessingMode;
 import javafx.application.Application;
@@ -17,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.*;
 import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -66,7 +68,7 @@ public class FiscalApp extends Application {
                 "C:\\TSD\\Host\\XML_NFCe", "C:\\TSD\\Host\\XML_Fornecedores",
                 false, "", false,
                 new EmailConfig("mail.infoativa.com.br", 465, "fiscal@infoativa.com.br", "Info2024@#--", true),
-                List.of("jean.carlos@infoativa.com.br"));
+                List.of("jean.carlos@infoativa.com.br"), 5, 10, "");
         }
 
         // Check password if required
@@ -142,12 +144,13 @@ public class FiscalApp extends Application {
         sidebarMenu.setPadding(new Insets(16, 12, 16, 12));
 
         Button btnHome = createMenuButton("Inicio", "M3,13h8V3H3V13z M3,21h8v-6H3V21z M13,21h8V11h-8V21z M13,3v6h8V3H13z", "home");
+        Button btnDash = createMenuButton("Dashboard", "M16,6l2.29,2.29l-4.88,4.88l-4-4L2,16.59L3.41,18l6-6l4,4l6.3-6.29L22,12V6z", "dashboard");
         Button btnProcess = createMenuButton("Gerar e Enviar", "M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M9,17H7v-7h2V17z M13,17h-2V7h2V17z M17,17h-2v-4h2V17z", "process");
         Button btnDest = createMenuButton("Destinatarios", "M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z", "dest");
         Button btnEmail = createMenuButton("Config. Email", "M12,1L3,5v6c0,5.55,3.84,10.74,9,12c5.16-1.26,9-6.45,9-12V5L12,1z M12,11.99h7c-0.53,4.12-3.28,7.79-7,8.94V12H5V6.3l7-3.11v8.8z", "email");
         Button btnConfig = createMenuButton("Configuracoes", "M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z", "config");
 
-        sidebarMenu.getChildren().addAll(btnHome, btnProcess, btnDest, btnEmail, btnConfig);
+        sidebarMenu.getChildren().addAll(btnHome, btnDash, btnProcess, btnDest, btnEmail, btnConfig);
 
         // DB status
         VBox dbStatus = new VBox(4);
@@ -193,6 +196,7 @@ public class FiscalApp extends Application {
             updateMenuHighlight();
             switch (id) {
                 case "home" -> showHome();
+                case "dashboard" -> showDashboard();
                 case "process" -> showProcessing();
                 case "dest" -> showDestinatarios();
                 case "email" -> showEmailConfig();
@@ -333,6 +337,168 @@ public class FiscalApp extends Application {
         return btn;
     }
 
+    // ====================== DASHBOARD VIEW ======================
+    private void showDashboard() {
+        VBox view = new VBox(20);
+        view.setPadding(new Insets(28));
+        view.getStyleClass().add("view-container");
+
+        Label title = new Label("Dashboard Fiscal");
+        title.getStyleClass().add("view-title");
+
+        Periodo autoP = PeriodService.resolveAuto();
+        Label periodo = new Label("Referencia: " + PeriodService.nomeMes(autoP.inicio().getMonthValue()) + "/" + autoP.inicio().getYear());
+        periodo.getStyleClass().add("view-subtitle");
+
+        // Loading placeholder
+        Label loadingLabel = new Label("Carregando dados do banco...");
+        loadingLabel.getStyleClass().add("info-text");
+        ProgressIndicator spinner = new ProgressIndicator();
+        spinner.setPrefSize(40, 40);
+
+        VBox loadingBox = new VBox(12, spinner, loadingLabel);
+        loadingBox.setAlignment(Pos.CENTER);
+        loadingBox.setPadding(new Insets(60));
+
+        view.getChildren().addAll(title, periodo, loadingBox);
+
+        ScrollPane scroll = new ScrollPane(view);
+        scroll.setFitToWidth(true);
+        scroll.getStyleClass().add("scroll-pane");
+        contentArea.getChildren().setAll(scroll);
+
+        // Load data in background
+        new Thread(() -> {
+            try {
+                FirebirdConnectionFactory factory = new FirebirdConnectionFactory(
+                    appConfig.ipServidor(), appConfig.porta(), appConfig.basePath());
+                DatabaseGateway gw = new DatabaseGateway(factory);
+                DashboardService dashService = new DashboardService(gw.getConnection());
+
+                var vendasNfce = dashService.vendasNfceMensal(6);
+                var vendasNfe = dashService.vendasNfeMensal(6);
+                var compras = dashService.comprasMensal(6);
+                var impostos = dashService.impostosUltimoMes();
+                int qtdNfce = dashService.countNfceMesAnterior();
+                int qtdNfe = dashService.countNfeMesAnterior();
+                int qtdCompras = dashService.countComprasMesAnterior();
+
+                gw.close();
+
+                Platform.runLater(() -> {
+                    view.getChildren().remove(loadingBox);
+
+                    // Summary cards
+                    HBox cards = new HBox(16);
+                    cards.setAlignment(Pos.CENTER_LEFT);
+
+                    java.math.BigDecimal totalVendasNfce = vendasNfce.values().stream()
+                        .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+                    java.math.BigDecimal totalVendasNfe = vendasNfe.values().stream()
+                        .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+                    java.math.BigDecimal totalCompras = compras.values().stream()
+                        .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+                    java.math.BigDecimal totalImpostos = impostos.values().stream()
+                        .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+
+                    VBox c1 = createInfoCard("NFCe Mes Anterior", String.valueOf(qtdNfce) + " cupons", fmtMoney(vendasNfce.values().stream().reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add)), "#3b82f6");
+                    VBox c2 = createInfoCard("NFe Mes Anterior", String.valueOf(qtdNfe) + " notas", fmtMoney(vendasNfe.values().stream().reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add)), "#8b5cf6");
+                    VBox c3 = createInfoCard("Compras Mes Anterior", String.valueOf(qtdCompras) + " notas", fmtMoney(compras.values().stream().reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add)), "#f59e0b");
+                    VBox c4 = createInfoCard("Impostos Mes Anterior", "Total apurado", "R$ " + fmtMoney(totalImpostos), "#ef4444");
+                    cards.getChildren().addAll(c1, c2, c3, c4);
+
+                    // Charts row 1: Bar chart vendas + Pie impostos
+                    HBox chartsRow1 = new HBox(20);
+                    chartsRow1.setAlignment(Pos.TOP_LEFT);
+
+                    // Bar Chart - Vendas mensais
+                    CategoryAxis xAxis = new CategoryAxis();
+                    xAxis.setLabel("Mes");
+                    NumberAxis yAxis = new NumberAxis();
+                    yAxis.setLabel("Valor (R$)");
+                    BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+                    barChart.setTitle("Vendas Mensais (Ultimos 6 meses)");
+                    barChart.getStyleClass().add("chart-custom");
+                    barChart.setPrefHeight(320);
+                    barChart.setLegendVisible(true);
+                    barChart.setAnimated(true);
+
+                    XYChart.Series<String, Number> seriesNfce = new XYChart.Series<>();
+                    seriesNfce.setName("NFCe");
+                    vendasNfce.forEach((k, v) -> seriesNfce.getData().add(new XYChart.Data<>(k, v.doubleValue())));
+
+                    XYChart.Series<String, Number> seriesNfe = new XYChart.Series<>();
+                    seriesNfe.setName("NFe");
+                    vendasNfe.forEach((k, v) -> seriesNfe.getData().add(new XYChart.Data<>(k, v.doubleValue())));
+
+                    barChart.getData().addAll(seriesNfce, seriesNfe);
+                    HBox.setHgrow(barChart, Priority.ALWAYS);
+
+                    // Pie Chart - Impostos
+                    ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList();
+                    impostos.forEach((k, v) -> {
+                        if (v.compareTo(java.math.BigDecimal.ZERO) > 0) {
+                            pieData.add(new PieChart.Data(k + " R$" + fmtMoney(v), v.doubleValue()));
+                        }
+                    });
+                    PieChart pieChart = new PieChart(pieData);
+                    pieChart.setTitle("Impostos - " + PeriodService.nomeMes(autoP.inicio().getMonthValue()));
+                    pieChart.getStyleClass().add("chart-custom");
+                    pieChart.setPrefHeight(320);
+                    pieChart.setPrefWidth(380);
+                    pieChart.setLabelsVisible(true);
+                    pieChart.setAnimated(true);
+
+                    chartsRow1.getChildren().addAll(barChart, pieChart);
+
+                    // Chart row 2: Compras line chart
+                    CategoryAxis xAxis2 = new CategoryAxis();
+                    xAxis2.setLabel("Mes");
+                    NumberAxis yAxis2 = new NumberAxis();
+                    yAxis2.setLabel("Valor (R$)");
+                    LineChart<String, Number> lineChart = new LineChart<>(xAxis2, yAxis2);
+                    lineChart.setTitle("Compras de Fornecedores (Ultimos 6 meses)");
+                    lineChart.getStyleClass().add("chart-custom");
+                    lineChart.setPrefHeight(280);
+                    lineChart.setAnimated(true);
+
+                    XYChart.Series<String, Number> seriesCompras = new XYChart.Series<>();
+                    seriesCompras.setName("Compras");
+                    compras.forEach((k, v) -> seriesCompras.getData().add(new XYChart.Data<>(k, v.doubleValue())));
+                    lineChart.getData().add(seriesCompras);
+
+                    view.getChildren().addAll(cards, chartsRow1, lineChart);
+                    statusLabel.setText("Dashboard carregado");
+                });
+            } catch (Exception e) {
+                log.error("Erro ao carregar dashboard: {}", e.getMessage());
+                Platform.runLater(() -> {
+                    view.getChildren().remove(loadingBox);
+                    Label errLabel = new Label("Nao foi possivel conectar ao banco de dados.\n" + e.getMessage());
+                    errLabel.getStyleClass().add("info-text");
+                    errLabel.setStyle("-fx-text-fill: #ef4444;");
+                    errLabel.setWrapText(true);
+
+                    VBox offlineCards = new VBox(16);
+                    offlineCards.getStyleClass().add("info-box");
+                    offlineCards.setPadding(new Insets(20));
+                    Label offTitle = new Label("Dashboard offline");
+                    offTitle.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+                    Label offMsg = new Label("Configure a conexao do banco em Configuracoes e tente novamente.");
+                    offMsg.getStyleClass().add("info-text");
+                    offlineCards.getChildren().addAll(offTitle, offMsg, errLabel);
+                    view.getChildren().add(offlineCards);
+                    statusLabel.setText("Erro ao carregar dashboard");
+                });
+            }
+        }).start();
+    }
+
+    private String fmtMoney(java.math.BigDecimal v) {
+        if (v == null) return "0,00";
+        return String.format("R$ %,.2f", v).replace(",", "X").replace(".", ",").replace("X", ".");
+    }
+
     // ====================== PROCESSING VIEW ======================
     private void showProcessing() {
         VBox view = new VBox(20);
@@ -380,6 +546,17 @@ public class FiscalApp extends Application {
         tfAno.setPrefWidth(80);
 
         periodBox.getChildren().addAll(periodoLabel, cbMes, anoLabel, tfAno);
+
+        // Toggle visibility based on mode
+        rbAnual.selectedProperty().addListener((o, ov, nv) -> {
+            cbMes.setVisible(!nv);
+            cbMes.setManaged(!nv);
+            periodoLabel.setText(nv ? "Ano:" : "Periodo:");
+        });
+        rbAuto.selectedProperty().addListener((o, ov, nv) -> {
+            cbMes.setDisable(nv);
+            tfAno.setDisable(nv);
+        });
 
         // Checkboxes for document types
         Label tipoLabel = new Label("Tipos de Documento:");
@@ -697,52 +874,195 @@ public class FiscalApp extends Application {
     // ====================== CONFIG VIEW ======================
     private void showConfig() {
         VBox view = new VBox(20);
-        view.setPadding(new Insets(32));
+        view.setPadding(new Insets(28));
         view.getStyleClass().add("view-container");
 
         Label title = new Label("Configuracoes Gerais");
         title.getStyleClass().add("view-title");
 
-        // XML Paths
+        // ---- BANCO DE DADOS ----
+        Label dbTitle = new Label("Banco de Dados (Firebird)");
+        dbTitle.getStyleClass().add("section-title");
+
+        GridPane dbGrid = new GridPane();
+        dbGrid.setHgap(12);
+        dbGrid.setVgap(12);
+        dbGrid.getStyleClass().add("form-grid");
+
+        Label lblIp = new Label("IP do Servidor:");
+        lblIp.getStyleClass().add("field-label");
+        TextField tfIp = new TextField(appConfig.ipServidor());
+        tfIp.getStyleClass().add("text-field-custom");
+        tfIp.setPrefWidth(200);
+
+        Label lblPorta = new Label("Porta:");
+        lblPorta.getStyleClass().add("field-label");
+        TextField tfPorta = new TextField(String.valueOf(appConfig.porta()));
+        tfPorta.getStyleClass().add("text-field-custom");
+        tfPorta.setPrefWidth(80);
+
+        Label lblBase = new Label("Caminho da Base (.FDB):");
+        lblBase.getStyleClass().add("field-label");
+        TextField tfBase = new TextField(appConfig.basePath());
+        tfBase.getStyleClass().add("text-field-custom");
+        tfBase.setPrefWidth(400);
+        tfBase.setPromptText("Ex: C:\\TSD\\Host\\HOST.FDB");
+
+        Button btnBrowseFdb = new Button("...");
+        btnBrowseFdb.getStyleClass().add("btn-small");
+        btnBrowseFdb.setOnAction(e -> {
+            javafx.stage.FileChooser fc = new javafx.stage.FileChooser();
+            fc.setTitle("Selecionar Base de Dados Firebird");
+            fc.getExtensionFilters().add(new javafx.stage.FileChooser.ExtensionFilter("Firebird DB", "*.fdb", "*.FDB", "*.gdb", "*.GDB"));
+            if (!tfBase.getText().isEmpty()) {
+                File f = new File(tfBase.getText());
+                if (f.getParentFile() != null && f.getParentFile().exists()) {
+                    fc.setInitialDirectory(f.getParentFile());
+                }
+            }
+            File selected = fc.showOpenDialog(contentArea.getScene().getWindow());
+            if (selected != null) tfBase.setText(selected.getAbsolutePath());
+        });
+
+        Label dbConnStr = new Label("String: jdbc:firebirdsql:" + appConfig.ipServidor() + "/" + appConfig.porta() + ":" + appConfig.basePath());
+        dbConnStr.getStyleClass().add("info-text");
+        dbConnStr.setStyle("-fx-font-family: 'Consolas'; -fx-font-size: 10px; -fx-text-fill: #64748b;");
+
+        // Update connection string preview on field changes
+        Runnable updateConnStr = () -> dbConnStr.setText("String: jdbc:firebirdsql:" + tfIp.getText().trim() + "/" + tfPorta.getText().trim() + ":" + tfBase.getText().trim());
+        tfIp.textProperty().addListener((o, ov, nv) -> updateConnStr.run());
+        tfPorta.textProperty().addListener((o, ov, nv) -> updateConnStr.run());
+        tfBase.textProperty().addListener((o, ov, nv) -> updateConnStr.run());
+
+        Button btnTestDb = new Button("Testar Conexao");
+        btnTestDb.getStyleClass().addAll("action-btn");
+        btnTestDb.setStyle("-fx-background-color: #f59e0b;");
+        Label dbResultLabel = new Label();
+        dbResultLabel.getStyleClass().add("result-label");
+
+        btnTestDb.setOnAction(e -> {
+            btnTestDb.setDisable(true);
+            dbResultLabel.setText("Testando...");
+            dbResultLabel.setStyle("-fx-text-fill: #64748b;");
+            new Thread(() -> {
+                try {
+                    FirebirdConnectionFactory factory = new FirebirdConnectionFactory(
+                        tfIp.getText().trim(), Integer.parseInt(tfPorta.getText().trim()), tfBase.getText().trim());
+                    DatabaseGateway gw = new DatabaseGateway(factory);
+                    boolean ok = gw.testConnection();
+                    gw.close();
+                    Platform.runLater(() -> {
+                        dbResultLabel.setText(ok ? "Conexao OK!" : "Falha na conexao");
+                        dbResultLabel.setStyle(ok ? "-fx-text-fill: #10b981; -fx-font-weight: bold;" : "-fx-text-fill: #ef4444; -fx-font-weight: bold;");
+                        btnTestDb.setDisable(false);
+                    });
+                } catch (Exception ex) {
+                    Platform.runLater(() -> {
+                        dbResultLabel.setText("Erro: " + ex.getMessage());
+                        dbResultLabel.setStyle("-fx-text-fill: #ef4444;");
+                        btnTestDb.setDisable(false);
+                    });
+                }
+            }).start();
+        });
+
+        Button btnSaveDb = new Button("Salvar Conexao");
+        btnSaveDb.getStyleClass().addAll("action-btn");
+        btnSaveDb.setStyle("-fx-background-color: #3b82f6;");
+        btnSaveDb.setOnAction(e -> {
+            try {
+                iniManager.saveDbConfig(tfIp.getText().trim(), Integer.parseInt(tfPorta.getText().trim()), tfBase.getText().trim());
+                appConfig = iniManager.loadOrCreate();
+                showAlert(Alert.AlertType.INFORMATION, "Salvo", "Configuracao do banco salva com sucesso!");
+            } catch (Exception ex) {
+                showError("Erro", ex.getMessage());
+            }
+        });
+
+        dbGrid.add(lblIp, 0, 0); dbGrid.add(tfIp, 1, 0);
+        dbGrid.add(lblPorta, 2, 0); dbGrid.add(tfPorta, 3, 0);
+        dbGrid.add(lblBase, 0, 1); dbGrid.add(tfBase, 1, 1, 2, 1); dbGrid.add(btnBrowseFdb, 3, 1);
+        dbGrid.add(dbConnStr, 0, 2, 4, 1);
+        HBox dbActions = new HBox(12, btnTestDb, btnSaveDb, dbResultLabel);
+        dbActions.setAlignment(Pos.CENTER_LEFT);
+        dbGrid.add(dbActions, 0, 3, 4, 1);
+
+        // ---- CAMINHOS XML ----
         Label pathsTitle = new Label("Caminhos dos XMLs");
         pathsTitle.getStyleClass().add("section-title");
 
         GridPane pathGrid = new GridPane();
         pathGrid.setHgap(12);
         pathGrid.setVgap(12);
+        pathGrid.getStyleClass().add("form-grid");
 
-        Label lblNfe = new Label("XML NFe:");
-        lblNfe.getStyleClass().add("field-label");
         TextField tfNfe = new TextField(appConfig.caminhoXmlNfe());
-        tfNfe.getStyleClass().add("text-field-custom");
-        tfNfe.setPrefWidth(400);
-        Button btnBrowseNfe = new Button("...");
-        btnBrowseNfe.getStyleClass().add("btn-small");
-        btnBrowseNfe.setOnAction(e -> browseDir(tfNfe));
+        tfNfe.getStyleClass().add("text-field-custom"); tfNfe.setPrefWidth(400);
+        Button btnBNfe = new Button("..."); btnBNfe.getStyleClass().add("btn-small");
+        btnBNfe.setOnAction(ev -> browseDir(tfNfe));
 
-        Label lblNfce = new Label("XML NFCe:");
-        lblNfce.getStyleClass().add("field-label");
         TextField tfNfce = new TextField(appConfig.caminhoXmlNfce());
-        tfNfce.getStyleClass().add("text-field-custom");
-        tfNfce.setPrefWidth(400);
-        Button btnBrowseNfce = new Button("...");
-        btnBrowseNfce.getStyleClass().add("btn-small");
-        btnBrowseNfce.setOnAction(e -> browseDir(tfNfce));
+        tfNfce.getStyleClass().add("text-field-custom"); tfNfce.setPrefWidth(400);
+        Button btnBNfce = new Button("..."); btnBNfce.getStyleClass().add("btn-small");
+        btnBNfce.setOnAction(ev -> browseDir(tfNfce));
 
-        Label lblCompras = new Label("XML Compras:");
-        lblCompras.getStyleClass().add("field-label");
         TextField tfCompras = new TextField(appConfig.caminhoXmlCompras());
-        tfCompras.getStyleClass().add("text-field-custom");
-        tfCompras.setPrefWidth(400);
-        Button btnBrowseCompras = new Button("...");
-        btnBrowseCompras.getStyleClass().add("btn-small");
-        btnBrowseCompras.setOnAction(e -> browseDir(tfCompras));
+        tfCompras.getStyleClass().add("text-field-custom"); tfCompras.setPrefWidth(400);
+        Button btnBComp = new Button("..."); btnBComp.getStyleClass().add("btn-small");
+        btnBComp.setOnAction(ev -> browseDir(tfCompras));
 
-        pathGrid.add(lblNfe, 0, 0); pathGrid.add(tfNfe, 1, 0); pathGrid.add(btnBrowseNfe, 2, 0);
-        pathGrid.add(lblNfce, 0, 1); pathGrid.add(tfNfce, 1, 1); pathGrid.add(btnBrowseNfce, 2, 1);
-        pathGrid.add(lblCompras, 0, 2); pathGrid.add(tfCompras, 1, 2); pathGrid.add(btnBrowseCompras, 2, 2);
+        pathGrid.add(createFieldLabel("XML NFe:"), 0, 0); pathGrid.add(tfNfe, 1, 0); pathGrid.add(btnBNfe, 2, 0);
+        pathGrid.add(createFieldLabel("XML NFCe:"), 0, 1); pathGrid.add(tfNfce, 1, 1); pathGrid.add(btnBNfce, 2, 1);
+        pathGrid.add(createFieldLabel("XML Compras:"), 0, 2); pathGrid.add(tfCompras, 1, 2); pathGrid.add(btnBComp, 2, 2);
 
-        // Security
+        // ---- AGENDAMENTO ENVIO ----
+        Label schedTitle = new Label("Agendamento de Envio Automatico");
+        schedTitle.getStyleClass().add("section-title");
+
+        GridPane schedGrid = new GridPane();
+        schedGrid.setHgap(12);
+        schedGrid.setVgap(12);
+        schedGrid.getStyleClass().add("form-grid");
+
+        ComboBox<Integer> cbDiaEnvio = new ComboBox<>(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
+        cbDiaEnvio.setValue(appConfig.diaEnvioAutomatico());
+        cbDiaEnvio.getStyleClass().add("combo-custom");
+
+        ComboBox<Integer> cbDiaLimite = new ComboBox<>(FXCollections.observableArrayList(5,6,7,8,9,10,11,12,13,14,15));
+        cbDiaLimite.setValue(appConfig.diaLimiteEnvio());
+        cbDiaLimite.getStyleClass().add("combo-custom");
+
+        Label schedInfo = new Label("O sistema ira lembrar de enviar os arquivos fiscais a partir do dia configurado.\n" +
+            "No dia limite, sera exibido aviso de multa caso nao envie.");
+        schedInfo.getStyleClass().add("info-text");
+        schedInfo.setWrapText(true);
+
+        schedGrid.add(createFieldLabel("Dia do envio automatico:"), 0, 0); schedGrid.add(cbDiaEnvio, 1, 0);
+        schedGrid.add(createFieldLabel("Dia limite para envio:"), 0, 1); schedGrid.add(cbDiaLimite, 1, 1);
+        schedGrid.add(schedInfo, 0, 2, 2, 1);
+
+        // ---- EMAIL TECNICO ----
+        Label techTitle = new Label("Email do Tecnico (Contingencias)");
+        techTitle.getStyleClass().add("section-title");
+
+        GridPane techGrid = new GridPane();
+        techGrid.setHgap(12);
+        techGrid.setVgap(12);
+        techGrid.getStyleClass().add("form-grid");
+
+        TextField tfTecEmail = new TextField(appConfig.emailTecnico());
+        tfTecEmail.getStyleClass().add("text-field-custom");
+        tfTecEmail.setPrefWidth(350);
+        tfTecEmail.setPromptText("tecnico@empresa.com.br");
+
+        Label techInfo = new Label("Quando houver NFCe em contingencia, um relatorio sera enviado para este email.");
+        techInfo.getStyleClass().add("info-text");
+        techInfo.setWrapText(true);
+
+        techGrid.add(createFieldLabel("Email:"), 0, 0); techGrid.add(tfTecEmail, 1, 0);
+        techGrid.add(techInfo, 0, 1, 2, 1);
+
+        // ---- SEGURANCA ----
         Label secTitle = new Label("Seguranca");
         secTitle.getStyleClass().add("section-title");
 
@@ -752,38 +1072,45 @@ public class FiscalApp extends Application {
         chkSenha.setSelected(appConfig.utilizaSenha());
         TextField tfSenha = new TextField(appConfig.senhaAcesso());
         tfSenha.getStyleClass().add("text-field-custom");
-        tfSenha.setPromptText("Senha de acesso");
+        tfSenha.setPromptText("Senha de acesso local");
         tfSenha.setPrefWidth(200);
         secBox.getChildren().addAll(chkSenha, tfSenha);
 
-        // DB Info
-        Label dbTitle = new Label("Banco de Dados (conexao.ini)");
-        dbTitle.getStyleClass().add("section-title");
-        Label dbInfo = new Label("IP: " + appConfig.ipServidor() + "  |  Porta: " + appConfig.porta()
-            + "  |  Base: " + appConfig.basePath());
-        dbInfo.getStyleClass().add("info-text");
+        // ---- SALVAR TUDO ----
+        Button btnSaveAll = new Button("Salvar Todas as Configuracoes");
+        btnSaveAll.getStyleClass().addAll("action-btn");
+        btnSaveAll.setStyle("-fx-background-color: #3b82f6; -fx-font-size: 14px; -fx-padding: 12 32;");
 
-        // Save button
-        Button btnSave = new Button("Salvar Configuracoes");
-        btnSave.getStyleClass().addAll("action-btn", "btn-primary");
-        btnSave.setStyle("-fx-background-color: #3b82f6;");
-
-        btnSave.setOnAction(e -> {
+        btnSaveAll.setOnAction(e -> {
             try {
                 iniManager.savePaths(tfNfe.getText().trim(), tfNfce.getText().trim(), tfCompras.getText().trim());
                 iniManager.saveSenhaConfig(chkSenha.isSelected(), tfSenha.getText().trim());
+                iniManager.saveAgendamento(cbDiaEnvio.getValue(), cbDiaLimite.getValue());
+                iniManager.saveEmailTecnico(tfTecEmail.getText().trim());
                 appConfig = iniManager.loadOrCreate();
-                showAlert(Alert.AlertType.INFORMATION, "Salvo", "Configuracoes salvas com sucesso!");
-            } catch (IOException ex) {
+                showAlert(Alert.AlertType.INFORMATION, "Salvo", "Todas as configuracoes foram salvas com sucesso!");
+            } catch (Exception ex) {
                 showError("Erro", ex.getMessage());
             }
         });
 
-        view.getChildren().addAll(title, pathsTitle, pathGrid, secTitle, secBox, dbTitle, dbInfo, btnSave);
+        view.getChildren().addAll(title,
+            dbTitle, dbGrid,
+            pathsTitle, pathGrid,
+            schedTitle, schedGrid,
+            techTitle, techGrid,
+            secTitle, secBox,
+            btnSaveAll);
         ScrollPane scroll = new ScrollPane(view);
         scroll.setFitToWidth(true);
         scroll.getStyleClass().add("scroll-pane");
         contentArea.getChildren().setAll(scroll);
+    }
+
+    private Label createFieldLabel(String text) {
+        Label l = new Label(text);
+        l.getStyleClass().add("field-label");
+        return l;
     }
 
     // ====================== UTILITIES ======================

@@ -26,6 +26,7 @@
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/config/IniManager.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/xml/XmlScanService.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/service/OutputStructureService.java
+/app/fiscal-module/src/main/java/br/com/infoativa/fiscal/service/DashboardService.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/repository/NfeRepository.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/db/DatabaseGateway.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/repository/CompraRepository.java

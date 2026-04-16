@@ -33,6 +33,7 @@ br/com/infoativa/fiscal/report/SequenciaReportService.class
 br/com/infoativa/fiscal/repository/NfeRepository.class
 br/com/infoativa/fiscal/xml/XmlScanService$1.class
 br/com/infoativa/fiscal/report/DevolucoesReportService.class
+br/com/infoativa/fiscal/service/DashboardService.class
 br/com/infoativa/fiscal/mail/EmailService$1.class
 br/com/infoativa/fiscal/service/ClosingOrchestrator.class
 br/com/infoativa/fiscal/service/OutputStructureService.class

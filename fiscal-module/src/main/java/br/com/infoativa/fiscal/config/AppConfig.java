@@ -14,5 +14,8 @@ public record AppConfig(
     String senhaAcesso,
     boolean utilizaSat,
     EmailConfig emailConfig,
-    List<String> emailDestinatarios
+    List<String> emailDestinatarios,
+    int diaEnvioAutomatico,
+    int diaLimiteEnvio,
+    String emailTecnico
 ) {}

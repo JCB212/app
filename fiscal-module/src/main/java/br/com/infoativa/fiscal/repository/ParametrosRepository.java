@@ -65,40 +65,70 @@ public class ParametrosRepository {
     }
 
     /**
-     * Busca o nome da empresa a partir do emitente da primeira NFe autorizada
+     * Busca o nome da empresa usando múltiplas estratégias:
+     * 1. Tabela EMITENTE (se existir)
+     * 2. Tabela EMPRESA (se existir)
+     * 3. CNPJ extraído da chave NFe -> busca na CLIENTE
+     * 4. Fallback para "Empresa"
      */
     public String findNomeEmpresa() {
-        // Try to get from NFe emitente info (informacoes_cpl often has it)
-        // Or we get the CNPJ from the chave de acesso
-        String sql = "SELECT FIRST 1 NFE_CHAVE_ACESSO FROM NFE WHERE NFE_STATUS = 'AUTORIZADO' AND NFE_CHAVE_ACESSO IS NOT NULL ORDER BY ID";
-        try (PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                String chave = rs.getString(1);
-                if (chave != null && chave.length() >= 25) {
-                    String cnpj = chave.substring(6, 20);
-                    return findNomeByCnpj(cnpj);
+        // Strategy 1: Try EMITENTE table
+        String nome = tryQuery("SELECT FIRST 1 RAZAO_SOCIAL FROM EMITENTE ORDER BY ID");
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 NOME FROM EMITENTE ORDER BY ID");
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 XNOME FROM EMITENTE ORDER BY ID");
+
+        // Strategy 2: Try EMPRESA table
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 RAZAO_SOCIAL FROM EMPRESA ORDER BY ID");
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 NOME FROM EMPRESA ORDER BY ID");
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 NOME_FANTASIA FROM EMPRESA ORDER BY ID");
+
+        // Strategy 3: Try CONFIGURACOES/CONFIG table
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 RAZAO_SOCIAL FROM CONFIGURACOES ORDER BY ID");
+        if (nome == null) nome = tryQuery("SELECT FIRST 1 EMPRESA FROM CONFIGURACOES ORDER BY ID");
+
+        // Strategy 4: Extract CNPJ from NFe chave and look in CLIENTE
+        if (nome == null) {
+            String chave = tryQuery("SELECT FIRST 1 NFE_CHAVE_ACESSO FROM NFE WHERE NFE_STATUS = 'AUTORIZADO' AND NFE_CHAVE_ACESSO IS NOT NULL ORDER BY ID");
+            if (chave == null) {
+                chave = tryQuery("SELECT FIRST 1 NFCE_CHAVE_ACESSO FROM NFCE WHERE NFCE_STATUS = 'AUTORIZADO' AND NFCE_CHAVE_ACESSO IS NOT NULL ORDER BY ID");
+            }
+            if (chave != null && chave.length() >= 25) {
+                String cnpj = chave.substring(6, 20);
+                nome = tryQueryParam("SELECT FIRST 1 NOME FROM CLIENTE WHERE CPF_CNPJ = ?", cnpj);
+                if (nome == null) nome = tryQueryParam("SELECT FIRST 1 RAZAO_SOCIAL FROM CLIENTE WHERE CPF_CNPJ = ?", cnpj);
+                if (nome == null) {
+                    // Format CNPJ and use as company name
+                    nome = "CNPJ " + cnpj.substring(0,2) + "." + cnpj.substring(2,5) + "." + cnpj.substring(5,8)
+                         + "/" + cnpj.substring(8,12) + "-" + cnpj.substring(12,14);
                 }
             }
-        } catch (SQLException e) {
-            log.warn("Erro ao buscar nome empresa: {}", e.getMessage());
         }
-        return "Empresa";
+
+        return nome != null ? nome.trim() : "Empresa";
     }
 
-    private String findNomeByCnpj(String cnpj) {
-        // Try CLIENTE table first (if exists)
-        try {
-            String sql = "SELECT FIRST 1 NOME FROM CLIENTE WHERE CPF_CNPJ = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, cnpj);
+    private String tryQuery(String sql) {
+        try (Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+            if (rs.next()) {
+                String val = rs.getString(1);
+                if (val != null && !val.isBlank()) return val.trim();
+            }
+        } catch (SQLException ignored) {
+            // Table doesn't exist, try next strategy
+        }
+        return null;
+    }
+
+    private String tryQueryParam(String sql, String param) {
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, param);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String nome = rs.getString(1);
-                if (nome != null && !nome.isBlank()) return nome.trim();
+                String val = rs.getString(1);
+                if (val != null && !val.isBlank()) return val.trim();
             }
         } catch (SQLException ignored) {}
-        return "Empresa CNPJ " + cnpj;
+        return null;
     }
 
     private String safe(ResultSet rs, String col) throws SQLException {
