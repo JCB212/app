@@ -4,10 +4,10 @@ import br.com.infoativa.fiscal.config.AppConfig;
 import br.com.infoativa.fiscal.config.IniManager;
 import br.com.infoativa.fiscal.db.DatabaseGateway;
 import br.com.infoativa.fiscal.db.FirebirdConnectionFactory;
-import br.com.infoativa.fiscal.domain.EmailConfig;
-import br.com.infoativa.fiscal.domain.Periodo;
-import br.com.infoativa.fiscal.domain.ProcessamentoResult;
+import br.com.infoativa.fiscal.domain.*;
 import br.com.infoativa.fiscal.mail.EmailService;
+import br.com.infoativa.fiscal.repository.ParametrosRepository;
+import br.com.infoativa.fiscal.repository.UsuarioRepository;
 import br.com.infoativa.fiscal.service.ClosingOrchestrator;
 import br.com.infoativa.fiscal.service.PeriodService;
 import br.com.infoativa.fiscal.service.ProcessingMode;
@@ -45,7 +45,11 @@ public class FiscalApp extends Application {
     private StackPane contentArea;
     private VBox sidebarMenu;
     private Label statusLabel;
+    private Label headerCompanyLabel;
+    private Label headerUserLabel;
     private String activeMenu = "home";
+    private String nomeEmpresa = "Empresa";
+    private String usuarioLogado = "Default";
 
     public static void main(String[] args) {
         launch(args);
@@ -73,8 +77,15 @@ public class FiscalApp extends Application {
             }
         }
 
+        // Try to load company name from DB
+        tryLoadCompanyInfo();
+
         BorderPane root = new BorderPane();
         root.getStyleClass().add("root-pane");
+
+        // Header bar with company name
+        HBox headerBar = createHeaderBar();
+        root.setTop(headerBar);
 
         // Sidebar
         VBox sidebar = createSidebar();
@@ -390,6 +401,18 @@ public class FiscalApp extends Application {
         HBox checkBoxes2 = new HBox(16);
         checkBoxes2.getChildren().addAll(chkSped, chkContrib, chkSintegra);
 
+        // New reports
+        HBox checkBoxes3 = new HBox(16);
+        CheckBox chkSequencias = new CheckBox("Sequencias");
+        chkSequencias.setSelected(true);
+        CheckBox chkCstCfop = new CheckBox("CST/CFOP");
+        chkCstCfop.setSelected(true);
+        CheckBox chkMono = new CheckBox("Monofasicos");
+        chkMono.setSelected(true);
+        CheckBox chkDevol = new CheckBox("Devolucoes");
+        chkDevol.setSelected(true);
+        checkBoxes3.getChildren().addAll(chkSequencias, chkCstCfop, chkMono, chkDevol);
+
         // Buttons
         HBox btnBox = new HBox(16);
         btnBox.setAlignment(Pos.CENTER_LEFT);
@@ -468,7 +491,7 @@ public class FiscalApp extends Application {
             }).start();
         });
 
-        view.getChildren().addAll(title, modeBox, periodBox, tipoLabel, checkBoxes, checkBoxes2,
+        view.getChildren().addAll(title, modeBox, periodBox, tipoLabel, checkBoxes, checkBoxes2, checkBoxes3,
             btnBox, progressBar, logArea);
 
         ScrollPane scroll = new ScrollPane(view);
@@ -765,6 +788,114 @@ public class FiscalApp extends Application {
 
     // ====================== UTILITIES ======================
 
+    private void tryLoadCompanyInfo() {
+        try {
+            FirebirdConnectionFactory factory = new FirebirdConnectionFactory(
+                appConfig.ipServidor(), appConfig.porta(), appConfig.basePath());
+            DatabaseGateway gw = new DatabaseGateway(factory);
+            if (gw.testConnection()) {
+                ParametrosRepository paramRepo = new ParametrosRepository(gw.getConnection());
+                String nome = paramRepo.findNomeEmpresa();
+                if (nome != null && !nome.isBlank()) nomeEmpresa = nome;
+                ParametrosRegistro params = paramRepo.findFirst();
+                if (params != null && !params.versaoBanco().isEmpty()) {
+                    log.info("Versao do banco: {}", params.versaoBanco());
+                }
+            }
+            gw.close();
+        } catch (Exception e) {
+            log.warn("Nao foi possivel carregar info da empresa: {}", e.getMessage());
+        }
+    }
+
+    private HBox createHeaderBar() {
+        HBox header = new HBox(16);
+        header.getStyleClass().add("header-bar");
+        header.setPadding(new Insets(10, 20, 10, 20));
+        header.setAlignment(Pos.CENTER_LEFT);
+
+        Label companyIcon = new Label("\u2302");
+        companyIcon.setStyle("-fx-font-size: 20px; -fx-text-fill: #f8fafc;");
+
+        headerCompanyLabel = new Label(nomeEmpresa);
+        headerCompanyLabel.getStyleClass().add("header-company");
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        Label welcomeLabel = new Label("Bem vindo");
+        welcomeLabel.getStyleClass().add("header-welcome");
+        headerUserLabel = new Label(usuarioLogado);
+        headerUserLabel.getStyleClass().add("header-user");
+
+        VBox userBox = new VBox(0);
+        userBox.setAlignment(Pos.CENTER_RIGHT);
+        userBox.getChildren().addAll(welcomeLabel, headerUserLabel);
+
+        header.getChildren().addAll(companyIcon, headerCompanyLabel, spacer, userBox);
+        return header;
+    }
+
+    private boolean showLoginDialog(Stage owner) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Login - Modulo Fiscal");
+        dialog.initOwner(owner);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(12);
+        grid.setVgap(12);
+        grid.setPadding(new Insets(20));
+
+        TextField tfUser = new TextField();
+        tfUser.setPromptText("Usuario");
+        PasswordField tfPass = new PasswordField();
+        tfPass.setPromptText("Senha");
+        Label errorLabel = new Label();
+        errorLabel.setStyle("-fx-text-fill: #ef4444;");
+
+        grid.add(new Label("Usuario:"), 0, 0);
+        grid.add(tfUser, 1, 0);
+        grid.add(new Label("Senha:"), 0, 1);
+        grid.add(tfPass, 1, 1);
+        grid.add(errorLabel, 0, 2, 2, 1);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.setResultConverter(btn -> btn);
+
+        while (true) {
+            var result = dialog.showAndWait();
+            if (result.isEmpty() || result.get() == ButtonType.CANCEL) return false;
+
+            String user = tfUser.getText().trim();
+            String pass = tfPass.getText();
+
+            try {
+                FirebirdConnectionFactory factory = new FirebirdConnectionFactory(
+                    appConfig.ipServidor(), appConfig.porta(), appConfig.basePath());
+                DatabaseGateway gw = new DatabaseGateway(factory);
+                UsuarioRepository repo = new UsuarioRepository(gw.getConnection());
+                UsuarioRegistro usuario = repo.authenticate(user, pass);
+                gw.close();
+
+                if (usuario != null) {
+                    usuarioLogado = usuario.usuario();
+                    return true;
+                } else {
+                    errorLabel.setText("Usuario ou senha invalidos!");
+                }
+            } catch (Exception e) {
+                errorLabel.setText("Erro de conexao: " + e.getMessage());
+                // Fallback to INI password
+                if (user.equals("admin") && pass.equals(appConfig.senhaAcesso())) {
+                    usuarioLogado = "Admin (local)";
+                    return true;
+                }
+            }
+        }
+    }
+
     private void browseDir(TextField tf) {
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle("Selecionar Pasta");
@@ -804,17 +935,7 @@ public class FiscalApp extends Application {
     }
 
     private boolean showPasswordDialog(Stage owner) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Acesso ao Sistema");
-        dialog.setHeaderText("Modulo Fiscal - Acesso Restrito");
-        dialog.setContentText("Senha:");
-        dialog.initOwner(owner);
-
-        var result = dialog.showAndWait();
-        if (result.isPresent()) {
-            return result.get().equals(appConfig.senhaAcesso());
-        }
-        return false;
+        return showLoginDialog(owner);
     }
 
     private void showAlert(Alert.AlertType type, String title, String msg) {

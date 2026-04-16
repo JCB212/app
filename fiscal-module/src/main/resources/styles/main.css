@@ -330,6 +330,32 @@
     -fx-border-width: 1 0 0 0;
 }
 
+/* ========== HEADER BAR ========== */
+.header-bar {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-border-width: 0 0 1 0;
+    -fx-min-height: 48px;
+}
+
+.header-company {
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.header-welcome {
+    -fx-text-fill: #f59e0b;
+    -fx-font-size: 10px;
+    -fx-font-style: italic;
+}
+
+.header-user {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
 .status-text {
     -fx-text-fill: #64748b;
     -fx-font-size: 11px;

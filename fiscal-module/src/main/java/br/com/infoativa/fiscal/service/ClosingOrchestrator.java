@@ -5,7 +5,7 @@ import br.com.infoativa.fiscal.db.DatabaseGateway;
 import br.com.infoativa.fiscal.domain.*;
 import br.com.infoativa.fiscal.fiscal.*;
 import br.com.infoativa.fiscal.mail.EmailService;
-import br.com.infoativa.fiscal.report.PdfReportService;
+import br.com.infoativa.fiscal.report.*;
 import br.com.infoativa.fiscal.xml.XmlScanService;
 import br.com.infoativa.fiscal.zip.ZipService;
 import org.slf4j.Logger;
@@ -80,16 +80,36 @@ public class ClosingOrchestrator {
                 }
             }
 
-            // 5. Generate PDF reports
+            // 5. Generate PDF reports (including new ones)
             PdfReportService pdfService = new PdfReportService();
+            SequenciaReportService sequenciaService = new SequenciaReportService();
+            CstCfopReportService cstCfopService = new CstCfopReportService();
+            MonofasicoReportService monoService = new MonofasicoReportService();
+            DevolucoesReportService devService = new DevolucoesReportService();
+
             try {
                 progress.accept("Gerando PDF - Resumo de Vendas...");
                 pdfService.gerarResumoVendas(conn, periodo, outputDir);
+
                 progress.accept("Gerando PDF - Resumo de Impostos...");
                 pdfService.gerarResumoImpostos(conn, periodo, outputDir);
+
                 progress.accept("Gerando PDF - Resumo de Compras...");
                 pdfService.gerarResumoCompras(conn, periodo, outputDir);
-                progress.accept("PDFs gerados com sucesso");
+
+                progress.accept("Gerando PDF - Sequencias...");
+                sequenciaService.gerar(conn, periodo, outputDir);
+
+                progress.accept("Gerando PDF - CST/CFOP...");
+                cstCfopService.gerar(conn, periodo, outputDir);
+
+                progress.accept("Gerando PDF - Monofasicos...");
+                monoService.gerar(conn, periodo, outputDir);
+
+                progress.accept("Gerando PDF - Devolucoes...");
+                devService.gerar(conn, periodo, outputDir);
+
+                progress.accept("Todos os PDFs gerados com sucesso");
             } catch (Exception e) {
                 log.error("Erro ao gerar PDFs: {}", e.getMessage());
                 progress.accept("ERRO ao gerar PDFs: " + e.getMessage());
@@ -113,7 +133,7 @@ public class ClosingOrchestrator {
                 progress.accept(emailEnviado ? "Email enviado com sucesso!" : "ERRO ao enviar email");
             }
 
-            String msg = String.format("Processamento concluido! %d XMLs (%d NFe, %d NFCe, %d Compras)",
+            String msg = String.format("Processamento concluido! %d XMLs (%d NFe, %d NFCe, %d Compras) + 7 PDFs + 3 TXT",
                 allXmls.size(), xmlsNfe, xmlsNfce, xmlsCompras);
             progress.accept(msg);
 
@@ -146,6 +166,7 @@ public class ClosingOrchestrator {
             progress.accept(sent ? "Email enviado!" : "Erro ao enviar email");
         }
 
+        progress.accept("=== Processamento anual concluido! Total XMLs: " + totalXmls + " ===");
         return lastResult;
     }
 }
