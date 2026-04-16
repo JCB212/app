@@ -9,12 +9,18 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
+/**
+ * Scanner de XMLs que filtra EXCLUSIVAMENTE pela data de emissao (dhEmi)
+ * lida de dentro do proprio XML. NAO usa data de modificacao do arquivo.
+ *
+ * Isso garante que ao selecionar Janeiro, somente XMLs com dhEmi em Janeiro
+ * serao incluidos, independente de quando o arquivo foi criado/modificado.
+ */
 public class XmlScanService {
 
     private static final Logger log = LoggerFactory.getLogger(XmlScanService.class);
@@ -25,38 +31,36 @@ public class XmlScanService {
 
         if (!Files.exists(dir) || !Files.isDirectory(dir)) {
             log.warn("Diretorio nao encontrado: {}", directory);
+            if (progressCallback != null) {
+                progressCallback.accept("AVISO: Diretorio nao encontrado: " + directory);
+            }
             return results;
         }
 
         AtomicInteger total = new AtomicInteger(0);
-        AtomicInteger processed = new AtomicInteger(0);
+        AtomicInteger matched = new AtomicInteger(0);
 
         try {
             Files.walkFileTree(dir, new SimpleFileVisitor<>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                     if (!file.toString().toLowerCase().endsWith(".xml")) return FileVisitResult.CONTINUE;
-                    total.incrementAndGet();
+                    int count = total.incrementAndGet();
 
-                    // Pre-filter by file modification date for performance
-                    LocalDate fileDate = attrs.lastModifiedTime().toInstant()
-                            .atZone(ZoneId.systemDefault()).toLocalDate();
-                    if (fileDate.isBefore(periodo.inicio().minusMonths(1)) ||
-                        fileDate.isAfter(periodo.fim().plusMonths(1))) {
-                        return FileVisitResult.CONTINUE;
-                    }
-
+                    // Extrai metadados REAIS do XML (dhEmi, modelo, status, etc.)
                     XmlDocumentInfo info = XmlMetadataExtractor.extract(file);
+
                     if (info != null && info.dataEmissao() != null) {
+                        // Filtra EXCLUSIVAMENTE pela data de emissao do XML
                         LocalDate emissao = info.dataEmissao().toLocalDate();
                         if (!emissao.isBefore(periodo.inicio()) && !emissao.isAfter(periodo.fim())) {
                             results.add(info);
+                            matched.incrementAndGet();
                         }
                     }
 
-                    int p = processed.incrementAndGet();
-                    if (p % 100 == 0 && progressCallback != null) {
-                        progressCallback.accept("Escaneando XMLs: " + p + " processados...");
+                    if (count % 200 == 0 && progressCallback != null) {
+                        progressCallback.accept("Escaneando: " + count + " XMLs verificados, " + matched.get() + " no periodo...");
                     }
                     return FileVisitResult.CONTINUE;
                 }
@@ -71,7 +75,10 @@ public class XmlScanService {
             log.error("Erro ao escanear diretorio {}: {}", directory, e.getMessage());
         }
 
-        log.info("Escaneamento concluido: {} XMLs encontrados de {} verificados em {}", results.size(), total.get(), directory);
+        log.info("Escaneamento: {} XMLs encontrados de {} verificados em {}", results.size(), total.get(), directory);
+        if (progressCallback != null) {
+            progressCallback.accept("Encontrados " + results.size() + " XMLs no periodo de " + total.get() + " verificados em " + dir.getFileName());
+        }
         return results;
     }
 
@@ -90,6 +97,7 @@ public class XmlScanService {
         Files.createDirectories(inutilizadosPath);
         Files.createDirectories(contingenciaPath);
 
+        int copied = 0;
         for (XmlDocumentInfo xml : xmls) {
             Path dest;
             if (xml.cancelado()) {
@@ -99,7 +107,6 @@ public class XmlScanService {
             } else if (xml.contingencia()) {
                 dest = contingenciaPath;
             } else if (xml.isNfe()) {
-                // Check if it's a purchase (entrada) based on path
                 String pathStr = xml.filePath().toString().toLowerCase();
                 if (pathStr.contains("fornecedor") || pathStr.contains("compra") || pathStr.contains("entrada")) {
                     dest = comprasPath;
@@ -115,10 +122,11 @@ public class XmlScanService {
             try {
                 Files.copy(xml.filePath(), dest.resolve(xml.filePath().getFileName()),
                         StandardCopyOption.REPLACE_EXISTING);
+                copied++;
             } catch (IOException e) {
                 log.warn("Erro ao copiar {}: {}", xml.filePath().getFileName(), e.getMessage());
             }
         }
-        log.info("XMLs organizados nas pastas de saida");
+        log.info("{} XMLs copiados para as pastas de saida", copied);
     }
 }

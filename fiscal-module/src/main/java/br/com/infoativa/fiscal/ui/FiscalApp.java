@@ -1041,6 +1041,38 @@ public class FiscalApp extends Application {
         schedGrid.add(createFieldLabel("Dia limite para envio:"), 0, 1); schedGrid.add(cbDiaLimite, 1, 1);
         schedGrid.add(schedInfo, 0, 2, 2, 1);
 
+        // Botao para configurar Task Scheduler do Windows
+        Button btnScheduler = new Button("Ativar no Agendador do Windows");
+        btnScheduler.getStyleClass().addAll("action-btn");
+        btnScheduler.setStyle("-fx-background-color: #a371f7;");
+        Label schedStatusLabel = new Label(
+            br.com.infoativa.fiscal.service.WindowsSchedulerService.isTaskScheduled()
+                ? "Tarefa agendada ativa" : "Nenhuma tarefa agendada"
+        );
+        schedStatusLabel.getStyleClass().add("info-text");
+
+        btnScheduler.setOnAction(ev -> {
+            int dia = cbDiaEnvio.getValue();
+            boolean ok = br.com.infoativa.fiscal.service.WindowsSchedulerService.createScheduledTask(dia);
+            schedStatusLabel.setText(ok
+                ? "Tarefa criada! O programa abrira todo dia " + dia + " as 08:00"
+                : "Erro ao criar tarefa. Execute como Administrador.");
+            schedStatusLabel.setStyle(ok ? "-fx-text-fill: #3fb950;" : "-fx-text-fill: #f85149;");
+        });
+
+        Button btnRemoveScheduler = new Button("Remover Agendamento");
+        btnRemoveScheduler.getStyleClass().addAll("action-btn");
+        btnRemoveScheduler.setStyle("-fx-background-color: #f85149;");
+        btnRemoveScheduler.setOnAction(ev -> {
+            br.com.infoativa.fiscal.service.WindowsSchedulerService.removeScheduledTask();
+            schedStatusLabel.setText("Agendamento removido");
+            schedStatusLabel.setStyle("-fx-text-fill: #8b949e;");
+        });
+
+        HBox schedBtns = new HBox(12, btnScheduler, btnRemoveScheduler, schedStatusLabel);
+        schedBtns.setAlignment(Pos.CENTER_LEFT);
+        schedGrid.add(schedBtns, 0, 3, 2, 1);
+
         // ---- EMAIL TECNICO ----
         Label techTitle = new Label("Email do Tecnico (Contingencias)");
         techTitle.getStyleClass().add("section-title");
