@@ -4,6 +4,7 @@
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/domain/NfeRegistro.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/domain/CompraRegistro.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/domain/Periodo.java
+/app/fiscal-module/src/main/java/br/com/infoativa/fiscal/service/XmlMonitorService.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/fiscal/FiscalObligationStrategy.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/ui/FiscalApp.java
 /app/fiscal-module/src/main/java/br/com/infoativa/fiscal/domain/ParametrosRegistro.java

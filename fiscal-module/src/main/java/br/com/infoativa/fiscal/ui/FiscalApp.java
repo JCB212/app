@@ -12,6 +12,7 @@ import br.com.infoativa.fiscal.service.ClosingOrchestrator;
 import br.com.infoativa.fiscal.service.DashboardService;
 import br.com.infoativa.fiscal.service.PeriodService;
 import br.com.infoativa.fiscal.service.ProcessingMode;
+import br.com.infoativa.fiscal.service.XmlMonitorService;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -52,6 +53,7 @@ public class FiscalApp extends Application {
     private String activeMenu = "home";
     private String nomeEmpresa = "Empresa";
     private String usuarioLogado = "Default";
+    private XmlMonitorService monitorService;
 
     public static void main(String[] args) {
         launch(args);
@@ -149,8 +151,9 @@ public class FiscalApp extends Application {
         Button btnDest = createMenuButton("Destinatarios", "M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z", "dest");
         Button btnEmail = createMenuButton("Config. Email", "M12,1L3,5v6c0,5.55,3.84,10.74,9,12c5.16-1.26,9-6.45,9-12V5L12,1z M12,11.99h7c-0.53,4.12-3.28,7.79-7,8.94V12H5V6.3l7-3.11v8.8z", "email");
         Button btnConfig = createMenuButton("Configuracoes", "M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z", "config");
+        Button btnMonitor = createMenuButton("Monitor XML", "M12,4.5C7,4.5,2.73,7.61,1,12c1.73,4.39,6,7.5,11,7.5s9.27-3.11,11-7.5c-1.73-4.39-6-7.5-11-7.5zM12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5s-2.24,5-5,5zm0-8c-1.66,0-3,1.34-3,3s1.34,3,3,3s3-1.34,3-3s-1.34-3-3-3z", "monitor");
 
-        sidebarMenu.getChildren().addAll(btnHome, btnDash, btnProcess, btnDest, btnEmail, btnConfig);
+        sidebarMenu.getChildren().addAll(btnHome, btnDash, btnProcess, btnMonitor, btnDest, btnEmail, btnConfig);
 
         // DB status
         VBox dbStatus = new VBox(4);
@@ -198,6 +201,7 @@ public class FiscalApp extends Application {
                 case "home" -> showHome();
                 case "dashboard" -> showDashboard();
                 case "process" -> showProcessing();
+                case "monitor" -> showMonitor();
                 case "dest" -> showDestinatarios();
                 case "email" -> showEmailConfig();
                 case "config" -> showConfig();
@@ -497,6 +501,175 @@ public class FiscalApp extends Application {
     private String fmtMoney(java.math.BigDecimal v) {
         if (v == null) return "0,00";
         return String.format("R$ %,.2f", v).replace(",", "X").replace(".", ",").replace("X", ".");
+    }
+
+    // ====================== MONITOR VIEW ======================
+    private void showMonitor() {
+        VBox view = new VBox(16);
+        view.setPadding(new Insets(28));
+        view.getStyleClass().add("view-container");
+
+        Label title = new Label("Monitor de XML em Tempo Real");
+        title.getStyleClass().add("view-title");
+        Label subtitle = new Label("Monitora pastas de NFCe e detecta contingencias automaticamente");
+        subtitle.getStyleClass().add("view-subtitle");
+
+        // Status indicator
+        HBox statusBox = new HBox(12);
+        statusBox.setAlignment(Pos.CENTER_LEFT);
+        Label statusDot = new Label();
+        statusDot.setPrefSize(12, 12);
+        statusDot.setStyle("-fx-background-color: " + (monitorService != null && monitorService.isRunning() ? "#3fb950" : "#484f58") + "; -fx-background-radius: 6;");
+        Label statusText = new Label(monitorService != null && monitorService.isRunning() ? "Monitorando..." : "Parado");
+        statusText.getStyleClass().add("info-text");
+        statusText.setStyle("-fx-font-size: 14px;");
+        statusBox.getChildren().addAll(statusDot, statusText);
+
+        // Pasta selecionada
+        HBox pathBox = new HBox(12);
+        pathBox.setAlignment(Pos.CENTER_LEFT);
+        Label pathLabel = new Label("Pasta NFCe:");
+        pathLabel.getStyleClass().add("field-label");
+        TextField tfMonitorPath = new TextField(appConfig.caminhoXmlNfce());
+        tfMonitorPath.getStyleClass().add("text-field-custom");
+        tfMonitorPath.setPrefWidth(400);
+        Button btnBrowse = new Button("...");
+        btnBrowse.getStyleClass().add("btn-small");
+        btnBrowse.setOnAction(e -> browseDir(tfMonitorPath));
+        pathBox.getChildren().addAll(pathLabel, tfMonitorPath, btnBrowse);
+
+        // Buttons
+        HBox btnBox = new HBox(12);
+        btnBox.setAlignment(Pos.CENTER_LEFT);
+
+        Button btnStart = new Button("Iniciar Monitor");
+        btnStart.getStyleClass().add("action-btn");
+        btnStart.setStyle("-fx-background-color: #3fb950;");
+
+        Button btnStop = new Button("Parar");
+        btnStop.getStyleClass().add("action-btn");
+        btnStop.setStyle("-fx-background-color: #f85149;");
+        btnStop.setDisable(monitorService == null || !monitorService.isRunning());
+
+        Label contLabel = new Label("Contingencias: 0");
+        contLabel.getStyleClass().add("info-text");
+        contLabel.setStyle("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #d29922;");
+
+        Button btnReport = new Button("Gerar Relatorio");
+        btnReport.getStyleClass().add("action-btn");
+        btnReport.setStyle("-fx-background-color: #a371f7;");
+        btnReport.setDisable(true);
+
+        Button btnSendTech = new Button("Enviar ao Tecnico");
+        btnSendTech.getStyleClass().add("action-btn");
+        btnSendTech.setStyle("-fx-background-color: #388bfd;");
+        btnSendTech.setDisable(true);
+
+        btnBox.getChildren().addAll(btnStart, btnStop, contLabel, btnReport, btnSendTech);
+
+        // Log area
+        TextArea logArea = new TextArea();
+        logArea.getStyleClass().add("log-area");
+        logArea.setEditable(false);
+        logArea.setPrefRowCount(18);
+        logArea.setWrapText(true);
+        VBox.setVgrow(logArea, Priority.ALWAYS);
+
+        // Start action
+        btnStart.setOnAction(e -> {
+            if (monitorService != null && monitorService.isRunning()) monitorService.stop();
+            monitorService = new XmlMonitorService();
+            logArea.clear();
+
+            monitorService.start(tfMonitorPath.getText().trim(),
+                msg -> Platform.runLater(() -> {
+                    logArea.appendText(msg + "\n");
+                    int contCount = monitorService.getContingencias().size();
+                    contLabel.setText("Contingencias: " + contCount);
+                    if (contCount > 0) {
+                        contLabel.setStyle("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #f85149;");
+                        btnReport.setDisable(false);
+                        btnSendTech.setDisable(appConfig.emailTecnico().isEmpty());
+                    }
+                }),
+                xml -> Platform.runLater(() -> {
+                    statusLabel.setText("CONTINGENCIA: NFCe " + xml.numero());
+                })
+            );
+
+            statusDot.setStyle("-fx-background-color: #3fb950; -fx-background-radius: 6;");
+            statusText.setText("Monitorando...");
+            btnStart.setDisable(true);
+            btnStop.setDisable(false);
+            statusLabel.setText("Monitor ativo");
+        });
+
+        // Stop action
+        btnStop.setOnAction(e -> {
+            if (monitorService != null) monitorService.stop();
+            statusDot.setStyle("-fx-background-color: #484f58; -fx-background-radius: 6;");
+            statusText.setText("Parado");
+            btnStart.setDisable(false);
+            btnStop.setDisable(true);
+            statusLabel.setText("Monitor parado");
+        });
+
+        // Report action
+        btnReport.setOnAction(e -> {
+            if (monitorService == null || monitorService.getContingencias().isEmpty()) return;
+            try {
+                java.nio.file.Path outputDir = java.nio.file.Path.of(System.getProperty("user.dir"), "XMLContabilidade");
+                java.nio.file.Files.createDirectories(outputDir);
+                java.nio.file.Path report = monitorService.gerarRelatorioContingencia(outputDir);
+                logArea.appendText("[RELATORIO] Gerado: " + report.getFileName() + "\n");
+                showAlert(Alert.AlertType.INFORMATION, "Relatorio", "Relatorio salvo em:\n" + report);
+            } catch (Exception ex) {
+                logArea.appendText("[ERRO] " + ex.getMessage() + "\n");
+            }
+        });
+
+        // Send to tech
+        btnSendTech.setOnAction(e -> {
+            if (monitorService == null || monitorService.getContingencias().isEmpty()) return;
+            logArea.appendText("[EMAIL] Enviando relatorio ao tecnico...\n");
+            new Thread(() -> {
+                try {
+                    java.nio.file.Path outputDir = java.nio.file.Path.of(System.getProperty("user.dir"), "XMLContabilidade");
+                    java.nio.file.Files.createDirectories(outputDir);
+                    java.nio.file.Path report = monitorService.gerarRelatorioContingencia(outputDir);
+                    boolean ok = monitorService.enviarRelatorioTecnico(appConfig.emailConfig(), appConfig.emailTecnico(), report);
+                    Platform.runLater(() -> {
+                        logArea.appendText(ok ? "[EMAIL] Enviado com sucesso!\n" : "[EMAIL] Erro ao enviar\n");
+                    });
+                } catch (Exception ex) {
+                    Platform.runLater(() -> logArea.appendText("[ERRO] " + ex.getMessage() + "\n"));
+                }
+            }).start();
+        });
+
+        // Info box
+        VBox infoBox = new VBox(6);
+        infoBox.getStyleClass().add("info-box");
+        infoBox.setPadding(new Insets(12));
+        Label infoTitle = new Label("Como funciona");
+        infoTitle.setStyle("-fx-font-weight: bold;");
+        Label infoText = new Label(
+            "O monitor escuta em tempo real a pasta de XMLs de NFCe.\n" +
+            "Quando detecta um novo XML com:\n" +
+            "  - tpEmis diferente de 1 (contingencia FS-IA, SVC-AN, OFFLINE, etc.)\n" +
+            "  - Diferenca > 1h entre dhEmi e dhRecbto\n" +
+            "Ele alerta imediatamente no log e incrementa o contador.\n" +
+            "Voce pode gerar um relatorio TXT e enviar ao tecnico por email."
+        );
+        infoText.getStyleClass().add("info-text");
+        infoText.setWrapText(true);
+        infoBox.getChildren().addAll(infoTitle, infoText);
+
+        view.getChildren().addAll(title, subtitle, statusBox, pathBox, btnBox, logArea, infoBox);
+        ScrollPane scroll = new ScrollPane(view);
+        scroll.setFitToWidth(true);
+        scroll.getStyleClass().add("scroll-pane");
+        contentArea.getChildren().setAll(scroll);
     }
 
     // ====================== PROCESSING VIEW ======================

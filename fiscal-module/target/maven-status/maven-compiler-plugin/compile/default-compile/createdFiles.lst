@@ -1,3 +1,4 @@
+br/com/infoativa/fiscal/report/PdfReportService$PdfWriter.class
 br/com/infoativa/fiscal/db/DatabaseGateway.class
 br/com/infoativa/fiscal/domain/CompraRegistro.class
 br/com/infoativa/fiscal/service/WindowsSchedulerService.class
@@ -14,11 +15,10 @@ br/com/infoativa/fiscal/repository/NotaCompraRepository.class
 br/com/infoativa/fiscal/config/AppConfig.class
 br/com/infoativa/fiscal/xml/XmlMetadataExtractor.class
 br/com/infoativa/fiscal/zip/ZipService$1.class
-br/com/infoativa/fiscal/report/PdfReportService$NfceField.class
 br/com/infoativa/fiscal/domain/NfceRegistro.class
 br/com/infoativa/fiscal/xml/XmlScanService.class
-br/com/infoativa/fiscal/report/PdfReportService$NfeField.class
 br/com/infoativa/fiscal/domain/XmlDocumentInfo.class
+br/com/infoativa/fiscal/service/XmlMonitorService.class
 br/com/infoativa/fiscal/fiscal/FiscalObligationStrategy.class
 br/com/infoativa/fiscal/fiscal/SpedFiscalStrategy.class
 br/com/infoativa/fiscal/domain/EmailConfig.class
@@ -26,6 +26,7 @@ br/com/infoativa/fiscal/ui/FiscalApp.class
 br/com/infoativa/fiscal/domain/UsuarioRegistro.class
 br/com/infoativa/fiscal/mail/EmailService$2.class
 br/com/infoativa/fiscal/mail/EmailService.class
+br/com/infoativa/fiscal/service/XmlMonitorService$1.class
 br/com/infoativa/fiscal/config/IniManager.class
 br/com/infoativa/fiscal/repository/ParametrosRepository.class
 br/com/infoativa/fiscal/fiscal/SpedContribuicoesStrategy.class

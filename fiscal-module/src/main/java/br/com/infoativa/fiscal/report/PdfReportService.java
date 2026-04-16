@@ -1,9 +1,7 @@
 package br.com.infoativa.fiscal.report;
 
 import br.com.infoativa.fiscal.domain.*;
-import br.com.infoativa.fiscal.repository.CompraRepository;
-import br.com.infoativa.fiscal.repository.NfceRepository;
-import br.com.infoativa.fiscal.repository.NfeRepository;
+import br.com.infoativa.fiscal.repository.*;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -20,261 +18,304 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Gera PDFs completos com TODOS os itens discriminados, multipaginas.
+ */
 public class PdfReportService {
 
     private static final Logger log = LoggerFactory.getLogger(PdfReportService.class);
     private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final float MARGIN = 40;
-    private static final float LINE_HEIGHT = 14;
+    private static final float M = 35; // margin
+    private static final float LH = 11; // line height
 
+    // ===== RESUMO DE VENDAS =====
     public void gerarResumoVendas(Connection conn, Periodo periodo, Path outputDir) throws IOException {
         NfceRepository nfceRepo = new NfceRepository(conn);
         NfeRepository nfeRepo = new NfeRepository(conn);
-
         List<NfceRegistro> nfces = nfceRepo.findByPeriodo(periodo);
         List<NfeRegistro> nfes = nfeRepo.findByPeriodo(periodo);
 
-        BigDecimal totalNfce = nfces.stream()
-            .filter(n -> !"S".equals(n.cupomCancelado()))
-            .map(NfceRegistro::valorFinal)
-            .reduce(BigDecimal.ZERO, BigDecimal::add);
+        var nfcesOk = nfces.stream().filter(n -> !"S".equals(n.cupomCancelado())).toList();
+        var nfesOk = nfes.stream().filter(n -> !"S".equals(n.cancelado())).toList();
+        BigDecimal totNfce = nfcesOk.stream().map(NfceRegistro::valorFinal).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totNfe = nfesOk.stream().map(NfeRegistro::valorFinal).reduce(BigDecimal.ZERO, BigDecimal::add);
+        int cancelados = nfces.size() - nfcesOk.size() + nfes.size() - nfesOk.size();
 
-        BigDecimal totalNfe = nfes.stream()
-            .filter(n -> !"S".equals(n.cancelado()))
-            .map(NfeRegistro::valorFinal)
-            .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        int qtdNfce = (int) nfces.stream().filter(n -> !"S".equals(n.cupomCancelado())).count();
-        int qtdNfe = (int) nfes.stream().filter(n -> !"S".equals(n.cancelado())).count();
-        int cancelados = (int) nfces.stream().filter(n -> "S".equals(n.cupomCancelado())).count()
-            + (int) nfes.stream().filter(n -> "S".equals(n.cancelado())).count();
-
-        Path pdfPath = outputDir.resolve("PDF").resolve("Resumo_Vendas_" + periodo.mesAnoRef() + ".pdf");
-
+        Path pdf = outputDir.resolve("PDF").resolve("Resumo_Vendas_" + periodo.mesAnoRef() + ".pdf");
         try (PDDocument doc = new PDDocument()) {
-            PDPage page = new PDPage(PDRectangle.A4);
-            doc.addPage(page);
+            PdfWriter pw = new PdfWriter(doc);
+            pw.title("RESUMO DE VENDAS");
+            pw.sub("Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT));
+            pw.sub("Gerado em: " + LocalDate.now().format(FMT));
+            pw.line();
 
-            try (PDPageContentStream cs = new PDPageContentStream(doc, page)) {
-                float y = page.getMediaBox().getHeight() - MARGIN;
-                float w = page.getMediaBox().getWidth();
+            pw.section("RESUMO GERAL");
+            pw.text("NFCe emitidas: " + nfcesOk.size() + "  |  NFe emitidas: " + nfesOk.size() + "  |  Cancelados: " + cancelados);
+            pw.text("Total NFCe: " + m(totNfce) + "  |  Total NFe: " + m(totNfe));
+            pw.bold("TOTAL GERAL: " + m(totNfce.add(totNfe)));
+            pw.gap();
 
-                // Title
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
-                y = drawText(cs, "RESUMO DE VENDAS", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT), MARGIN, y);
-                y = drawText(cs, "Gerado em: " + LocalDate.now().format(FMT), MARGIN, y);
-                y -= LINE_HEIGHT;
-
-                // Separator
-                cs.moveTo(MARGIN, y);
-                cs.lineTo(w - MARGIN, y);
-                cs.stroke();
-                y -= LINE_HEIGHT * 1.5f;
-
-                // Summary
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "RESUMO GERAL", MARGIN, y);
-                y -= 4;
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Quantidade de NFCe emitidas: " + qtdNfce, MARGIN + 20, y);
-                y = drawText(cs, "Quantidade de NFe emitidas: " + qtdNfe, MARGIN + 20, y);
-                y = drawText(cs, "Documentos cancelados: " + cancelados, MARGIN + 20, y);
-                y -= LINE_HEIGHT;
-
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "VALORES", MARGIN, y);
-                y -= 4;
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Total Vendas NFCe: R$ " + fmtMoney(totalNfce), MARGIN + 20, y);
-                y = drawText(cs, "Total Vendas NFe:  R$ " + fmtMoney(totalNfe), MARGIN + 20, y);
-                y -= LINE_HEIGHT;
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "TOTAL GERAL: R$ " + fmtMoney(totalNfce.add(totalNfe)), MARGIN + 20, y);
-
-                // NFe table
-                if (!nfes.isEmpty()) {
-                    y -= LINE_HEIGHT * 2;
-                    cs.setFont(PDType1Font.HELVETICA_BOLD, 11);
-                    y = drawText(cs, "DETALHAMENTO NFe", MARGIN, y);
-                    y -= 4;
-                    cs.setFont(PDType1Font.HELVETICA_BOLD, 8);
-                    y = drawText(cs, String.format("%-8s %-12s %-15s %-15s %-12s %-10s",
-                        "Numero", "Data", "Chave", "Valor", "ICMS", "Status"), MARGIN + 10, y);
-                    cs.setFont(PDType1Font.HELVETICA, 8);
-                    int count = 0;
-                    for (NfeRegistro nfe : nfes) {
-                        if (count++ > 30) { y = drawText(cs, "... mais " + (nfes.size() - 30) + " registros", MARGIN + 10, y); break; }
-                        y = drawText(cs, String.format("%-8d %-12s %-15s R$%-12s R$%-9s %-10s",
-                            nfe.nfeNumero(),
-                            nfe.nfeDataEmissao() != null ? nfe.nfeDataEmissao().format(FMT) : "",
-                            safe(nfe.nfeChaveAcesso(), 15),
-                            fmtMoney(nfe.valorFinal()),
-                            fmtMoney(nfe.valorIcms()),
-                            safe(nfe.nfeStatus(), 10)
-                        ), MARGIN + 10, y);
-                        if (y < MARGIN + 40) break;
-                    }
-                }
+            // NFCe detalhado
+            pw.section("VENDAS NFCe - DETALHADO (" + nfcesOk.size() + " cupons)");
+            pw.header7("Numero    Data          CFOP    Produtos      Desconto      ICMS          PIS        COFINS      Total");
+            for (NfceRegistro n : nfcesOk) {
+                pw.row7(String.format("%-9d %-13s %-7s %13s %13s %13s %10s %10s %13s",
+                    n.nfceNumero(), fd(n.nfceDataEmissao()), s(n.cfop(),7),
+                    m(n.totalProdutos()), m(n.desconto()), m(n.icms()),
+                    m(n.pis()), m(n.cofins()), m(n.valorFinal())));
             }
-            doc.save(pdfPath.toFile());
+            pw.gap();
+
+            // NFe detalhado
+            pw.section("VENDAS NFe - DETALHADO (" + nfesOk.size() + " notas)");
+            pw.header7("Numero    Data          CFOP    Produtos      Desconto      ICMS       ICMS ST      IPI          Total");
+            for (NfeRegistro n : nfesOk) {
+                pw.row7(String.format("%-9d %-13s %-7s %13s %13s %13s %10s %10s %13s",
+                    n.nfeNumero(), fd(n.nfeDataEmissao()), s(n.cfop(),7),
+                    m(n.totalProdutos()), m(n.desconto()), m(n.valorIcms()),
+                    m(n.valorIcmsSt()), m(n.valorIpi()), m(n.valorFinal())));
+            }
+
+            pw.finish();
+            doc.save(pdf.toFile());
         }
-        log.info("PDF Resumo de Vendas gerado: {}", pdfPath);
+        log.info("PDF Vendas: {} ({} paginas)", pdf, "multi");
     }
 
+    // ===== RESUMO DE IMPOSTOS =====
     public void gerarResumoImpostos(Connection conn, Periodo periodo, Path outputDir) throws IOException {
         NfceRepository nfceRepo = new NfceRepository(conn);
         NfeRepository nfeRepo = new NfeRepository(conn);
+        var nfces = nfceRepo.findByPeriodo(periodo).stream().filter(n -> !"S".equals(n.cupomCancelado())).toList();
+        var nfes = nfeRepo.findByPeriodo(periodo).stream().filter(n -> !"S".equals(n.cancelado())).toList();
 
-        List<NfceRegistro> nfces = nfceRepo.findByPeriodo(periodo);
-        List<NfeRegistro> nfes = nfeRepo.findByPeriodo(periodo);
+        BigDecimal icmsNfce = nfces.stream().map(NfceRegistro::icms).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal pisNfce = nfces.stream().map(NfceRegistro::pis).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal cofNfce = nfces.stream().map(NfceRegistro::cofins).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal icmsNfe = nfes.stream().map(NfeRegistro::valorIcms).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal icmsStNfe = nfes.stream().map(NfeRegistro::valorIcmsSt).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal pisNfe = nfes.stream().map(NfeRegistro::valorPis).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal cofNfe = nfes.stream().map(NfeRegistro::valorCofins).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal ipiNfe = nfes.stream().map(NfeRegistro::valorIpi).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal icmsNfce = sum(nfces, NfceRegistro::icms);
-        BigDecimal pisNfce = sum(nfces, NfceRegistro::pis);
-        BigDecimal cofinsNfce = sum(nfces, NfceRegistro::cofins);
-        BigDecimal icmsNfe = sumNfe(nfes, NfeRegistro::valorIcms);
-        BigDecimal icmsStNfe = sumNfe(nfes, NfeRegistro::valorIcmsSt);
-        BigDecimal pisNfe = sumNfe(nfes, NfeRegistro::valorPis);
-        BigDecimal cofinsNfe = sumNfe(nfes, NfeRegistro::valorCofins);
-        BigDecimal ipiNfe = sumNfe(nfes, NfeRegistro::valorIpi);
-
-        Path pdfPath = outputDir.resolve("PDF").resolve("Resumo_Impostos_" + periodo.mesAnoRef() + ".pdf");
-
+        Path pdf = outputDir.resolve("PDF").resolve("Resumo_Impostos_" + periodo.mesAnoRef() + ".pdf");
         try (PDDocument doc = new PDDocument()) {
-            PDPage page = new PDPage(PDRectangle.A4);
-            doc.addPage(page);
-            try (PDPageContentStream cs = new PDPageContentStream(doc, page)) {
-                float y = page.getMediaBox().getHeight() - MARGIN;
+            PdfWriter pw = new PdfWriter(doc);
+            pw.title("RESUMO DE IMPOSTOS");
+            pw.sub("Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT));
+            pw.line();
 
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
-                y = drawText(cs, "RESUMO DE IMPOSTOS", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT), MARGIN, y);
-                y -= LINE_HEIGHT * 2;
+            pw.section("IMPOSTOS - NFCe (Consumidor Final)");
+            pw.text("ICMS:    " + m(icmsNfce));
+            pw.text("PIS:     " + m(pisNfce));
+            pw.text("COFINS:  " + m(cofNfce));
+            pw.bold("Subtotal NFCe: " + m(icmsNfce.add(pisNfce).add(cofNfce)));
+            pw.gap();
 
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "IMPOSTOS - NFCe (Vendas Consumidor)", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "ICMS:    R$ " + fmtMoney(icmsNfce), MARGIN + 20, y);
-                y = drawText(cs, "PIS:     R$ " + fmtMoney(pisNfce), MARGIN + 20, y);
-                y = drawText(cs, "COFINS:  R$ " + fmtMoney(cofinsNfce), MARGIN + 20, y);
-                y -= LINE_HEIGHT;
+            pw.section("IMPOSTOS - NFe");
+            pw.text("ICMS:    " + m(icmsNfe));
+            pw.text("ICMS ST: " + m(icmsStNfe));
+            pw.text("PIS:     " + m(pisNfe));
+            pw.text("COFINS:  " + m(cofNfe));
+            pw.text("IPI:     " + m(ipiNfe));
+            pw.bold("Subtotal NFe: " + m(icmsNfe.add(icmsStNfe).add(pisNfe).add(cofNfe).add(ipiNfe)));
+            pw.gap();
 
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "IMPOSTOS - NFe", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "ICMS:    R$ " + fmtMoney(icmsNfe), MARGIN + 20, y);
-                y = drawText(cs, "ICMS ST: R$ " + fmtMoney(icmsStNfe), MARGIN + 20, y);
-                y = drawText(cs, "PIS:     R$ " + fmtMoney(pisNfe), MARGIN + 20, y);
-                y = drawText(cs, "COFINS:  R$ " + fmtMoney(cofinsNfe), MARGIN + 20, y);
-                y = drawText(cs, "IPI:     R$ " + fmtMoney(ipiNfe), MARGIN + 20, y);
-                y -= LINE_HEIGHT;
+            BigDecimal total = icmsNfce.add(pisNfce).add(cofNfce).add(icmsNfe).add(icmsStNfe).add(pisNfe).add(cofNfe).add(ipiNfe);
+            pw.section("TOTAL DE IMPOSTOS: " + m(total));
+            pw.gap();
 
-                BigDecimal totalImpostos = icmsNfce.add(pisNfce).add(cofinsNfce)
-                    .add(icmsNfe).add(icmsStNfe).add(pisNfe).add(cofinsNfe).add(ipiNfe);
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 14);
-                y = drawText(cs, "TOTAL IMPOSTOS: R$ " + fmtMoney(totalImpostos), MARGIN, y);
+            // Discriminado por nota
+            pw.section("NFCe - IMPOSTOS POR CUPOM");
+            pw.header7("Numero    Data          BaseICMS      ICMS          PIS        COFINS      Total");
+            for (var n : nfces) {
+                pw.row7(String.format("%-9d %-13s %13s %13s %10s %10s %13s",
+                    n.nfceNumero(), fd(n.nfceDataEmissao()), m(n.baseIcms()), m(n.icms()),
+                    m(n.pis()), m(n.cofins()), m(n.valorFinal())));
             }
-            doc.save(pdfPath.toFile());
+            pw.gap();
+
+            pw.section("NFe - IMPOSTOS POR NOTA");
+            pw.header7("Numero    Data          ICMS       ICMS ST      PIS        COFINS      IPI          Total");
+            for (var n : nfes) {
+                pw.row7(String.format("%-9d %-13s %13s %10s %10s %10s %10s %13s",
+                    n.nfeNumero(), fd(n.nfeDataEmissao()), m(n.valorIcms()), m(n.valorIcmsSt()),
+                    m(n.valorPis()), m(n.valorCofins()), m(n.valorIpi()), m(n.valorFinal())));
+            }
+
+            pw.finish();
+            doc.save(pdf.toFile());
         }
-        log.info("PDF Resumo de Impostos gerado: {}", pdfPath);
+        log.info("PDF Impostos gerado: {}", pdf);
     }
 
+    // ===== RESUMO DE COMPRAS =====
     public void gerarResumoCompras(Connection conn, Periodo periodo, Path outputDir) throws IOException {
-        CompraRepository compraRepo = new CompraRepository(conn);
-        List<CompraRegistro> compras = compraRepo.findByPeriodo(periodo);
+        CompraRepository repo = new CompraRepository(conn);
+        NotaCompraRepository ncRepo = new NotaCompraRepository(conn);
+        List<CompraRegistro> itens = repo.findByPeriodo(periodo);
+        List<NotaCompraRegistro> notas = ncRepo.findByPeriodo(periodo);
 
-        BigDecimal totalCompras = compras.stream().map(CompraRegistro::totalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalIcms = compras.stream().map(CompraRegistro::icmsValor).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalPis = compras.stream().map(CompraRegistro::pisValor).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalCofins = compras.stream().map(CompraRegistro::cofinsValor).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalIpi = compras.stream().map(CompraRegistro::ipiValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totItens = itens.stream().map(CompraRegistro::totalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totIcms = itens.stream().map(CompraRegistro::icmsValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totPis = itens.stream().map(CompraRegistro::pisValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totCof = itens.stream().map(CompraRegistro::cofinsValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totIpi = itens.stream().map(CompraRegistro::ipiValor).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        Path pdfPath = outputDir.resolve("PDF").resolve("Resumo_Compras_" + periodo.mesAnoRef() + ".pdf");
-
+        Path pdf = outputDir.resolve("PDF").resolve("Resumo_Compras_" + periodo.mesAnoRef() + ".pdf");
         try (PDDocument doc = new PDDocument()) {
+            PdfWriter pw = new PdfWriter(doc);
+            pw.title("RESUMO DE COMPRAS (FORNECEDORES)");
+            pw.sub("Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT));
+            pw.line();
+
+            pw.section("RESUMO GERAL");
+            pw.text("Total de notas: " + notas.size() + "  |  Total de itens: " + itens.size());
+            pw.text("Valor total: " + m(totItens));
+            pw.text("ICMS: " + m(totIcms) + "  |  PIS: " + m(totPis) + "  |  COFINS: " + m(totCof) + "  |  IPI: " + m(totIpi));
+            pw.gap();
+
+            // Notas cabecalho
+            pw.section("NOTAS DE COMPRA (" + notas.size() + ")");
+            pw.header7("Nota      Data          CFOP    Produtos      ICMS          PIS        COFINS      IPI          Total");
+            for (NotaCompraRegistro nc : notas) {
+                pw.row7(String.format("%-9s %-13s %-7s %13s %13s %10s %10s %10s %13s",
+                    s(nc.nota(),9), fd(nc.dataEmissao()), s(nc.cfop(),7),
+                    m(nc.valorProdutos()), m(nc.valorIcms()), m(nc.valorPis()),
+                    m(nc.valorCofins()), m(nc.valorIpi()), m(nc.valorTotal())));
+            }
+            pw.gap();
+
+            // Itens detalhados
+            pw.section("ITENS DISCRIMINADOS (" + itens.size() + ")");
+            pw.header6("Item   Descricao                            NCM          CFOP    Qtde       Unitario      Total");
+            for (CompraRegistro c : itens) {
+                pw.row6(String.format("%-6d %-36s %-12s %-7s %10s %13s %13s",
+                    c.item(), s(c.descricao(),36), s(c.ncm(),12), s(c.cfop(),7),
+                    q(c.quantidade()), m(c.valorUnitario()), m(c.totalItem())));
+            }
+
+            pw.finish();
+            doc.save(pdf.toFile());
+        }
+        log.info("PDF Compras gerado: {}", pdf);
+    }
+
+    // ===== HELPER: Multi-page PDF Writer =====
+    private static class PdfWriter {
+        final PDDocument doc;
+        PDPageContentStream cs;
+        float y;
+        float pageW;
+
+        PdfWriter(PDDocument doc) throws IOException {
+            this.doc = doc;
+            newPage();
+        }
+
+        void newPage() throws IOException {
+            if (cs != null) cs.close();
             PDPage page = new PDPage(PDRectangle.A4);
             doc.addPage(page);
-            try (PDPageContentStream cs = new PDPageContentStream(doc, page)) {
-                float y = page.getMediaBox().getHeight() - MARGIN;
-
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
-                y = drawText(cs, "RESUMO DE COMPRAS (FORNECEDORES)", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Periodo: " + periodo.inicio().format(FMT) + " a " + periodo.fim().format(FMT), MARGIN, y);
-                y -= LINE_HEIGHT * 2;
-
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "RESUMO GERAL DE COMPRAS", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "Total de itens: " + compras.size(), MARGIN + 20, y);
-                y = drawText(cs, "Valor Total: R$ " + fmtMoney(totalCompras), MARGIN + 20, y);
-                y -= LINE_HEIGHT;
-
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                y = drawText(cs, "IMPOSTOS DAS COMPRAS", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA, 10);
-                y = drawText(cs, "ICMS:   R$ " + fmtMoney(totalIcms), MARGIN + 20, y);
-                y = drawText(cs, "PIS:    R$ " + fmtMoney(totalPis), MARGIN + 20, y);
-                y = drawText(cs, "COFINS: R$ " + fmtMoney(totalCofins), MARGIN + 20, y);
-                y = drawText(cs, "IPI:    R$ " + fmtMoney(totalIpi), MARGIN + 20, y);
-                y -= LINE_HEIGHT * 2;
-
-                // Detalhamento
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 11);
-                y = drawText(cs, "DETALHAMENTO POR ITEM", MARGIN, y);
-                cs.setFont(PDType1Font.HELVETICA_BOLD, 7);
-                y = drawText(cs, String.format("%-35s %-8s %-10s %-10s %-10s %-6s",
-                    "Descricao", "NCM", "Qtd", "Vl.Unit", "Total", "CFOP"), MARGIN + 10, y);
-                cs.setFont(PDType1Font.HELVETICA, 7);
-                int count = 0;
-                for (CompraRegistro c : compras) {
-                    if (count++ > 40) {
-                        y = drawText(cs, "... mais " + (compras.size() - 40) + " itens", MARGIN + 10, y);
-                        break;
-                    }
-                    y = drawText(cs, String.format("%-35s %-8s %-10s R$%-8s R$%-8s %-6s",
-                        safe(c.descricao(), 35), safe(c.ncm(), 8),
-                        c.quantidade().toPlainString(),
-                        fmtMoney(c.valorUnitario()), fmtMoney(c.totalItem()),
-                        safe(c.cfop(), 6)
-                    ), MARGIN + 10, y);
-                    if (y < MARGIN + 40) break;
-                }
-            }
-            doc.save(pdfPath.toFile());
+            cs = new PDPageContentStream(doc, page);
+            pageW = page.getMediaBox().getWidth();
+            y = page.getMediaBox().getHeight() - M;
         }
-        log.info("PDF Resumo de Compras gerado: {}", pdfPath);
+
+        void checkPage() throws IOException {
+            if (y < M + 20) newPage();
+        }
+
+        void title(String t) throws IOException {
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
+            w(t, M); y -= 4;
+        }
+
+        void sub(String t) throws IOException {
+            cs.setFont(PDType1Font.HELVETICA, 10);
+            w(t, M);
+        }
+
+        void section(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 11);
+            w(t, M); y -= 2;
+        }
+
+        void bold(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 10);
+            w(t, M + 15);
+        }
+
+        void text(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA, 9);
+            w(t, M + 15);
+        }
+
+        void header7(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 6.5f);
+            w(t, M + 5); y -= 1;
+        }
+
+        void header6(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 6);
+            w(t, M + 5); y -= 1;
+        }
+
+        void row7(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA, 6.5f);
+            w(t, M + 5);
+        }
+
+        void row6(String t) throws IOException {
+            checkPage();
+            cs.setFont(PDType1Font.HELVETICA, 6);
+            w(t, M + 5);
+        }
+
+        void gap() throws IOException {
+            y -= LH;
+        }
+
+        void line() throws IOException {
+            cs.moveTo(M, y);
+            cs.lineTo(pageW - M, y);
+            cs.setStrokingColor(0.7f, 0.7f, 0.7f);
+            cs.stroke();
+            y -= LH;
+        }
+
+        void finish() throws IOException {
+            if (cs != null) cs.close();
+        }
+
+        private void w(String text, float x) throws IOException {
+            cs.beginText();
+            cs.newLineAtOffset(x, y);
+            cs.showText(text);
+            cs.endText();
+            y -= LH;
+        }
     }
 
-    private float drawText(PDPageContentStream cs, String text, float x, float y) throws IOException {
-        cs.beginText();
-        cs.newLineAtOffset(x, y);
-        cs.showText(text);
-        cs.endText();
-        return y - LINE_HEIGHT;
-    }
-
-    private String fmtMoney(BigDecimal v) {
+    // ===== Formatters =====
+    private String m(BigDecimal v) {
         if (v == null) return "0,00";
-        return String.format("%,.2f", v).replace(",", "X").replace(".", ",").replace("X", ".");
+        return "R$ " + String.format("%,.2f", v).replace(",", "X").replace(".", ",").replace("X", ".");
     }
-
-    private String safe(String s, int maxLen) {
-        if (s == null) return "";
-        return s.length() > maxLen ? s.substring(0, maxLen) : s;
+    private String q(BigDecimal v) {
+        if (v == null) return "0";
+        return v.stripTrailingZeros().toPlainString().replace(".", ",");
     }
-
-    @FunctionalInterface
-    interface NfceField { BigDecimal get(NfceRegistro r); }
-    @FunctionalInterface
-    interface NfeField { BigDecimal get(NfeRegistro r); }
-
-    private BigDecimal sum(List<NfceRegistro> list, NfceField f) {
-        return list.stream().filter(n -> !"S".equals(n.cupomCancelado())).map(f::get).reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-    private BigDecimal sumNfe(List<NfeRegistro> list, NfeField f) {
-        return list.stream().filter(n -> !"S".equals(n.cancelado())).map(f::get).reduce(BigDecimal.ZERO, BigDecimal::add);
+    private String fd(LocalDate d) { return d != null ? d.format(FMT) : ""; }
+    private String s(String v, int max) {
+        if (v == null) return "";
+        v = v.trim();
+        return v.length() > max ? v.substring(0, max) : v;
     }
 }
