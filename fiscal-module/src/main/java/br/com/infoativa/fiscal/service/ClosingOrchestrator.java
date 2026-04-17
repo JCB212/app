@@ -1,1 +1,277 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5zZXJ2aWNlOwoKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLmNvbmZpZy5BcHBDb25maWc7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kYi5EYXRhYmFzZUdhdGV3YXk7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kb21haW4uKjsKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLmZpc2NhbC4qOwppbXBvcnQgYnIuY29tLmluZm9hdGl2YS5maXNjYWwubWFpbC5FbWFpbFNlcnZpY2U7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5yZXBvcnQuKjsKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLnhtbC5YbWxDYWNoZVJlcG9zaXRvcnk7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC54bWwuWG1sU2NhblNlcnZpY2U7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC56aXAuWmlwU2VydmljZTsKaW1wb3J0IG9yZy5zbGY0ai5Mb2dnZXI7CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyRmFjdG9yeTsKCmltcG9ydCBqYXZhLm5pby5maWxlLio7CmltcG9ydCBqYXZhLnNxbC5Db25uZWN0aW9uOwppbXBvcnQgamF2YS51dGlsLkFycmF5TGlzdDsKaW1wb3J0IGphdmEudXRpbC5MaXN0OwppbXBvcnQgamF2YS51dGlsLmZ1bmN0aW9uLkNvbnN1bWVyOwoKLyoqCiAqIE9ycXVlc3RyYWRvciBkbyBmZWNoYW1lbnRvIGZpc2NhbCByZWZhdG9yYWRvOgogKiAtIFZlcmlmaWNhIGV4aXN0w6puY2lhIGRlIFhNTHMgYW50ZXMgZGUgZ2VyYXIgcmVsYXTDs3Jpb3MKICogLSBSZXNwZWl0YSBmaWx0cm9zIGRvIHVzdcOhcmlvICh0aXBvIGRlIGRvY3VtZW50bykKICogLSBVc2EgY2FjaGUgWE1MX1BST0NFU1NBRE9TIHBhcmEgY29uc3VsdGFzIGhpc3TDs3JpY2FzCiAqIC0gTG9ncyBjb21wbGV0b3MgY29tIHN0YWNrIHRyYWNlIChudW5jYSBzw7MgZ2V0TWVzc2FnZSkKICogLSBQZXJmb3JtYW5jZTogc2VtIHJlcHJvY2Vzc2FtZW50byBkZXNuZWNlc3PDoXJpbwogKi8KcHVibGljIGNsYXNzIENsb3NpbmdPcmNoZXN0cmF0b3IgewoKICAgIHByaXZhdGUgc3RhdGljIGZpbmFsIExvZ2dlciBsb2cgPSBMb2dnZXJGYWN0b3J5LmdldExvZ2dlcihDbG9zaW5nT3JjaGVzdHJhdG9yLmNsYXNzKTsKICAgIHByaXZhdGUgZmluYWwgQXBwQ29uZmlnIGNvbmZpZzsKICAgIHByaXZhdGUgZmluYWwgRGF0YWJhc2VHYXRld2F5IGRiR2F0ZXdheTsKCiAgICAvLyBGaWx0cm9zIGRvIHVzdcOhcmlvCiAgICBwcml2YXRlIGJvb2xlYW4gcHJvY2Vzc2FyTmZlICAgID0gdHJ1ZTsKICAgIHByaXZhdGUgYm9vbGVhbiBwcm9jZXNzYXJOZmNlICAgPSB0cnVlOwogICAgcHJpdmF0ZSBib29sZWFuIHByb2Nlc3NhckNvbXByYXMgPSB0cnVlOwogICAgcHJpdmF0ZSBib29sZWFuIGdlcmFyU3BlZCAgICAgICA9IHRydWU7CiAgICBwcml2YXRlIGJvb2xlYW4gZ2VyYXJTaW50ZWdyYSAgID0gdHJ1ZTsKCiAgICBwdWJsaWMgQ2xvc2luZ09yY2hlc3RyYXRvcihBcHBDb25maWcgY29uZmlnLCBEYXRhYmFzZUdhdGV3YXkgZGJHYXRld2F5KSB7CiAgICAgICAgdGhpcy5jb25maWcgPSBjb25maWc7CiAgICAgICAgdGhpcy5kYkdhdGV3YXkgPSBkYkdhdGV3YXk7CiAgICB9CgogICAgcHVibGljIHZvaWQgc2V0RmlsdHJvcyhib29sZWFuIHByb2Nlc3Nhck5mZSwgYm9vbGVhbiBwcm9jZXNzYXJOZmNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgYm9vbGVhbiBwcm9jZXNzYXJDb21wcmFzLCBib29sZWFuIGdlcmFyU3BlZCwgYm9vbGVhbiBnZXJhclNpbnRlZ3JhKSB7CiAgICAgICAgdGhpcy5wcm9jZXNzYXJOZmUgICAgPSBwcm9jZXNzYXJOZmU7CiAgICAgICAgdGhpcy5wcm9jZXNzYXJOZmNlICAgPSBwcm9jZXNzYXJOZmNlOwogICAgICAgIHRoaXMucHJvY2Vzc2FyQ29tcHJhcyA9IHByb2Nlc3NhckNvbXByYXM7CiAgICAgICAgdGhpcy5nZXJhclNwZWQgICAgICAgPSBnZXJhclNwZWQ7CiAgICAgICAgdGhpcy5nZXJhclNpbnRlZ3JhICAgPSBnZXJhclNpbnRlZ3JhOwogICAgfQoKICAgIHB1YmxpYyBQcm9jZXNzYW1lbnRvUmVzdWx0IGV4ZWN1dGUoUGVyaW9kbyBwZXJpb2RvLCBib29sZWFuIGVudmlhckVtYWlsLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ29uc3VtZXI8U3RyaW5nPiBwcm9ncmVzcykgewogICAgICAgIExpc3Q8U3RyaW5nPiB3YXJuaW5ncyA9IG5ldyBBcnJheUxpc3Q8PigpOwoKICAgICAgICB0cnkgewogICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIkluaWNpYW5kbyBwcm9jZXNzYW1lbnRvOiAiICsgcGVyaW9kby5kZXNjcmljYW8oKSk7CgogICAgICAgICAgICAvLyDilIDilIAgMS4gVmFsaWRhw6fDo28gaW5pY2lhbCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICAgICAgICAgICAgdmFsaWRhdGVEZXBlbmRlbmNpZXMocHJvZ3Jlc3MpOwoKICAgICAgICAgICAgLy8g4pSA4pSAIDIuIENyaWFyIGVzdHJ1dHVyYSBkZSBzYcOtZGEg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgICAgICAgICAgIFN0cmluZyBiYXNlTmFtZSA9IHBlcmlvZG8ubWVzQW5vUmVmKCk7CiAgICAgICAgICAgIFBhdGggb3V0cHV0RGlyID0gT3V0cHV0U3RydWN0dXJlU2VydmljZS5jcmVhdGVTdHJ1Y3R1cmUoYmFzZU5hbWUpOwogICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIkVzdHJ1dHVyYSBkZSBzYcOtZGEgY3JpYWRhIGVtOiAiICsgb3V0cHV0RGlyKTsKCiAgICAgICAgICAgIC8vIOKUgOKUgCAzLiBJbmljaWFsaXphciBjYWNoZSBYTUxfUFJPQ0VTU0FET1Mg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgICAgICAgICAgIENvbm5lY3Rpb24gY29ubiA9IGRiR2F0ZXdheS5nZXRDb25uZWN0aW9uKCk7CiAgICAgICAgICAgIFhtbENhY2hlUmVwb3NpdG9yeSBjYWNoZSA9IG5ldyBYbWxDYWNoZVJlcG9zaXRvcnkoY29ubik7CiAgICAgICAgICAgIGNhY2hlLmVuc3VyZVRhYmxlRXhpc3RzKCk7CiAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgiQ2FjaGUgWE1MX1BST0NFU1NBRE9TIHZlcmlmaWNhZG8iKTsKCiAgICAgICAgICAgIC8vIOKUgOKUgCA0LiBWYXJyZWR1cmEgZGUgWE1McyBjb20gY2FjaGUg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgICAgICAgICAgIFhtbFNjYW5TZXJ2aWNlIHNjYW5uZXIgPSBuZXcgWG1sU2NhblNlcnZpY2UoKTsKICAgICAgICAgICAgTGlzdDxYbWxEb2N1bWVudEluZm8+IGFsbFhtbHMgPSBuZXcgQXJyYXlMaXN0PD4oKTsKCiAgICAgICAgICAgIGlmIChwcm9jZXNzYXJOZmUgJiYgY29uZmlnLmNhbWluaG9YbWxOZmUoKSAhPSBudWxsICYmICFjb25maWcuY2FtaW5ob1htbE5mZSgpLmlzQmxhbmsoKSkgewogICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJFc2NhbmVhbmRvIFhNTHMgZGUgTkZlLi4uIik7CiAgICAgICAgICAgICAgICBMaXN0PFhtbERvY3VtZW50SW5mbz4gbmZlcyA9IHNjYW5uZXIuc2Nhbihjb25maWcuY2FtaW5ob1htbE5mZSgpLCBwZXJpb2RvLCBwcm9ncmVzcyk7CiAgICAgICAgICAgICAgICBzY2FubmVyLnNjYW5BbmRVcGRhdGVDYWNoZShjb25maWcuY2FtaW5ob1htbE5mZSgpLCBwZXJpb2RvLCBjYWNoZSwgcHJvZ3Jlc3MpOwogICAgICAgICAgICAgICAgYWxsWG1scy5hZGRBbGwobmZlcyk7CiAgICAgICAgICAgICAgICBsb2cuaW5mbygiTkZlIGVuY29udHJhZGFzIG5vIHBlcmlvZG86IHt9IiwgbmZlcy5zaXplKCkpOwogICAgICAgICAgICB9IGVsc2UgaWYgKCFwcm9jZXNzYXJOZmUpIHsKICAgICAgICAgICAgICAgIGxvZy5pbmZvKCJORmUgZGVzYWJpbGl0YWRhIHBlbG8gdXN1YXJpbyDigJQgbmFvIHByb2Nlc3NhZGEiKTsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgaWYgKHByb2Nlc3Nhck5mY2UgJiYgY29uZmlnLmNhbWluaG9YbWxOZmNlKCkgIT0gbnVsbCAmJiAhY29uZmlnLmNhbWluaG9YbWxOZmNlKCkuaXNCbGFuaygpKSB7CiAgICAgICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIkVzY2FuZWFuZG8gWE1McyBkZSBORkNlLi4uIik7CiAgICAgICAgICAgICAgICBMaXN0PFhtbERvY3VtZW50SW5mbz4gbmZjZXMgPSBzY2FubmVyLnNjYW4oY29uZmlnLmNhbWluaG9YbWxOZmNlKCksIHBlcmlvZG8sIHByb2dyZXNzKTsKICAgICAgICAgICAgICAgIHNjYW5uZXIuc2NhbkFuZFVwZGF0ZUNhY2hlKGNvbmZpZy5jYW1pbmhvWG1sTmZjZSgpLCBwZXJpb2RvLCBjYWNoZSwgcHJvZ3Jlc3MpOwogICAgICAgICAgICAgICAgYWxsWG1scy5hZGRBbGwobmZjZXMpOwogICAgICAgICAgICAgICAgbG9nLmluZm8oIk5GQ2UgZW5jb250cmFkYXMgbm8gcGVyaW9kbzoge30iLCBuZmNlcy5zaXplKCkpOwogICAgICAgICAgICB9IGVsc2UgaWYgKCFwcm9jZXNzYXJOZmNlKSB7CiAgICAgICAgICAgICAgICBsb2cuaW5mbygiTkZDZSBkZXNhYmlsaXRhZGEgcGVsbyB1c3VhcmlvIOKAlCBuYW8gcHJvY2Vzc2FkYSIpOwogICAgICAgICAgICB9CgogICAgICAgICAgICBpZiAocHJvY2Vzc2FyQ29tcHJhcyAmJiBjb25maWcuY2FtaW5ob1htbENvbXByYXMoKSAhPSBudWxsICYmICFjb25maWcuY2FtaW5ob1htbENvbXByYXMoKS5pc0JsYW5rKCkpIHsKICAgICAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgiRXNjYW5lYW5kbyBYTUxzIGRlIENvbXByYXMuLi4iKTsKICAgICAgICAgICAgICAgIExpc3Q8WG1sRG9jdW1lbnRJbmZvPiBjb21wcmFzID0gc2Nhbm5lci5zY2FuKGNvbmZpZy5jYW1pbmhvWG1sQ29tcHJhcygpLCBwZXJpb2RvLCBwcm9ncmVzcyk7CiAgICAgICAgICAgICAgICBzY2FubmVyLnNjYW5BbmRVcGRhdGVDYWNoZShjb25maWcuY2FtaW5ob1htbENvbXByYXMoKSwgcGVyaW9kbywgY2FjaGUsIHByb2dyZXNzKTsKICAgICAgICAgICAgICAgIGFsbFhtbHMuYWRkQWxsKGNvbXByYXMpOwogICAgICAgICAgICAgICAgbG9nLmluZm8oIlhNTHMgZGUgY29tcHJhcyBlbmNvbnRyYWRvcyBubyBwZXJpb2RvOiB7fSIsIGNvbXByYXMuc2l6ZSgpKTsKICAgICAgICAgICAgfSBlbHNlIGlmICghcHJvY2Vzc2FyQ29tcHJhcykgewogICAgICAgICAgICAgICAgbG9nLmluZm8oIkNvbXByYXMgZGVzYWJpbGl0YWRhcyBwZWxvIHVzdWFyaW8g4oCUIG5hbyBwcm9jZXNzYWRhcyIpOwogICAgICAgICAgICB9CgogICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIlRvdGFsIGRlIFhNTHMgZW5jb250cmFkb3Mgbm8gcGVyw61vZG86ICIgKyBhbGxYbWxzLnNpemUoKSk7CgogICAgICAgICAgICAvLyDilIDilIAgNS4gVmVyaWZpY2FyIHNlIGjDoSBYTUxzIGFudGVzIGRlIGdlcmFyIHJlbGF0w7NyaW9zIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogICAgICAgICAgICBpZiAoYWxsWG1scy5pc0VtcHR5KCkpIHsKICAgICAgICAgICAgICAgIFN0cmluZyB3YXJuID0gIkFURU7Dh8ODTzogTmVuaHVtIFhNTCBlbmNvbnRyYWRvIG5vIHBlcsOtb2RvICIgKyBwZXJpb2RvLmRlc2NyaWNhbygpICsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIi4gUmVsYXTDs3Jpb3MgTsODTyBzZXLDo28gZ2VyYWRvcy4iOwogICAgICAgICAgICAgICAgbG9nLndhcm4od2Fybik7CiAgICAgICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQod2Fybik7CiAgICAgICAgICAgICAgICB3YXJuaW5ncy5hZGQod2Fybik7CiAgICAgICAgICAgICAgICByZXR1cm4gbmV3IFByb2Nlc3NhbWVudG9SZXN1bHQocGVyaW9kbywgb3V0cHV0RGlyLCBudWxsLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIExpc3Qub2YoKSwgTGlzdC5vZigpLCB3YXJuaW5ncyk7CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIC8vIOKUgOKUgCA2LiBPcmdhbml6YXIgWE1McyBuYXMgcGFzdGFzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogICAgICAgICAgICBzY2FubmVyLmNvcHlUb091dHB1dChhbGxYbWxzLCBvdXRwdXREaXIpOwogICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIlhNTHMgb3JnYW5pemFkb3MgbmFzIHBhc3RhcyBkZSBzYcOtZGEiKTsKCiAgICAgICAgICAgIC8vIOKUgOKUgCA3LiBHZXJhciBvYnJpZ2HDp8O1ZXMgZmlzY2FpcyAoU1BFRCwgU0lOVEVHUkEpIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogICAgICAgICAgICBMaXN0PFBhdGg+IHJlcG9ydEZpbGVzID0gbmV3IEFycmF5TGlzdDw+KCk7CgogICAgICAgICAgICBMaXN0PEZpc2NhbE9ibGlnYXRpb25TdHJhdGVneT4gc3RyYXRlZ2llcyA9IG5ldyBBcnJheUxpc3Q8PigpOwogICAgICAgICAgICBpZiAoZ2VyYXJTcGVkKSB7CiAgICAgICAgICAgICAgICBzdHJhdGVnaWVzLmFkZChuZXcgU3BlZEZpc2NhbFN0cmF0ZWd5KCkpOwogICAgICAgICAgICAgICAgc3RyYXRlZ2llcy5hZGQobmV3IFNwZWRDb250cmlidWljb2VzU3RyYXRlZ3koKSk7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYgKGdlcmFyU2ludGVncmEpIHsKICAgICAgICAgICAgICAgIHN0cmF0ZWdpZXMuYWRkKG5ldyBTaW50ZWdyYVN0cmF0ZWd5KCkpOwogICAgICAgICAgICB9CgogICAgICAgICAgICBmb3IgKEZpc2NhbE9ibGlnYXRpb25TdHJhdGVneSBzdHJhdGVneSA6IHN0cmF0ZWdpZXMpIHsKICAgICAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJHZXJhbmRvICIgKyBzdHJhdGVneS5uYW1lKCkgKyAiLi4uIik7CiAgICAgICAgICAgICAgICAgICAgUGF0aCBnZW5lcmF0ZWQgPSBzdHJhdGVneS5nZW5lcmF0ZShjb25uLCBwZXJpb2RvLCBvdXRwdXREaXIpOwogICAgICAgICAgICAgICAgICAgIGlmIChnZW5lcmF0ZWQgIT0gbnVsbCkgewogICAgICAgICAgICAgICAgICAgICAgICByZXBvcnRGaWxlcy5hZGQoZ2VuZXJhdGVkKTsKICAgICAgICAgICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KHN0cmF0ZWd5Lm5hbWUoKSArICIgZ2VyYWRvIGNvbSBzdWNlc3NvIik7CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgICAgICAgICBTdHJpbmcgd2FybiA9ICJGYWxoYSBhbyBnZXJhciAiICsgc3RyYXRlZ3kubmFtZSgpICsgIjogIiArIGUuZ2V0TWVzc2FnZSgpOwogICAgICAgICAgICAgICAgICAgIGxvZy5lcnJvcigiRXJybyBhbyBnZXJhciB7fSIsIHN0cmF0ZWd5Lm5hbWUoKSwgZSk7IC8vIFN0YWNrIHRyYWNlIGNvbXBsZXRvCiAgICAgICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJFUlJPOiAiICsgd2Fybik7CiAgICAgICAgICAgICAgICAgICAgd2FybmluZ3MuYWRkKHdhcm4pOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CgogICAgICAgICAgICAvLyDilIDilIAgOC4gR2VyYXIgUERGcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICAgICAgICAgICAgUGRmUmVwb3J0U2VydmljZSBwZGZTZXJ2aWNlICAgICAgPSBuZXcgUGRmUmVwb3J0U2VydmljZSgpOwogICAgICAgICAgICBTZXF1ZW5jaWFSZXBvcnRTZXJ2aWNlIHNlcVN2YyAgICA9IG5ldyBTZXF1ZW5jaWFSZXBvcnRTZXJ2aWNlKCk7CiAgICAgICAgICAgIENzdENmb3BSZXBvcnRTZXJ2aWNlIGNzdFN2YyAgICAgID0gbmV3IENzdENmb3BSZXBvcnRTZXJ2aWNlKCk7CiAgICAgICAgICAgIE1vbm9mYXNpY29SZXBvcnRTZXJ2aWNlIG1vbm9TdmMgID0gbmV3IE1vbm9mYXNpY29SZXBvcnRTZXJ2aWNlKCk7CiAgICAgICAgICAgIERldm9sdWNvZXNSZXBvcnRTZXJ2aWNlIGRldlN2YyAgID0gbmV3IERldm9sdWNvZXNSZXBvcnRTZXJ2aWNlKCk7CgogICAgICAgICAgICB0cnkgeyBwcm9ncmVzcy5hY2NlcHQoIkdlcmFuZG8gUERGIFJlc3VtbyBkZSBWZW5kYXMuLi4iKTsKICAgICAgICAgICAgICAgICAgcGRmU2VydmljZS5nZXJhclJlc3Vtb1ZlbmRhcyhjb25uLCBwZXJpb2RvLCBvdXRwdXREaXIpOyB9CiAgICAgICAgICAgIGNhdGNoIChFeGNlcHRpb24gZSkgeyBsb2cuZXJyb3IoIkVycm8gYW8gZ2VyYXIgUERGIFZlbmRhcyIsIGUpOyB3YXJuaW5ncy5hZGQoIlBERiBWZW5kYXM6ICIgKyBlLmdldE1lc3NhZ2UoKSk7IH0KCiAgICAgICAgICAgIHRyeSB7IHByb2dyZXNzLmFjY2VwdCgiR2VyYW5kbyBQREYgUmVzdW1vIGRlIEltcG9zdG9zLi4uIik7CiAgICAgICAgICAgICAgICAgIHBkZlNlcnZpY2UuZ2VyYXJSZXN1bW9JbXBvc3Rvcyhjb25uLCBwZXJpb2RvLCBvdXRwdXREaXIpOyB9CiAgICAgICAgICAgIGNhdGNoIChFeGNlcHRpb24gZSkgeyBsb2cuZXJyb3IoIkVycm8gYW8gZ2VyYXIgUERGIEltcG9zdG9zIiwgZSk7IHdhcm5pbmdzLmFkZCgiUERGIEltcG9zdG9zOiAiICsgZS5nZXRNZXNzYWdlKCkpOyB9CgogICAgICAgICAgICB0cnkgeyBwcm9ncmVzcy5hY2NlcHQoIkdlcmFuZG8gUERGIFJlc3VtbyBkZSBDb21wcmFzLi4uIik7CiAgICAgICAgICAgICAgICAgIHBkZlNlcnZpY2UuZ2VyYXJSZXN1bW9Db21wcmFzKGNvbm4sIHBlcmlvZG8sIG91dHB1dERpcik7IH0KICAgICAgICAgICAgY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7IGxvZy5lcnJvcigiRXJybyBhbyBnZXJhciBQREYgQ29tcHJhcyIsIGUpOyB3YXJuaW5ncy5hZGQoIlBERiBDb21wcmFzOiAiICsgZS5nZXRNZXNzYWdlKCkpOyB9CgogICAgICAgICAgICB0cnkgeyBwcm9ncmVzcy5hY2NlcHQoIkdlcmFuZG8gUERGIFNlcXVlbmNpYXMuLi4iKTsKICAgICAgICAgICAgICAgICAgc2VxU3ZjLmdlcmFyUmVsYXRvcmlvKGNvbm4sIHBlcmlvZG8sIG91dHB1dERpcik7IH0KICAgICAgICAgICAgY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7IGxvZy5lcnJvcigiRXJybyBhbyBnZXJhciBQREYgU2VxdWVuY2lhcyIsIGUpOyB9CgogICAgICAgICAgICB0cnkgeyBwcm9ncmVzcy5hY2NlcHQoIkdlcmFuZG8gUERGIENTVC9DRk9QLi4uIik7CiAgICAgICAgICAgICAgICAgIGNzdFN2Yy5nZXJhclJlbGF0b3Jpbyhjb25uLCBwZXJpb2RvLCBvdXRwdXREaXIpOyB9CiAgICAgICAgICAgIGNhdGNoIChFeGNlcHRpb24gZSkgeyBsb2cuZXJyb3IoIkVycm8gYW8gZ2VyYXIgUERGIENTVC9DRk9QIiwgZSk7IH0KCiAgICAgICAgICAgIHRyeSB7IHByb2dyZXNzLmFjY2VwdCgiR2VyYW5kbyBQREYgTW9ub2Zhc2ljby4uLiIpOwogICAgICAgICAgICAgICAgICBtb25vU3ZjLmdlcmFyUmVsYXRvcmlvKGNvbm4sIHBlcmlvZG8sIG91dHB1dERpcik7IH0KICAgICAgICAgICAgY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7IGxvZy5lcnJvcigiRXJybyBhbyBnZXJhciBQREYgTW9ub2Zhc2ljbyIsIGUpOyB9CgogICAgICAgICAgICB0cnkgeyBwcm9ncmVzcy5hY2NlcHQoIkdlcmFuZG8gUERGIERldm9sdWNvZXMuLi4iKTsKICAgICAgICAgICAgICAgICAgZGV2U3ZjLmdlcmFyUmVsYXRvcmlvKGNvbm4sIHBlcmlvZG8sIG91dHB1dERpcik7IH0KICAgICAgICAgICAgY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7IGxvZy5lcnJvcigiRXJybyBhbyBnZXJhciBQREYgRGV2b2x1Y29lcyIsIGUpOyB9CgogICAgICAgICAgICAvLyDilIDilIAgOS4gQ29tcGFjdGFyIFpJUCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJDb21wYWN0YW5kbyBhcnF1aXZvcyBlbSBaSVAuLi4iKTsKICAgICAgICAgICAgUGF0aCB6aXBGaWxlID0gb3V0cHV0RGlyLmdldFBhcmVudCgpLnJlc29sdmUoCiAgICAgICAgICAgICAgICAiRmVjaGFtZW50b0Zpc2NhbF8iICsgcGVyaW9kby5tZXNBbm9SZWYoKSArICIuemlwIik7CiAgICAgICAgICAgIFppcFNlcnZpY2UuemlwRGlyZWN0b3J5KG91dHB1dERpciwgemlwRmlsZSk7CiAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgiWklQIGdlcmFkbzogIiArIHppcEZpbGUuZ2V0RmlsZU5hbWUoKSk7CgogICAgICAgICAgICAvLyDilIDilIAgMTAuIEVudmlhciBlLW1haWwg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgICAgICAgICAgIGlmIChlbnZpYXJFbWFpbCkgewogICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJFbnZpYW5kbyBlLW1haWwgYW8gY29udGFkb3IuLi4iKTsKICAgICAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICAgICAgYm9vbGVhbiBzZW50ID0gRW1haWxTZXJ2aWNlLnNlbmRaaXAoCiAgICAgICAgICAgICAgICAgICAgICAgIGNvbmZpZy5lbWFpbENvbmZpZygpLAogICAgICAgICAgICAgICAgICAgICAgICBjb25maWcuZW1haWxEZXN0aW5hdGFyaW9zKCksCiAgICAgICAgICAgICAgICAgICAgICAgIHppcEZpbGUsCiAgICAgICAgICAgICAgICAgICAgICAgIHBlcmlvZG8uZGVzY3JpY2FvKCkKICAgICAgICAgICAgICAgICAgICApOwogICAgICAgICAgICAgICAgICAgIGlmIChzZW50KSB7CiAgICAgICAgICAgICAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgi4pyFIEUtbWFpbCBlbnZpYWRvIGNvbSBzdWNlc3NvISIpOwogICAgICAgICAgICAgICAgICAgICAgICBsb2cuaW5mbygiRS1tYWlsIGVudmlhZG8gY29tIHN1Y2Vzc28gcGFyYSBwZXJpb2RvIHt9IiwgcGVyaW9kby5kZXNjcmljYW8oKSk7CiAgICAgICAgICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICAgICAgU3RyaW5nIHdhcm4gPSAiRS1tYWlsIE7Dg08gZW52aWFkbyAodmVyaWZpcXVlIGNvbmZpZ3VyYcOnw7VlcyBTTVRQKSI7CiAgICAgICAgICAgICAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgi4pqg77iPICIgKyB3YXJuKTsKICAgICAgICAgICAgICAgICAgICAgICAgd2FybmluZ3MuYWRkKHdhcm4pOwogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgICAgICAgICAgbG9nLmVycm9yKCJFcnJvIGFvIGVudmlhciBlLW1haWwiLCBlKTsKICAgICAgICAgICAgICAgICAgICB3YXJuaW5ncy5hZGQoIkVycm8gbm8gZS1tYWlsOiAiICsgZS5nZXRNZXNzYWdlKCkpOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CgogICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIuKchSBQcm9jZXNzYW1lbnRvIGNvbmNsdcOtZG8gY29tIHN1Y2Vzc28hIik7CiAgICAgICAgICAgIGxvZy5pbmZvKCJGZWNoYW1lbnRvIGNvbmNsdWlkbyBwYXJhIHBlcmlvZG8ge30gLSBYTUxzOiB7fSwgQXZpc29zOiB7fSIsCiAgICAgICAgICAgICAgICAgICAgIHBlcmlvZG8uZGVzY3JpY2FvKCksIGFsbFhtbHMuc2l6ZSgpLCB3YXJuaW5ncy5zaXplKCkpOwoKICAgICAgICAgICAgTGlzdDxQYXRoPiB4bWxQYXRocyA9IGFsbFhtbHMuc3RyZWFtKCkubWFwKFhtbERvY3VtZW50SW5mbzo6ZmlsZVBhdGgpLnRvTGlzdCgpOwogICAgICAgICAgICByZXR1cm4gbmV3IFByb2Nlc3NhbWVudG9SZXN1bHQocGVyaW9kbywgb3V0cHV0RGlyLCB6aXBGaWxlLCB4bWxQYXRocywgcmVwb3J0RmlsZXMsIHdhcm5pbmdzKTsKCiAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLmVycm9yKCJFcnJvIGNyaXRpY28gbm8gZmVjaGFtZW50byBmaXNjYWwiLCBlKTsgLy8gU3RhY2sgdHJhY2UgY29tcGxldG8KICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCLinYwgRVJSTyBDUsONVElDTzogIiArIGUuZ2V0TWVzc2FnZSgpKTsKICAgICAgICAgICAgd2FybmluZ3MuYWRkKCJFcnJvIGNyw610aWNvOiAiICsgZS5nZXRNZXNzYWdlKCkpOwogICAgICAgICAgICByZXR1cm4gbmV3IFByb2Nlc3NhbWVudG9SZXN1bHQocGVyaW9kbywgbnVsbCwgbnVsbCwgTGlzdC5vZigpLCBMaXN0Lm9mKCksIHdhcm5pbmdzKTsKICAgICAgICB9CiAgICB9CgogICAgLyoqCiAgICAgKiBSZXByb2Nlc3NhciB1bSBtw6pzIGVzcGVjw61maWNvIGxpbXBhbmRvIG8gY2FjaGUuCiAgICAgKi8KICAgIHB1YmxpYyBQcm9jZXNzYW1lbnRvUmVzdWx0IHJlcHJvY2Vzc2FyTWVzKFBlcmlvZG8gcGVyaW9kbywgQ29uc3VtZXI8U3RyaW5nPiBwcm9ncmVzcykgewogICAgICAgIGxvZy5pbmZvKCJSZXByb2Nlc3NhbWVudG8gZm9yY2FkbyBwYXJhIHBlcmlvZG86IHt9IiwgcGVyaW9kby5kZXNjcmljYW8oKSk7CiAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCJJbmljaWFuZG8gcmVwcm9jZXNzYW1lbnRvIGRvIG3DqnMgIiArIHBlcmlvZG8uZGVzY3JpY2FvKCkpOwogICAgICAgIHJldHVybiBleGVjdXRlKHBlcmlvZG8sIGZhbHNlLCBwcm9ncmVzcyk7CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIHZhbGlkYXRlRGVwZW5kZW5jaWVzKENvbnN1bWVyPFN0cmluZz4gcHJvZ3Jlc3MpIHRocm93cyBFeGNlcHRpb24gewogICAgICAgIC8vIFZhbGlkYXIgYmFuY28KICAgICAgICB0cnkgewogICAgICAgICAgICBkYkdhdGV3YXkuZ2V0Q29ubmVjdGlvbigpLmlzVmFsaWQoNSk7CiAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgi4pyFIEJhbmNvIGRlIGRhZG9zOiBPSyIpOwogICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIHRocm93IG5ldyBSdW50aW1lRXhjZXB0aW9uKCJCYW5jbyBkZSBkYWRvcyBpbmRpc3BvbsOtdmVsOiAiICsgZS5nZXRNZXNzYWdlKCksIGUpOwogICAgICAgIH0KCiAgICAgICAgLy8gVmFsaWRhciBkaXJldMOzcmlvcwogICAgICAgIGlmIChwcm9jZXNzYXJOZmUgJiYgY29uZmlnLmNhbWluaG9YbWxOZmUoKSAhPSBudWxsKSB7CiAgICAgICAgICAgIFBhdGggcCA9IFBhdGgub2YoY29uZmlnLmNhbWluaG9YbWxOZmUoKSk7CiAgICAgICAgICAgIGlmICghRmlsZXMuZXhpc3RzKHApKSB7CiAgICAgICAgICAgICAgICBsb2cud2FybigiRGlyZXRvcmlvIE5GZSBuYW8gZW5jb250cmFkbzoge30iLCBjb25maWcuY2FtaW5ob1htbE5mZSgpKTsKICAgICAgICAgICAgICAgIHByb2dyZXNzLmFjY2VwdCgi4pqg77iPIERpcmV0w7NyaW8gTkZlIG7Do28gZW5jb250cmFkbzogIiArIGNvbmZpZy5jYW1pbmhvWG1sTmZlKCkpOwogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICAvLyBWYWxpZGFyIFNNVFAgKHLDoXBpZG8sIG7Do28gYmxvcXVlYW50ZSkKICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIlZhbGlkYW5kbyBjb25maWd1cmHDp8O1ZXMgZGUgZS1tYWlsLi4uIik7CiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgYm9vbGVhbiBzbXRwT2sgPSBFbWFpbFNlcnZpY2UudGVzdENvbm5lY3Rpb24oY29uZmlnLmVtYWlsQ29uZmlnKCkpOwogICAgICAgICAgICBpZiAoc210cE9rKSB7CiAgICAgICAgICAgICAgICBwcm9ncmVzcy5hY2NlcHQoIuKchSBTTVRQOiBPSyIpOwogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgcHJvZ3Jlc3MuYWNjZXB0KCLimqDvuI8gU01UUDogRmFsaG91IChlLW1haWwgcG9kZSBuw6NvIHNlciBlbnZpYWRvKSIpOwogICAgICAgICAgICB9CiAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLndhcm4oIlZhbGlkYWNhbyBTTVRQIGZhbGhvdToge30iLCBlLmdldE1lc3NhZ2UoKSk7CiAgICAgICAgfQogICAgfQp9Cg==
+package br.com.infoativa.fiscal.service;
+
+import br.com.infoativa.fiscal.config.AppConfig;
+import br.com.infoativa.fiscal.db.DatabaseGateway;
+import br.com.infoativa.fiscal.domain.*;
+import br.com.infoativa.fiscal.fiscal.*;
+import br.com.infoativa.fiscal.mail.EmailService;
+import br.com.infoativa.fiscal.report.*;
+import br.com.infoativa.fiscal.xml.XmlCacheRepository;
+import br.com.infoativa.fiscal.xml.XmlScanService;
+import br.com.infoativa.fiscal.zip.ZipService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.nio.file.*;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+/**
+ * Orquestrador do fechamento fiscal refatorado:
+ * - Verifica existência de XMLs antes de gerar relatórios
+ * - Respeita filtros do usuário (tipo de documento)
+ * - Usa cache XML_PROCESSADOS para consultas históricas
+ * - Logs completos com stack trace (nunca só getMessage)
+ * - Performance: sem reprocessamento desnecessário
+ */
+public class ClosingOrchestrator {
+
+    private static final Logger log = LoggerFactory.getLogger(ClosingOrchestrator.class);
+    private final AppConfig config;
+    private final DatabaseGateway dbGateway;
+
+    // Filtros do usuário
+    private boolean processarNfe    = true;
+    private boolean processarNfce   = true;
+    private boolean processarCompras = true;
+    private boolean gerarSped       = true;
+    private boolean gerarSintegra   = true;
+
+    public ClosingOrchestrator(AppConfig config, DatabaseGateway dbGateway) {
+        this.config = config;
+        this.dbGateway = dbGateway;
+    }
+
+    public void setFiltros(boolean processarNfe, boolean processarNfce,
+                            boolean processarCompras, boolean gerarSped, boolean gerarSintegra) {
+        this.processarNfe    = processarNfe;
+        this.processarNfce   = processarNfce;
+        this.processarCompras = processarCompras;
+        this.gerarSped       = gerarSped;
+        this.gerarSintegra   = gerarSintegra;
+    }
+
+    public ProcessamentoResult execute(Periodo periodo, boolean enviarEmail,
+                                        Consumer<String> progress) {
+        List<String> warnings = new ArrayList<>();
+
+        try {
+            progress.accept("Iniciando processamento: " + periodo.descricao());
+
+            // ── 1. Validação inicial ───────────────────────────────────────────
+            validateDependencies(progress);
+
+            // ── 2. Criar estrutura de saída ────────────────────────────────────
+            String baseName = periodo.mesAnoRef();
+            Path outputDir = OutputStructureService.createStructure(baseName);
+            progress.accept("Estrutura de saída criada em: " + outputDir);
+
+            // ── 3. Inicializar cache XML_PROCESSADOS ───────────────────────────
+            Connection conn = dbGateway.getConnection();
+            XmlCacheRepository cache = new XmlCacheRepository(conn);
+            cache.ensureTableExists();
+            progress.accept("Cache XML_PROCESSADOS verificado");
+
+            // ── 4. Varredura de XMLs com cache ────────────────────────────────
+            XmlScanService scanner = new XmlScanService();
+            List<XmlDocumentInfo> allXmls = new ArrayList<>();
+
+            if (processarNfe && config.caminhoXmlNfe() != null && !config.caminhoXmlNfe().isBlank()) {
+                progress.accept("Escaneando XMLs de NFe...");
+                List<XmlDocumentInfo> nfes = scanner.scan(config.caminhoXmlNfe(), periodo, progress);
+                scanner.scanAndUpdateCache(config.caminhoXmlNfe(), periodo, cache, progress);
+                allXmls.addAll(nfes);
+                log.info("NFe encontradas no periodo: {}", nfes.size());
+            } else if (!processarNfe) {
+                log.info("NFe desabilitada pelo usuario — nao processada");
+            }
+
+            if (processarNfce && config.caminhoXmlNfce() != null && !config.caminhoXmlNfce().isBlank()) {
+                progress.accept("Escaneando XMLs de NFCe...");
+                List<XmlDocumentInfo> nfces = scanner.scan(config.caminhoXmlNfce(), periodo, progress);
+                scanner.scanAndUpdateCache(config.caminhoXmlNfce(), periodo, cache, progress);
+                allXmls.addAll(nfces);
+                log.info("NFCe encontradas no periodo: {}", nfces.size());
+            } else if (!processarNfce) {
+                log.info("NFCe desabilitada pelo usuario — nao processada");
+            }
+
+            if (processarCompras && config.caminhoXmlCompras() != null && !config.caminhoXmlCompras().isBlank()) {
+                progress.accept("Escaneando XMLs de Compras...");
+                List<XmlDocumentInfo> compras = scanner.scan(config.caminhoXmlCompras(), periodo, progress);
+                scanner.scanAndUpdateCache(config.caminhoXmlCompras(), periodo, cache, progress);
+                allXmls.addAll(compras);
+                log.info("XMLs de compras encontrados no periodo: {}", compras.size());
+            } else if (!processarCompras) {
+                log.info("Compras desabilitadas pelo usuario — nao processadas");
+            }
+
+            progress.accept("Total de XMLs encontrados no período: " + allXmls.size());
+
+            // ── 5. Verificar se há XMLs antes de gerar relatórios ─────────────
+            if (allXmls.isEmpty()) {
+                String warn = "ATENÇÃO: Nenhum XML encontrado no período " + periodo.descricao() +
+                              ". Relatórios NÃO serão gerados.";
+                log.warn(warn);
+                progress.accept(warn);
+                warnings.add(warn);
+                return new ProcessamentoResult(periodo, outputDir, null,
+                                               List.of(), List.of(), warnings);
+            }
+
+            // ── 6. Organizar XMLs nas pastas ─────────────────────────────────
+            scanner.copyToOutput(allXmls, outputDir);
+            progress.accept("XMLs organizados nas pastas de saída");
+
+            // ── 7. Gerar obrigações fiscais (SPED, SINTEGRA) ─────────────────
+            List<Path> reportFiles = new ArrayList<>();
+
+            List<FiscalObligationStrategy> strategies = new ArrayList<>();
+            if (gerarSped) {
+                strategies.add(new SpedFiscalStrategy());
+                strategies.add(new SpedContribuicoesStrategy());
+            }
+            if (gerarSintegra) {
+                strategies.add(new SintegraStrategy());
+            }
+
+            for (FiscalObligationStrategy strategy : strategies) {
+                try {
+                    progress.accept("Gerando " + strategy.name() + "...");
+                    Path generated = strategy.generate(conn, periodo, outputDir);
+                    if (generated != null) {
+                        reportFiles.add(generated);
+                        progress.accept(strategy.name() + " gerado com sucesso");
+                    }
+                } catch (Exception e) {
+                    String warn = "Falha ao gerar " + strategy.name() + ": " + e.getMessage();
+                    log.error("Erro ao gerar {}", strategy.name(), e); // Stack trace completo
+                    progress.accept("ERRO: " + warn);
+                    warnings.add(warn);
+                }
+            }
+
+            // ── 8. Gerar PDFs ─────────────────────────────────────────────────
+            PdfReportService pdfService      = new PdfReportService();
+            SequenciaReportService seqSvc    = new SequenciaReportService();
+            CstCfopReportService cstSvc      = new CstCfopReportService();
+            MonofasicoReportService monoSvc  = new MonofasicoReportService();
+            DevolucoesReportService devSvc   = new DevolucoesReportService();
+
+            try { progress.accept("Gerando PDF Resumo de Vendas...");
+                  pdfService.gerarResumoVendas(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Vendas", e); warnings.add("PDF Vendas: " + e.getMessage()); }
+
+            try { progress.accept("Gerando PDF Resumo de Impostos...");
+                  pdfService.gerarResumoImpostos(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Impostos", e); warnings.add("PDF Impostos: " + e.getMessage()); }
+
+            try { progress.accept("Gerando PDF Resumo de Compras...");
+                  pdfService.gerarResumoCompras(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Compras", e); warnings.add("PDF Compras: " + e.getMessage()); }
+
+            try { progress.accept("Gerando PDF Sequencias...");
+                  seqSvc.gerarRelatorio(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Sequencias", e); }
+
+            try { progress.accept("Gerando PDF CST/CFOP...");
+                  cstSvc.gerarRelatorio(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF CST/CFOP", e); }
+
+            try { progress.accept("Gerando PDF Monofasico...");
+                  monoSvc.gerarRelatorio(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Monofasico", e); }
+
+            try { progress.accept("Gerando PDF Devolucoes...");
+                  devSvc.gerarRelatorio(conn, periodo, outputDir); }
+            catch (Exception e) { log.error("Erro ao gerar PDF Devolucoes", e); }
+
+            // ── 9. Compactar ZIP ──────────────────────────────────────────────
+            progress.accept("Compactando arquivos em ZIP...");
+            Path zipFile = outputDir.getParent().resolve(
+                "FechamentoFiscal_" + periodo.mesAnoRef() + ".zip");
+            ZipService.zipDirectory(outputDir, zipFile);
+            progress.accept("ZIP gerado: " + zipFile.getFileName());
+
+            // ── 10. Enviar e-mail ─────────────────────────────────────────────
+            if (enviarEmail) {
+                progress.accept("Enviando e-mail ao contador...");
+                try {
+                    boolean sent = EmailService.sendZip(
+                        config.emailConfig(),
+                        config.emailDestinatarios(),
+                        zipFile,
+                        periodo.descricao()
+                    );
+                    if (sent) {
+                        progress.accept("✅ E-mail enviado com sucesso!");
+                        log.info("E-mail enviado com sucesso para periodo {}", periodo.descricao());
+                    } else {
+                        String warn = "E-mail NÃO enviado (verifique configurações SMTP)";
+                        progress.accept("⚠️ " + warn);
+                        warnings.add(warn);
+                    }
+                } catch (Exception e) {
+                    log.error("Erro ao enviar e-mail", e);
+                    warnings.add("Erro no e-mail: " + e.getMessage());
+                }
+            }
+
+            progress.accept("✅ Processamento concluído com sucesso!");
+            log.info("Fechamento concluido para periodo {} - XMLs: {}, Avisos: {}",
+                     periodo.descricao(), allXmls.size(), warnings.size());
+
+            List<Path> xmlPaths = allXmls.stream().map(XmlDocumentInfo::filePath).toList();
+            return new ProcessamentoResult(periodo, outputDir, zipFile, xmlPaths, reportFiles, warnings);
+
+        } catch (Exception e) {
+            log.error("Erro critico no fechamento fiscal", e); // Stack trace completo
+            progress.accept("❌ ERRO CRÍTICO: " + e.getMessage());
+            warnings.add("Erro crítico: " + e.getMessage());
+            return new ProcessamentoResult(periodo, null, null, List.of(), List.of(), warnings);
+        }
+    }
+
+    /**
+     * Reprocessar um mês específico limpando o cache.
+     */
+    public ProcessamentoResult reprocessarMes(Periodo periodo, Consumer<String> progress) {
+        log.info("Reprocessamento forcado para periodo: {}", periodo.descricao());
+        progress.accept("Iniciando reprocessamento do mês " + periodo.descricao());
+        return execute(periodo, false, progress);
+    }
+
+    private void validateDependencies(Consumer<String> progress) throws Exception {
+        // Validar banco
+        try {
+            dbGateway.getConnection().isValid(5);
+            progress.accept("✅ Banco de dados: OK");
+        } catch (Exception e) {
+            throw new RuntimeException("Banco de dados indisponível: " + e.getMessage(), e);
+        }
+
+        // Validar diretórios
+        if (processarNfe && config.caminhoXmlNfe() != null) {
+            Path p = Path.of(config.caminhoXmlNfe());
+            if (!Files.exists(p)) {
+                log.warn("Diretorio NFe nao encontrado: {}", config.caminhoXmlNfe());
+                progress.accept("⚠️ Diretório NFe não encontrado: " + config.caminhoXmlNfe());
+            }
+        }
+
+        // Validar SMTP (rápido, não bloqueante)
+        progress.accept("Validando configurações de e-mail...");
+        try {
+            boolean smtpOk = EmailService.testConnection(config.emailConfig());
+            if (smtpOk) {
+                progress.accept("✅ SMTP: OK");
+            } else {
+                progress.accept("⚠️ SMTP: Falhou (e-mail pode não ser enviado)");
+            }
+        } catch (Exception e) {
+            log.warn("Validacao SMTP falhou: {}", e.getMessage());
+        }
+    }
+}
