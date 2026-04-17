@@ -1,1 +1,260 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC50cmF5OwoKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLmNvbmZpZy5BcHBDb25maWc7CmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5jb25maWcuSW5pTWFuYWdlcjsKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLmRvbWFpbi5QZXJpb2RvOwppbXBvcnQgYnIuY29tLmluZm9hdGl2YS5maXNjYWwuc2VydmljZS5Db250aW5nZW5jeU1vbml0b3JTZXJ2aWNlOwppbXBvcnQgYnIuY29tLmluZm9hdGl2YS5maXNjYWwuc2VydmljZS5TdGFydHVwU2VydmljZTsKaW1wb3J0IGphdmFmeC5hcHBsaWNhdGlvbi5QbGF0Zm9ybTsKaW1wb3J0IG9yZy5zbGY0ai5Mb2dnZXI7CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyRmFjdG9yeTsKCmltcG9ydCBqYXZhLmF3dC4qOwppbXBvcnQgamF2YS5hd3QuZXZlbnQuQWN0aW9uTGlzdGVuZXI7CmltcG9ydCBqYXZhLmF3dC5pbWFnZS5CdWZmZXJlZEltYWdlOwppbXBvcnQgamF2YS5pby5JT0V4Y2VwdGlvbjsKaW1wb3J0IGphdmEubmV0LlVSTDsKaW1wb3J0IGphdmEudGltZS5Mb2NhbFRpbWU7CmltcG9ydCBqYXZhLnRpbWUuZm9ybWF0LkRhdGVUaW1lRm9ybWF0dGVyOwppbXBvcnQgamF2YS51dGlsLmNvbmN1cnJlbnQuRXhlY3V0b3JzOwppbXBvcnQgamF2YS51dGlsLmNvbmN1cnJlbnQuU2NoZWR1bGVkRXhlY3V0b3JTZXJ2aWNlOwppbXBvcnQgamF2YS51dGlsLmNvbmN1cnJlbnQuVGltZVVuaXQ7CmltcG9ydCBqYXZhLnV0aWwuY29uY3VycmVudC5hdG9taWMuQXRvbWljQm9vbGVhbjsKCi8qKgogKiBHZXJlbmNpYSBvIMOtY29uZSBkYSBiYW5kZWphIGRvIHNpc3RlbWEgKFN5c3RlbSBUcmF5KS4KICogTyBwcm9ncmFtYSBmaWNhIG1pbmltaXphZG8gbmEgYmFuZGVqYSwgbW9uaXRvcmFuZG8gMjQvNy4KICogLSBEZXRlY3RhIGNvbnRpbmfDqm5jaWEgZSBub3RpZmljYSB0w6ljbmljbyBhIGNhZGEgM2gKICogLSBJbmljaWEgY29tIG8gV2luZG93cyAodmlhIHJlZ2lzdHJvKQogKiAtIEZpY2Egb2N1bHRvIGF0w6kgYXJxdWl2b3Mgc2VyZW0gZW52aWFkb3MgYW8gY29udGFkb3IKICogLSBBcMOzcyBlbnZpbywgZXhpYmUgcG9wdXAgcHJvZmlzc2lvbmFsIG5vIGNhbnRvIGluZmVyaW9yIGVzcXVlcmRvIHBvciAybWluCiAqLwpwdWJsaWMgY2xhc3MgU3lzdGVtVHJheU1hbmFnZXIgewoKICAgIHByaXZhdGUgc3RhdGljIGZpbmFsIExvZ2dlciBsb2cgPSBMb2dnZXJGYWN0b3J5LmdldExvZ2dlcihTeXN0ZW1UcmF5TWFuYWdlci5jbGFzcyk7CiAgICBwcml2YXRlIHN0YXRpYyBTeXN0ZW1UcmF5TWFuYWdlciBpbnN0YW5jZTsKCiAgICBwcml2YXRlIFRyYXlJY29uIHRyYXlJY29uOwogICAgcHJpdmF0ZSBTeXN0ZW1UcmF5IHN5c3RlbVRyYXk7CiAgICBwcml2YXRlIFBvcHVwTWVudSB0cmF5TWVudTsKICAgIHByaXZhdGUgQ29udGluZ2VuY3lNb25pdG9yU2VydmljZSBjb250aW5nZW5jeU1vbml0b3I7CiAgICBwcml2YXRlIFNjaGVkdWxlZEV4ZWN1dG9yU2VydmljZSBzY2hlZHVsZXI7CiAgICBwcml2YXRlIGZpbmFsIEF0b21pY0Jvb2xlYW4gYXJxdWl2b3NFbnZpYWRvcyA9IG5ldyBBdG9taWNCb29sZWFuKGZhbHNlKTsKCiAgICBwcml2YXRlIFJ1bm5hYmxlIG9uU2hvd0FwcDsKICAgIHByaXZhdGUgUnVubmFibGUgb25IaWRlQXBwOwoKICAgIHByaXZhdGUgU3lzdGVtVHJheU1hbmFnZXIoKSB7fQoKICAgIHB1YmxpYyBzdGF0aWMgU3lzdGVtVHJheU1hbmFnZXIgZ2V0SW5zdGFuY2UoKSB7CiAgICAgICAgaWYgKGluc3RhbmNlID09IG51bGwpIHsKICAgICAgICAgICAgaW5zdGFuY2UgPSBuZXcgU3lzdGVtVHJheU1hbmFnZXIoKTsKICAgICAgICB9CiAgICAgICAgcmV0dXJuIGluc3RhbmNlOwogICAgfQoKICAgIHB1YmxpYyBib29sZWFuIGlzU3VwcG9ydGVkKCkgewogICAgICAgIHJldHVybiBTeXN0ZW1UcmF5LmlzU3VwcG9ydGVkKCk7CiAgICB9CgogICAgcHVibGljIHZvaWQgaW5pdGlhbGl6ZShBcHBDb25maWcgY29uZmlnLCBSdW5uYWJsZSBvblNob3dBcHAsIFJ1bm5hYmxlIG9uSGlkZUFwcCkgewogICAgICAgIGlmICghaXNTdXBwb3J0ZWQoKSkgewogICAgICAgICAgICBsb2cud2FybigiU3lzdGVtIFRyYXkgbmFvIHN1cG9ydGFkbyBuZXN0ZSBhbWJpZW50ZSIpOwogICAgICAgICAgICByZXR1cm47CiAgICAgICAgfQoKICAgICAgICB0aGlzLm9uU2hvd0FwcCA9IG9uU2hvd0FwcDsKICAgICAgICB0aGlzLm9uSGlkZUFwcCA9IG9uSGlkZUFwcDsKCiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgc3lzdGVtVHJheSA9IFN5c3RlbVRyYXkuZ2V0U3lzdGVtVHJheSgpOwogICAgICAgICAgICBJbWFnZSBpY29uID0gY3JlYXRlVHJheUljb24oKTsKICAgICAgICAgICAgYnVpbGRUcmF5TWVudSgpOwoKICAgICAgICAgICAgdHJheUljb24gPSBuZXcgVHJheUljb24oaWNvbiwgIk3Ds2R1bG8gRmlzY2FsIEluZm9BdGl2YSIsIHRyYXlNZW51KTsKICAgICAgICAgICAgdHJheUljb24uc2V0SW1hZ2VBdXRvU2l6ZSh0cnVlKTsKICAgICAgICAgICAgdHJheUljb24uc2V0VG9vbFRpcCgiTcOzZHVsbyBGaXNjYWwgSW5mb0F0aXZhIC0gTW9uaXRvcmFuZG8uLi4iKTsKICAgICAgICAgICAgdHJheUljb24uYWRkQWN0aW9uTGlzdGVuZXIoZSAtPiBzaG93QXBwKCkpOwoKICAgICAgICAgICAgc3lzdGVtVHJheS5hZGQodHJheUljb24pOwogICAgICAgICAgICBsb2cuaW5mbygiU3lzdGVtIFRyYXkgaW5pY2lhbGl6YWRvIGNvbSBzdWNlc3NvIik7CgogICAgICAgICAgICAvLyBJbmljaWFyIG1vbml0b3JhbWVudG8gZGUgY29udGluZ8OqbmNpYQogICAgICAgICAgICBzdGFydENvbnRpbmdlbmN5TW9uaXRvcihjb25maWcpOwoKICAgICAgICAgICAgLy8gUmVnaXN0cmFyIG5vIHN0YXJ0dXAgZG8gV2luZG93cwogICAgICAgICAgICB0cnkgewogICAgICAgICAgICAgICAgU3RhcnR1cFNlcnZpY2UucmVnaXN0ZXJTdGFydHVwKCk7CiAgICAgICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgICAgICBsb2cud2FybigiTmFvIGZvaSBwb3NzaXZlbCByZWdpc3RyYXIgbm8gc3RhcnR1cCBkbyBXaW5kb3dzOiB7fSIsIGUuZ2V0TWVzc2FnZSgpKTsKICAgICAgICAgICAgfQoKICAgICAgICB9IGNhdGNoIChBV1RFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZXJyb3IoIkVycm8gYW8gaW5pY2lhbGl6YXIgU3lzdGVtIFRyYXkiLCBlKTsKICAgICAgICB9CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIGJ1aWxkVHJheU1lbnUoKSB7CiAgICAgICAgdHJheU1lbnUgPSBuZXcgUG9wdXBNZW51KCk7CgogICAgICAgIE1lbnVJdGVtIGl0ZW1BYnJpciA9IG5ldyBNZW51SXRlbSgiQWJyaXIgTcOzZHVsbyBGaXNjYWwiKTsKICAgICAgICBpdGVtQWJyaXIuYWRkQWN0aW9uTGlzdGVuZXIoZSAtPiBzaG93QXBwKCkpOwoKICAgICAgICBNZW51SXRlbSBpdGVtU3RhdHVzID0gbmV3IE1lbnVJdGVtKCJTdGF0dXM6IE1vbml0b3JhbmRvLi4uIik7CiAgICAgICAgaXRlbVN0YXR1cy5zZXRFbmFibGVkKGZhbHNlKTsKCiAgICAgICAgTWVudUl0ZW0gaXRlbUVudmlhciA9IG5ldyBNZW51SXRlbSgiRm9yw6dhciBFbnZpbyBBZ29yYSIpOwogICAgICAgIGl0ZW1FbnZpYXIuYWRkQWN0aW9uTGlzdGVuZXIoZSAtPiBub3RpZnlGb3JjZVNlbmQoKSk7CgogICAgICAgIE1lbnVJdGVtIHNlcGFyYWRvciA9IG5ldyBNZW51SXRlbSgiLSIpOwogICAgICAgIHNlcGFyYWRvci5zZXRFbmFibGVkKGZhbHNlKTsKCiAgICAgICAgTWVudUl0ZW0gaXRlbUZlY2hhciA9IG5ldyBNZW51SXRlbSgiRmVjaGFyIik7CiAgICAgICAgaXRlbUZlY2hhci5hZGRBY3Rpb25MaXN0ZW5lcihlIC0+IGV4aXRBcHBsaWNhdGlvbigpKTsKCiAgICAgICAgdHJheU1lbnUuYWRkKGl0ZW1BYnJpcik7CiAgICAgICAgdHJheU1lbnUuYWRkU2VwYXJhdG9yKCk7CiAgICAgICAgdHJheU1lbnUuYWRkKGl0ZW1TdGF0dXMpOwogICAgICAgIHRyYXlNZW51LmFkZChpdGVtRW52aWFyKTsKICAgICAgICB0cmF5TWVudS5hZGRTZXBhcmF0b3IoKTsKICAgICAgICB0cmF5TWVudS5hZGQoaXRlbUZlY2hhcik7CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIHN0YXJ0Q29udGluZ2VuY3lNb25pdG9yKEFwcENvbmZpZyBjb25maWcpIHsKICAgICAgICBjb250aW5nZW5jeU1vbml0b3IgPSBuZXcgQ29udGluZ2VuY3lNb25pdG9yU2VydmljZShjb25maWcpOwogICAgICAgIHNjaGVkdWxlciA9IEV4ZWN1dG9ycy5uZXdTaW5nbGVUaHJlYWRTY2hlZHVsZWRFeGVjdXRvcihyIC0+IHsKICAgICAgICAgICAgVGhyZWFkIHQgPSBuZXcgVGhyZWFkKHIsICJjb250aW5nZW5jeS1tb25pdG9yIik7CiAgICAgICAgICAgIHQuc2V0RGFlbW9uKHRydWUpOwogICAgICAgICAgICByZXR1cm4gdDsKICAgICAgICB9KTsKCiAgICAgICAgLy8gVmVyaWZpY2FyIGNvbnRpbmfDqm5jaWEgYSBjYWRhIDMgaG9yYXMKICAgICAgICBzY2hlZHVsZXIuc2NoZWR1bGVBdEZpeGVkUmF0ZSgoKSAtPiB7CiAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICBpZiAoY29udGluZ2VuY3lNb25pdG9yLmhhc0NvbnRpbmdlbmN5KCkpIHsKICAgICAgICAgICAgICAgICAgICBsb2cud2FybigiQ09OVElOR0VOQ0lBIERFVEVDVEFEQSAtIE5vdGlmaWNhbmRvIHRlY25pY28iKTsKICAgICAgICAgICAgICAgICAgICBzaG93Q29udGluZ2VuY3lOb3RpZmljYXRpb24oKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgICAgIGxvZy5lcnJvcigiRXJybyBubyBtb25pdG9yIGRlIGNvbnRpbmdlbmNpYSIsIGUpOwogICAgICAgICAgICB9CiAgICAgICAgfSwgMCwgMywgVGltZVVuaXQuSE9VUlMpOwoKICAgICAgICBsb2cuaW5mbygiTW9uaXRvciBkZSBjb250aW5nZW5jaWEgaW5pY2lhZG8gKHZlcmlmaWNhY2FvIGEgY2FkYSAzIGhvcmFzKSIpOwogICAgfQoKICAgIC8qKgogICAgICogRXhpYmUgbm90aWZpY2HDp8OjbyBuYXRpdmEgZG8gV2luZG93cyBxdWFuZG8gZGV0ZWN0YXIgY29udGluZ8OqbmNpYS4KICAgICAqIE8gdMOpY25pY28gbsOjbyBwcmVjaXNhIHRlciBvIHByb2dyYW1hIGFiZXJ0by4KICAgICAqLwogICAgcHVibGljIHZvaWQgc2hvd0NvbnRpbmdlbmN5Tm90aWZpY2F0aW9uKCkgewogICAgICAgIGlmICh0cmF5SWNvbiA9PSBudWxsKSByZXR1cm47CiAgICAgICAgU3RyaW5nIG1zZyA9ICLimqDvuI8gWE1McyBlbSBDT05USU5Hw4pOQ0lBIGRldGVjdGFkb3MhXG4iICsKICAgICAgICAgICAgICAgICAgICAgIkFjZXNzZSBvIE3Ds2R1bG8gRmlzY2FsIHBhcmEgcmVndWxhcml6YXIuIjsKICAgICAgICB0cmF5SWNvbi5kaXNwbGF5TWVzc2FnZSgKICAgICAgICAgICAgIvCflLQgQWxlcnRhIEZpc2NhbCAtIENvbnRpbmfDqm5jaWEiLAogICAgICAgICAgICBtc2csCiAgICAgICAgICAgIFRyYXlJY29uLk1lc3NhZ2VUeXBlLldBUk5JTkcKICAgICAgICApOwogICAgICAgIGxvZy5pbmZvKCJOb3RpZmljYWNhbyBkZSBjb250aW5nZW5jaWEgZXhpYmlkYSAtIHt9IiwgCiAgICAgICAgICAgICAgICAgTG9jYWxUaW1lLm5vdygpLmZvcm1hdChEYXRlVGltZUZvcm1hdHRlci5vZlBhdHRlcm4oIkhIOm1tOnNzIikpKTsKICAgIH0KCiAgICAvKioKICAgICAqIEV4aWJlIHBvcHVwIHByb2Zpc3Npb25hbCBubyBjYW50byBpbmZlcmlvciBlc3F1ZXJkbyBwb3IgMiBtaW51dG9zCiAgICAgKiBhcMOzcyBlbnZpbyBkb3MgYXJxdWl2b3MgZmlzY2FpcyBhbyBjb250YWRvci4KICAgICAqLwogICAgcHVibGljIHZvaWQgc2hvd0FycXVpdm9zRW52aWFkb3NQb3B1cCgpIHsKICAgICAgICBhcnF1aXZvc0VudmlhZG9zLnNldCh0cnVlKTsKICAgICAgICBQbGF0Zm9ybS5ydW5MYXRlcigoKSAtPiB7CiAgICAgICAgICAgIEZpc2NhbFRvYXN0Tm90aWZpY2F0aW9uIHRvYXN0ID0gbmV3IEZpc2NhbFRvYXN0Tm90aWZpY2F0aW9uKAogICAgICAgICAgICAgICAgIuKchSBBcnF1aXZvcyBGaXNjYWlzIEVudmlhZG9zIiwKICAgICAgICAgICAgICAgICJPcyBhcnF1aXZvcyBmaXNjYWlzIGZvcmFtIGVudmlhZG9zIGNvbSBzdWNlc3NvIHBhcmEgbyBjb250YWRvci4iLAogICAgICAgICAgICAgICAgMTIwIC8vIDIgbWludXRvcwogICAgICAgICAgICApOwogICAgICAgICAgICB0b2FzdC5zaG93KCk7CiAgICAgICAgfSk7CgogICAgICAgIC8vIFRhbWLDqW0gbm90aWZpY2HDp8OjbyBuYSBiYW5kZWphCiAgICAgICAgaWYgKHRyYXlJY29uICE9IG51bGwpIHsKICAgICAgICAgICAgdHJheUljb24uZGlzcGxheU1lc3NhZ2UoCiAgICAgICAgICAgICAgICAi4pyFIE3Ds2R1bG8gRmlzY2FsIiwKICAgICAgICAgICAgICAgICJBcnF1aXZvcyBmaXNjYWlzIGVudmlhZG9zIGNvbSBzdWNlc3NvIGFvIGNvbnRhZG9yISIsCiAgICAgICAgICAgICAgICBUcmF5SWNvbi5NZXNzYWdlVHlwZS5JTkZPCiAgICAgICAgICAgICk7CiAgICAgICAgfQogICAgfQoKICAgIHB1YmxpYyB2b2lkIGhpZGVUb1RyYXkoKSB7CiAgICAgICAgaWYgKG9uSGlkZUFwcCAhPSBudWxsKSB7CiAgICAgICAgICAgIFBsYXRmb3JtLnJ1bkxhdGVyKG9uSGlkZUFwcCk7CiAgICAgICAgfQogICAgICAgIHNldFN0YXR1cygiRXhlY3V0YW5kbyBlbSBzZWd1bmRvIHBsYW5vLi4uIik7CiAgICB9CgogICAgcHVibGljIHZvaWQgc2hvd0FwcCgpIHsKICAgICAgICBpZiAob25TaG93QXBwICE9IG51bGwpIHsKICAgICAgICAgICAgUGxhdGZvcm0ucnVuTGF0ZXIob25TaG93QXBwKTsKICAgICAgICB9CiAgICB9CgogICAgcHVibGljIHZvaWQgc2V0U3RhdHVzKFN0cmluZyBzdGF0dXMpIHsKICAgICAgICBpZiAodHJheUljb24gIT0gbnVsbCkgewogICAgICAgICAgICB0cmF5SWNvbi5zZXRUb29sVGlwKCJNw7NkdWxvIEZpc2NhbCBJbmZvQXRpdmEgLSAiICsgc3RhdHVzKTsKICAgICAgICB9CiAgICAgICAgLy8gQXR1YWxpemFyIGl0ZW0gZGUgbWVudQogICAgICAgIGlmICh0cmF5TWVudSAhPSBudWxsICYmIHRyYXlNZW51LmdldEl0ZW1Db3VudCgpID4gMikgewogICAgICAgICAgICBNZW51SXRlbSBzdGF0dXNJdGVtID0gdHJheU1lbnUuZ2V0SXRlbSgyKTsKICAgICAgICAgICAgaWYgKHN0YXR1c0l0ZW0gIT0gbnVsbCkgewogICAgICAgICAgICAgICAgc3RhdHVzSXRlbS5zZXRMYWJlbCgiU3RhdHVzOiAiICsgc3RhdHVzKTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICBwcml2YXRlIHZvaWQgbm90aWZ5Rm9yY2VTZW5kKCkgewogICAgICAgIHNob3dBcHAoKTsKICAgICAgICBQbGF0Zm9ybS5ydW5MYXRlcigoKSAtPiB7CiAgICAgICAgICAgIGxvZy5pbmZvKCJGb3JjYWRvIGVudmlvIG1hbnVhbCBwZWxvIHVzdWFyaW8gdmlhIHRyYXkiKTsKICAgICAgICB9KTsKICAgIH0KCiAgICBwcml2YXRlIHZvaWQgZXhpdEFwcGxpY2F0aW9uKCkgewogICAgICAgIGlmIChzY2hlZHVsZXIgIT0gbnVsbCAmJiAhc2NoZWR1bGVyLmlzU2h1dGRvd24oKSkgewogICAgICAgICAgICBzY2hlZHVsZXIuc2h1dGRvd25Ob3coKTsKICAgICAgICB9CiAgICAgICAgaWYgKHN5c3RlbVRyYXkgIT0gbnVsbCAmJiB0cmF5SWNvbiAhPSBudWxsKSB7CiAgICAgICAgICAgIHN5c3RlbVRyYXkucmVtb3ZlKHRyYXlJY29uKTsKICAgICAgICB9CiAgICAgICAgUGxhdGZvcm0uZXhpdCgpOwogICAgICAgIFN5c3RlbS5leGl0KDApOwogICAgfQoKICAgIHB1YmxpYyB2b2lkIHNodXRkb3duKCkgewogICAgICAgIGlmIChzY2hlZHVsZXIgIT0gbnVsbCkgc2NoZWR1bGVyLnNodXRkb3duTm93KCk7CiAgICAgICAgaWYgKHN5c3RlbVRyYXkgIT0gbnVsbCAmJiB0cmF5SWNvbiAhPSBudWxsKSB7CiAgICAgICAgICAgIHN5c3RlbVRyYXkucmVtb3ZlKHRyYXlJY29uKTsKICAgICAgICB9CiAgICB9CgogICAgcHJpdmF0ZSBJbWFnZSBjcmVhdGVUcmF5SWNvbigpIHsKICAgICAgICAvLyBDcmlhciDDrWNvbmUgcHJvZ3JhbWF0aWNhbWVudGUgKGF6dWwgZmlzY2FsKQogICAgICAgIEJ1ZmZlcmVkSW1hZ2UgaW1nID0gbmV3IEJ1ZmZlcmVkSW1hZ2UoMTYsIDE2LCBCdWZmZXJlZEltYWdlLlRZUEVfSU5UX0FSR0IpOwogICAgICAgIEdyYXBoaWNzMkQgZyA9IGltZy5jcmVhdGVHcmFwaGljcygpOwogICAgICAgIGcuc2V0UmVuZGVyaW5nSGludChSZW5kZXJpbmdIaW50cy5LRVlfQU5USUFMSUFTSU5HLCBSZW5kZXJpbmdIaW50cy5WQUxVRV9BTlRJQUxJQVNfT04pOwogICAgICAgIGcuc2V0Q29sb3IobmV3IENvbG9yKDI2LCA4NiwgMjE5KSk7CiAgICAgICAgZy5maWxsUm91bmRSZWN0KDEsIDEsIDE0LCAxNCwgNCwgNCk7CiAgICAgICAgZy5zZXRDb2xvcihDb2xvci5XSElURSk7CiAgICAgICAgZy5zZXRGb250KG5ldyBGb250KCJBcmlhbCIsIEZvbnQuQk9MRCwgOSkpOwogICAgICAgIGcuZHJhd1N0cmluZygiRiIsIDUsIDExKTsKICAgICAgICBnLmRpc3Bvc2UoKTsKICAgICAgICByZXR1cm4gaW1nOwogICAgfQoKICAgIHB1YmxpYyBib29sZWFuIGlzQXJxdWl2b3NFbnZpYWRvcygpIHsKICAgICAgICByZXR1cm4gYXJxdWl2b3NFbnZpYWRvcy5nZXQoKTsKICAgIH0KCiAgICBwdWJsaWMgdm9pZCByZXNldEFycXVpdm9zRW52aWFkb3MoKSB7CiAgICAgICAgYXJxdWl2b3NFbnZpYWRvcy5zZXQoZmFsc2UpOwogICAgfQp9Cg==
+package br.com.infoativa.fiscal.tray;
+
+import br.com.infoativa.fiscal.config.AppConfig;
+import br.com.infoativa.fiscal.config.IniManager;
+import br.com.infoativa.fiscal.domain.Periodo;
+import br.com.infoativa.fiscal.service.ContingencyMonitorService;
+import br.com.infoativa.fiscal.service.StartupService;
+import javafx.application.Platform;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+/**
+ * Gerencia o ícone da bandeja do sistema (System Tray).
+ * O programa fica minimizado na bandeja, monitorando 24/7.
+ * - Detecta contingência e notifica técnico a cada 3h
+ * - Inicia com o Windows (via registro)
+ * - Fica oculto até arquivos serem enviados ao contador
+ * - Após envio, exibe popup profissional no canto inferior esquerdo por 2min
+ */
+public class SystemTrayManager {
+
+    private static final Logger log = LoggerFactory.getLogger(SystemTrayManager.class);
+    private static SystemTrayManager instance;
+
+    private TrayIcon trayIcon;
+    private SystemTray systemTray;
+    private PopupMenu trayMenu;
+    private ContingencyMonitorService contingencyMonitor;
+    private ScheduledExecutorService scheduler;
+    private final AtomicBoolean arquivosEnviados = new AtomicBoolean(false);
+
+    private Runnable onShowApp;
+    private Runnable onHideApp;
+
+    private SystemTrayManager() {}
+
+    public static SystemTrayManager getInstance() {
+        if (instance == null) {
+            instance = new SystemTrayManager();
+        }
+        return instance;
+    }
+
+    public boolean isSupported() {
+        return SystemTray.isSupported();
+    }
+
+    public void initialize(AppConfig config, Runnable onShowApp, Runnable onHideApp) {
+        if (!isSupported()) {
+            log.warn("System Tray nao suportado neste ambiente");
+            return;
+        }
+
+        this.onShowApp = onShowApp;
+        this.onHideApp = onHideApp;
+
+        try {
+            systemTray = SystemTray.getSystemTray();
+            Image icon = createTrayIcon();
+            buildTrayMenu();
+
+            trayIcon = new TrayIcon(icon, "Módulo Fiscal InfoAtiva", trayMenu);
+            trayIcon.setImageAutoSize(true);
+            trayIcon.setToolTip("Módulo Fiscal InfoAtiva - Monitorando...");
+            trayIcon.addActionListener(e -> showApp());
+
+            systemTray.add(trayIcon);
+            log.info("System Tray inicializado com sucesso");
+
+            // Iniciar monitoramento de contingência
+            startContingencyMonitor(config);
+
+            // Registrar no startup do Windows
+            try {
+                StartupService.registerStartup();
+            } catch (Exception e) {
+                log.warn("Nao foi possivel registrar no startup do Windows: {}", e.getMessage());
+            }
+
+        } catch (AWTException e) {
+            log.error("Erro ao inicializar System Tray", e);
+        }
+    }
+
+    private void buildTrayMenu() {
+        trayMenu = new PopupMenu();
+
+        MenuItem itemAbrir = new MenuItem("Abrir Módulo Fiscal");
+        itemAbrir.addActionListener(e -> showApp());
+
+        MenuItem itemStatus = new MenuItem("Status: Monitorando...");
+        itemStatus.setEnabled(false);
+
+        MenuItem itemEnviar = new MenuItem("Forçar Envio Agora");
+        itemEnviar.addActionListener(e -> notifyForceSend());
+
+        MenuItem separador = new MenuItem("-");
+        separador.setEnabled(false);
+
+        MenuItem itemFechar = new MenuItem("Fechar");
+        itemFechar.addActionListener(e -> exitApplication());
+
+        trayMenu.add(itemAbrir);
+        trayMenu.addSeparator();
+        trayMenu.add(itemStatus);
+        trayMenu.add(itemEnviar);
+        trayMenu.addSeparator();
+        trayMenu.add(itemFechar);
+    }
+
+    private void startContingencyMonitor(AppConfig config) {
+        contingencyMonitor = new ContingencyMonitorService(config);
+        scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
+            Thread t = new Thread(r, "contingency-monitor");
+            t.setDaemon(true);
+            return t;
+        });
+
+        // Verificar contingência a cada 3 horas
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                if (contingencyMonitor.hasContingency()) {
+                    log.warn("CONTINGENCIA DETECTADA - Notificando tecnico");
+                    showContingencyNotification();
+                }
+            } catch (Exception e) {
+                log.error("Erro no monitor de contingencia", e);
+            }
+        }, 0, 3, TimeUnit.HOURS);
+
+        log.info("Monitor de contingencia iniciado (verificacao a cada 3 horas)");
+    }
+
+    /**
+     * Exibe notificação nativa do Windows quando detectar contingência.
+     * O técnico não precisa ter o programa aberto.
+     */
+    public void showContingencyNotification() {
+        if (trayIcon == null) return;
+        String msg = "⚠️ XMLs em CONTINGÊNCIA detectados!\n" +
+                     "Acesse o Módulo Fiscal para regularizar.";
+        trayIcon.displayMessage(
+            "🔴 Alerta Fiscal - Contingência",
+            msg,
+            TrayIcon.MessageType.WARNING
+        );
+        log.info("Notificacao de contingencia exibida - {}", 
+                 LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+    }
+
+    /**
+     * Exibe popup profissional no canto inferior esquerdo por 2 minutos
+     * após envio dos arquivos fiscais ao contador.
+     */
+    public void showArquivosEnviadosPopup() {
+        arquivosEnviados.set(true);
+        Platform.runLater(() -> {
+            FiscalToastNotification toast = new FiscalToastNotification(
+                "✅ Arquivos Fiscais Enviados",
+                "Os arquivos fiscais foram enviados com sucesso para o contador.",
+                120 // 2 minutos
+            );
+            toast.show();
+        });
+
+        // Também notificação na bandeja
+        if (trayIcon != null) {
+            trayIcon.displayMessage(
+                "✅ Módulo Fiscal",
+                "Arquivos fiscais enviados com sucesso ao contador!",
+                TrayIcon.MessageType.INFO
+            );
+        }
+    }
+
+    public void hideToTray() {
+        if (onHideApp != null) {
+            Platform.runLater(onHideApp);
+        }
+        setStatus("Executando em segundo plano...");
+    }
+
+    public void showApp() {
+        if (onShowApp != null) {
+            Platform.runLater(onShowApp);
+        }
+    }
+
+    public void setStatus(String status) {
+        if (trayIcon != null) {
+            trayIcon.setToolTip("Módulo Fiscal InfoAtiva - " + status);
+        }
+        // Atualizar item de menu
+        if (trayMenu != null && trayMenu.getItemCount() > 2) {
+            MenuItem statusItem = trayMenu.getItem(2);
+            if (statusItem != null) {
+                statusItem.setLabel("Status: " + status);
+            }
+        }
+    }
+
+    private void notifyForceSend() {
+        showApp();
+        Platform.runLater(() -> {
+            log.info("Forcado envio manual pelo usuario via tray");
+        });
+    }
+
+    private void exitApplication() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdownNow();
+        }
+        if (systemTray != null && trayIcon != null) {
+            systemTray.remove(trayIcon);
+        }
+        Platform.exit();
+        System.exit(0);
+    }
+
+    public void shutdown() {
+        if (scheduler != null) scheduler.shutdownNow();
+        if (systemTray != null && trayIcon != null) {
+            systemTray.remove(trayIcon);
+        }
+    }
+
+    private Image createTrayIcon() {
+        // Criar ícone programaticamente (azul fiscal)
+        BufferedImage img = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = img.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setColor(new Color(26, 86, 219));
+        g.fillRoundRect(1, 1, 14, 14, 4, 4);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 9));
+        g.drawString("F", 5, 11);
+        g.dispose();
+        return img;
+    }
+
+    public boolean isArquivosEnviados() {
+        return arquivosEnviados.get();
+    }
+
+    public void resetArquivosEnviados() {
+        arquivosEnviados.set(false);
+    }
+}
