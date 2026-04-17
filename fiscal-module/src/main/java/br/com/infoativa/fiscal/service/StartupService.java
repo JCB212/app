@@ -1,1 +1,138 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5zZXJ2aWNlOwoKaW1wb3J0IG9yZy5zbGY0ai5Mb2dnZXI7CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyRmFjdG9yeTsKCmltcG9ydCBqYXZhLmlvLklPRXhjZXB0aW9uOwppbXBvcnQgamF2YS5uaW8uZmlsZS4qOwoKLyoqCiAqIFNlcnZpw6dvIGRlIHJlZ2lzdHJvIG5vIHN0YXJ0dXAgZG8gV2luZG93cy4KICogUmVnaXN0cmEgbyBhcGxpY2F0aXZvIHBhcmEgaW5pY2lhciBhdXRvbWF0aWNhbWVudGUgY29tIG8gV2luZG93cwogKiB2aWEgY2hhdmUgZGUgcmVnaXN0cm8gSEtDVVxTb2Z0d2FyZVxNaWNyb3NvZnRcV2luZG93c1xDdXJyZW50VmVyc2lvblxSdW4KICovCnB1YmxpYyBjbGFzcyBTdGFydHVwU2VydmljZSB7CgogICAgcHJpdmF0ZSBzdGF0aWMgZmluYWwgTG9nZ2VyIGxvZyA9IExvZ2dlckZhY3RvcnkuZ2V0TG9nZ2VyKFN0YXJ0dXBTZXJ2aWNlLmNsYXNzKTsKICAgIHByaXZhdGUgc3RhdGljIGZpbmFsIFN0cmluZyBBUFBfTkFNRSA9ICJNb2R1bG9GaXNjYWxJbmZvQXRpdmEiOwogICAgcHJpdmF0ZSBzdGF0aWMgZmluYWwgU3RyaW5nIFJFR19LRVkgPSAKICAgICAgICAiSEtDVVxcU29mdHdhcmVcXE1pY3Jvc29mdFxcV2luZG93c1xcQ3VycmVudFZlcnNpb25cXFJ1biI7CgogICAgcHJpdmF0ZSBTdGFydHVwU2VydmljZSgpIHt9CgogICAgLyoqCiAgICAgKiBSZWdpc3RyYSBvIGFwbGljYXRpdm8gbm8gc3RhcnR1cCBkbyBXaW5kb3dzLgogICAgICogVXNhIHJlZy5leGUgbmF0aXZvIChkaXNwb27DrXZlbCBlbSB0b2RvcyBvcyBXaW5kb3dzKS4KICAgICAqLwogICAgcHVibGljIHN0YXRpYyB2b2lkIHJlZ2lzdGVyU3RhcnR1cCgpIHsKICAgICAgICBTdHJpbmcgZXhlUGF0aCA9IGdldEV4ZVBhdGgoKTsKICAgICAgICBpZiAoZXhlUGF0aCA9PSBudWxsKSB7CiAgICAgICAgICAgIGxvZy53YXJuKCJOYW8gZm9pIHBvc3NpdmVsIGRldGVybWluYXIgbyBjYW1pbmhvIGRvIGV4ZWN1dGF2ZWwiKTsKICAgICAgICAgICAgcmV0dXJuOwogICAgICAgIH0KCiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgU3RyaW5nIHZhbHVlID0gIlwiIiArIGV4ZVBhdGggKyAiXCIgLS10cmF5IjsKICAgICAgICAgICAgUHJvY2Vzc0J1aWxkZXIgcGIgPSBuZXcgUHJvY2Vzc0J1aWxkZXIoCiAgICAgICAgICAgICAgICAicmVnIiwgImFkZCIsIFJFR19LRVksCiAgICAgICAgICAgICAgICAiL3YiLCBBUFBfTkFNRSwKICAgICAgICAgICAgICAgICIvdCIsICJSRUdfU1oiLAogICAgICAgICAgICAgICAgIi9kIiwgdmFsdWUsCiAgICAgICAgICAgICAgICAiL2YiCiAgICAgICAgICAgICk7CiAgICAgICAgICAgIHBiLnJlZGlyZWN0RXJyb3JTdHJlYW0odHJ1ZSk7CiAgICAgICAgICAgIFByb2Nlc3MgcHJvYyA9IHBiLnN0YXJ0KCk7CiAgICAgICAgICAgIGludCBleGl0Q29kZSA9IHByb2Mud2FpdEZvcigpOwoKICAgICAgICAgICAgaWYgKGV4aXRDb2RlID09IDApIHsKICAgICAgICAgICAgICAgIGxvZy5pbmZvKCJSZWdpc3RybyBubyBzdGFydHVwIGRvIFdpbmRvd3MgcmVhbGl6YWRvIGNvbSBzdWNlc3NvOiB7fSIsIHZhbHVlKTsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGxvZy53YXJuKCJGYWxoYSBhbyByZWdpc3RyYXIgbm8gc3RhcnR1cC4gQ29kaWdvIGRlIHNhaWRhOiB7fSIsIGV4aXRDb2RlKTsKICAgICAgICAgICAgfQogICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIGxvZy5lcnJvcigiRXJybyBhbyByZWdpc3RyYXIgbm8gc3RhcnR1cCBkbyBXaW5kb3dzIiwgZSk7CiAgICAgICAgfQogICAgfQoKICAgIC8qKgogICAgICogUmVtb3ZlIG8gYXBsaWNhdGl2byBkbyBzdGFydHVwIGRvIFdpbmRvd3MuCiAgICAgKi8KICAgIHB1YmxpYyBzdGF0aWMgdm9pZCB1bnJlZ2lzdGVyU3RhcnR1cCgpIHsKICAgICAgICB0cnkgewogICAgICAgICAgICBQcm9jZXNzQnVpbGRlciBwYiA9IG5ldyBQcm9jZXNzQnVpbGRlcigKICAgICAgICAgICAgICAgICJyZWciLCAiZGVsZXRlIiwgUkVHX0tFWSwKICAgICAgICAgICAgICAgICIvdiIsIEFQUF9OQU1FLAogICAgICAgICAgICAgICAgIi9mIgogICAgICAgICAgICApOwogICAgICAgICAgICBwYi5yZWRpcmVjdEVycm9yU3RyZWFtKHRydWUpOwogICAgICAgICAgICBQcm9jZXNzIHByb2MgPSBwYi5zdGFydCgpOwogICAgICAgICAgICBwcm9jLndhaXRGb3IoKTsKICAgICAgICAgICAgbG9nLmluZm8oIlJlZ2lzdHJvIGRlIHN0YXJ0dXAgcmVtb3ZpZG8iKTsKICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZXJyb3IoIkVycm8gYW8gcmVtb3ZlciBzdGFydHVwIGRvIFdpbmRvd3MiLCBlKTsKICAgICAgICB9CiAgICB9CgogICAgLyoqCiAgICAgKiBWZXJpZmljYSBzZSBqw6EgZXN0w6EgcmVnaXN0cmFkbyBubyBzdGFydHVwLgogICAgICovCiAgICBwdWJsaWMgc3RhdGljIGJvb2xlYW4gaXNSZWdpc3RlcmVkKCkgewogICAgICAgIHRyeSB7CiAgICAgICAgICAgIFByb2Nlc3NCdWlsZGVyIHBiID0gbmV3IFByb2Nlc3NCdWlsZGVyKAogICAgICAgICAgICAgICAgInJlZyIsICJxdWVyeSIsIFJFR19LRVksICIvdiIsIEFQUF9OQU1FCiAgICAgICAgICAgICk7CiAgICAgICAgICAgIHBiLnJlZGlyZWN0RXJyb3JTdHJlYW0odHJ1ZSk7CiAgICAgICAgICAgIFByb2Nlc3MgcHJvYyA9IHBiLnN0YXJ0KCk7CiAgICAgICAgICAgIGludCBleGl0Q29kZSA9IHByb2Mud2FpdEZvcigpOwogICAgICAgICAgICByZXR1cm4gZXhpdENvZGUgPT0gMDsKICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkgewogICAgICAgICAgICByZXR1cm4gZmFsc2U7CiAgICAgICAgfQogICAgfQoKICAgIHByaXZhdGUgc3RhdGljIFN0cmluZyBnZXRFeGVQYXRoKCkgewogICAgICAgIHRyeSB7CiAgICAgICAgICAgIC8vIERldGVjdGFyIHNlIGVzdMOhIHJvZGFuZG8gY29tbyAuZXhlIChMYXVuY2g0aikgb3UgLmphcgogICAgICAgICAgICBTdHJpbmcgY29tbWFuZCA9IFByb2Nlc3NIYW5kbGUuY3VycmVudCgpLmluZm8oKS5jb21tYW5kKCkub3JFbHNlKG51bGwpOwogICAgICAgICAgICBpZiAoY29tbWFuZCAhPSBudWxsICYmIGNvbW1hbmQudG9Mb3dlckNhc2UoKS5lbmRzV2l0aCgiLmV4ZSIpKSB7CiAgICAgICAgICAgICAgICByZXR1cm4gY29tbWFuZDsKICAgICAgICAgICAgfQogICAgICAgICAgICAvLyBDYXNvIHNlamEgLmphciwgdXNhciBqYXZhdwogICAgICAgICAgICBQYXRoIGphclBhdGggPSBQYXRoLm9mKAogICAgICAgICAgICAgICAgU3RhcnR1cFNlcnZpY2UuY2xhc3MuZ2V0UHJvdGVjdGlvbkRvbWFpbigpCiAgICAgICAgICAgICAgICAgICAgLmdldENvZGVTb3VyY2UoKS5nZXRMb2NhdGlvbigpLnRvVVJJKCkKICAgICAgICAgICAgKTsKICAgICAgICAgICAgaWYgKGphclBhdGgudG9TdHJpbmcoKS5lbmRzV2l0aCgiLmphciIpKSB7CiAgICAgICAgICAgICAgICBTdHJpbmcgamF2YUhvbWUgPSBTeXN0ZW0uZ2V0UHJvcGVydHkoImphdmEuaG9tZSIpOwogICAgICAgICAgICAgICAgU3RyaW5nIGphdmF3ID0gamF2YUhvbWUgKyAiXFxiaW5cXGphdmF3LmV4ZSI7CiAgICAgICAgICAgICAgICByZXR1cm4gamF2YXcgKyAiIC1qYXIgXCIiICsgamFyUGF0aCArICJcIiI7CiAgICAgICAgICAgIH0KICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZGVidWcoIkVycm8gYW8gZGV0ZXJtaW5hciBjYW1pbmhvIGRvIGV4ZWN1dGF2ZWw6IHt9IiwgZS5nZXRNZXNzYWdlKCkpOwogICAgICAgIH0KICAgICAgICByZXR1cm4gbnVsbDsKICAgIH0KCiAgICAvKioKICAgICAqIENyaWEgc2NyaXB0IEJBVCBkZSBpbmljaWFsaXphw6fDo28gY29tbyBhbHRlcm5hdGl2YSBhbyByZWdpc3Ryby4KICAgICAqLwogICAgcHVibGljIHN0YXRpYyB2b2lkIGNyZWF0ZVN0YXJ0dXBCYXQoKSB7CiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgUGF0aCBzdGFydHVwRGlyID0gUGF0aC5vZihTeXN0ZW0uZ2V0UHJvcGVydHkoInVzZXIuaG9tZSIpLAogICAgICAgICAgICAgICAgIkFwcERhdGEiLCAiUm9hbWluZyIsICJNaWNyb3NvZnQiLCAiV2luZG93cyIsCiAgICAgICAgICAgICAgICAiU3RhcnQgTWVudSIsICJQcm9ncmFtcyIsICJTdGFydHVwIik7CgogICAgICAgICAgICBpZiAoIUZpbGVzLmV4aXN0cyhzdGFydHVwRGlyKSkgcmV0dXJuOwoKICAgICAgICAgICAgUGF0aCBiYXRGaWxlID0gc3RhcnR1cERpci5yZXNvbHZlKCJNb2R1bG9GaXNjYWwuYmF0Iik7CiAgICAgICAgICAgIFN0cmluZyBleGVQYXRoID0gZ2V0RXhlUGF0aCgpOwogICAgICAgICAgICBpZiAoZXhlUGF0aCA9PSBudWxsKSByZXR1cm47CgogICAgICAgICAgICBTdHJpbmcgY29udGVudCA9ICJAZWNobyBvZmZcbnN0YXJ0IFwiXCIgIiArIGV4ZVBhdGggKyAiIC0tdHJheVxuIjsKICAgICAgICAgICAgRmlsZXMud3JpdGVTdHJpbmcoYmF0RmlsZSwgY29udGVudCk7CiAgICAgICAgICAgIGxvZy5pbmZvKCJCQVQgZGUgc3RhcnR1cCBjcmlhZG86IHt9IiwgYmF0RmlsZSk7CiAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLndhcm4oIk5hbyBmb2kgcG9zc2l2ZWwgY3JpYXIgQkFUIGRlIHN0YXJ0dXA6IHt9IiwgZS5nZXRNZXNzYWdlKCkpOwogICAgICAgIH0KICAgIH0KfQo=
+package br.com.infoativa.fiscal.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.nio.file.*;
+
+/**
+ * Serviço de registro no startup do Windows.
+ * Registra o aplicativo para iniciar automaticamente com o Windows
+ * via chave de registro HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+ */
+public class StartupService {
+
+    private static final Logger log = LoggerFactory.getLogger(StartupService.class);
+    private static final String APP_NAME = "ModuloFiscalInfoAtiva";
+    private static final String REG_KEY = 
+        "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+
+    private StartupService() {}
+
+    /**
+     * Registra o aplicativo no startup do Windows.
+     * Usa reg.exe nativo (disponível em todos os Windows).
+     */
+    public static void registerStartup() {
+        String exePath = getExePath();
+        if (exePath == null) {
+            log.warn("Nao foi possivel determinar o caminho do executavel");
+            return;
+        }
+
+        try {
+            String value = "\"" + exePath + "\" --tray";
+            ProcessBuilder pb = new ProcessBuilder(
+                "reg", "add", REG_KEY,
+                "/v", APP_NAME,
+                "/t", "REG_SZ",
+                "/d", value,
+                "/f"
+            );
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
+            int exitCode = proc.waitFor();
+
+            if (exitCode == 0) {
+                log.info("Registro no startup do Windows realizado com sucesso: {}", value);
+            } else {
+                log.warn("Falha ao registrar no startup. Codigo de saida: {}", exitCode);
+            }
+        } catch (Exception e) {
+            log.error("Erro ao registrar no startup do Windows", e);
+        }
+    }
+
+    /**
+     * Remove o aplicativo do startup do Windows.
+     */
+    public static void unregisterStartup() {
+        try {
+            ProcessBuilder pb = new ProcessBuilder(
+                "reg", "delete", REG_KEY,
+                "/v", APP_NAME,
+                "/f"
+            );
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
+            proc.waitFor();
+            log.info("Registro de startup removido");
+        } catch (Exception e) {
+            log.error("Erro ao remover startup do Windows", e);
+        }
+    }
+
+    /**
+     * Verifica se já está registrado no startup.
+     */
+    public static boolean isRegistered() {
+        try {
+            ProcessBuilder pb = new ProcessBuilder(
+                "reg", "query", REG_KEY, "/v", APP_NAME
+            );
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
+            int exitCode = proc.waitFor();
+            return exitCode == 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private static String getExePath() {
+        try {
+            // Detectar se está rodando como .exe (Launch4j) ou .jar
+            String command = ProcessHandle.current().info().command().orElse(null);
+            if (command != null && command.toLowerCase().endsWith(".exe")) {
+                return command;
+            }
+            // Caso seja .jar, usar javaw
+            Path jarPath = Path.of(
+                StartupService.class.getProtectionDomain()
+                    .getCodeSource().getLocation().toURI()
+            );
+            if (jarPath.toString().endsWith(".jar")) {
+                String javaHome = System.getProperty("java.home");
+                String javaw = javaHome + "\\bin\\javaw.exe";
+                return javaw + " -jar \"" + jarPath + "\"";
+            }
+        } catch (Exception e) {
+            log.debug("Erro ao determinar caminho do executavel: {}", e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * Cria script BAT de inicialização como alternativa ao registro.
+     */
+    public static void createStartupBat() {
+        try {
+            Path startupDir = Path.of(System.getProperty("user.home"),
+                "AppData", "Roaming", "Microsoft", "Windows",
+                "Start Menu", "Programs", "Startup");
+
+            if (!Files.exists(startupDir)) return;
+
+            Path batFile = startupDir.resolve("ModuloFiscal.bat");
+            String exePath = getExePath();
+            if (exePath == null) return;
+
+            String content = "@echo off\nstart \"\" " + exePath + " --tray\n";
+            Files.writeString(batFile, content);
+            log.info("BAT de startup criado: {}", batFile);
+        } catch (Exception e) {
+            log.warn("Nao foi possivel criar BAT de startup: {}", e.getMessage());
+        }
+    }
+}
