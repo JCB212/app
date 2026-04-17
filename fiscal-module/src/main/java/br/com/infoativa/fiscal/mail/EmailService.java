@@ -1,1 +1,211 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5tYWlsOwoKaW1wb3J0IGJyLmNvbS5pbmZvYXRpdmEuZmlzY2FsLmRvbWFpbi5FbWFpbENvbmZpZzsKaW1wb3J0IGpha2FydGEubWFpbC4qOwppbXBvcnQgamFrYXJ0YS5tYWlsLmludGVybmV0Lio7CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyOwppbXBvcnQgb3JnLnNsZjRqLkxvZ2dlckZhY3Rvcnk7CgppbXBvcnQgamF2YS5uaW8uZmlsZS5QYXRoOwppbXBvcnQgamF2YS50aW1lLkxvY2FsRGF0ZTsKaW1wb3J0IGphdmEudGltZS5mb3JtYXQuRGF0ZVRpbWVGb3JtYXR0ZXI7CmltcG9ydCBqYXZhLnV0aWwuTGlzdDsKaW1wb3J0IGphdmEudXRpbC5Qcm9wZXJ0aWVzOwoKLyoqCiAqIFNlcnZpw6dvIGRlIGUtbWFpbCBTTVRQIGNvbSBzdXBvcnRlIGR1cGxvOgogKiAtIFBvcnRhIDQ2NSDihpIgU1NMIGRpcmV0byAobWFpbC5zbXRwLnNzbC5lbmFibGU9dHJ1ZSkKICogLSBQb3J0YSA1ODcg4oaSIFNUQVJUVExTIChtYWlsLnNtdHAuc3RhcnR0bHMuZW5hYmxlPXRydWUpCiAqIAogKiBJbXBsZW1lbnRhOgogKiAtIFRlc3RlIGRlIGNvbmV4w6NvIGFudGVzIGRvIGVudmlvCiAqIC0gTG9nIGRldGFsaGFkbyBkZSBlcnJvIFNNVFAgKGluY2x1aW5kbyBlcnJvIDUzNSkKICogLSBUcmF0YW1lbnRvIGRlIEF1dGhlbnRpY2F0aW9uRmFpbGVkRXhjZXB0aW9uCiAqIC0gVGltZW91dHMgY29uZmlndXJhZG9zCiAqLwpwdWJsaWMgY2xhc3MgRW1haWxTZXJ2aWNlIHsKCiAgICBwcml2YXRlIHN0YXRpYyBmaW5hbCBMb2dnZXIgbG9nID0gTG9nZ2VyRmFjdG9yeS5nZXRMb2dnZXIoRW1haWxTZXJ2aWNlLmNsYXNzKTsKCiAgICAvKioKICAgICAqIEVudmlhIFpJUCBmaXNjYWwgYW9zIGRlc3RpbmF0w6FyaW9zIGNvbmZpZ3VyYWRvcy4KICAgICAqIEByZXR1cm4gdHJ1ZSBzZSBlbnZpYWRvIGNvbSBzdWNlc3NvCiAgICAgKi8KICAgIHB1YmxpYyBzdGF0aWMgYm9vbGVhbiBzZW5kWmlwKEVtYWlsQ29uZmlnIGNvbmZpZywgTGlzdDxTdHJpbmc+IGRlc3RpbmF0YXJpb3MsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUGF0aCB6aXBGaWxlLCBTdHJpbmcgcGVyaW9kb0Rlc2MpIHsKICAgICAgICBpZiAoZGVzdGluYXRhcmlvcyA9PSBudWxsIHx8IGRlc3RpbmF0YXJpb3MuaXNFbXB0eSgpKSB7CiAgICAgICAgICAgIGxvZy53YXJuKCJOZW5odW0gZGVzdGluYXRhcmlvIGNvbmZpZ3VyYWRvLiBFLW1haWwgbmFvIGVudmlhZG8uIik7CiAgICAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICAgICB9CiAgICAgICAgaWYgKGNvbmZpZy5zZW5oYSgpID09IG51bGwgfHwgY29uZmlnLnNlbmhhKCkuaXNCbGFuaygpKSB7CiAgICAgICAgICAgIGxvZy53YXJuKCJTZW5oYSBTTVRQIG5hbyBjb25maWd1cmFkYS4gRS1tYWlsIG5hbyBlbnZpYWRvLiIpOwogICAgICAgICAgICByZXR1cm4gZmFsc2U7CiAgICAgICAgfQoKICAgICAgICAvLyBUZXN0YXIgY29uZXjDo28gYW50ZXMgZGUgZW52aWFyCiAgICAgICAgaWYgKCF0ZXN0Q29ubmVjdGlvbihjb25maWcpKSB7CiAgICAgICAgICAgIGxvZy5lcnJvcigiVGVzdGUgZGUgY29uZXhhbyBTTVRQIGZhbGhvdS4gRW52aW8gY2FuY2VsYWRvLiIpOwogICAgICAgICAgICByZXR1cm4gZmFsc2U7CiAgICAgICAgfQoKICAgICAgICBTZXNzaW9uIHNlc3Npb24gPSBjcmVhdGVTZXNzaW9uKGNvbmZpZyk7CiAgICAgICAgc2Vzc2lvbi5zZXREZWJ1Zyh0cnVlKTsgLy8gUGFyYSBkaWFnbsOzc3RpY28gZGV0YWxoYWRvIGVtIGxvZwoKICAgICAgICB0cnkgewogICAgICAgICAgICBNaW1lTWVzc2FnZSBtZXNzYWdlID0gbmV3IE1pbWVNZXNzYWdlKHNlc3Npb24pOwogICAgICAgICAgICBtZXNzYWdlLnNldEZyb20obmV3IEludGVybmV0QWRkcmVzcyhjb25maWcudXN1YXJpbygpLCAiTcOzZHVsbyBGaXNjYWwgSW5mb0F0aXZhIiwgIlVURi04IikpOwoKICAgICAgICAgICAgZm9yIChTdHJpbmcgZGVzdCA6IGRlc3RpbmF0YXJpb3MpIHsKICAgICAgICAgICAgICAgIGlmIChkZXN0ICE9IG51bGwgJiYgIWRlc3QuaXNCbGFuaygpKSB7CiAgICAgICAgICAgICAgICAgICAgbWVzc2FnZS5hZGRSZWNpcGllbnQoTWVzc2FnZS5SZWNpcGllbnRUeXBlLlRPLAogICAgICAgICAgICAgICAgICAgICAgICBuZXcgSW50ZXJuZXRBZGRyZXNzKGRlc3QudHJpbSgpKSk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIG1lc3NhZ2Uuc2V0U3ViamVjdCgiRmVjaGFtZW50byBGaXNjYWwgLSAiICsgcGVyaW9kb0Rlc2MsICJVVEYtOCIpOwoKICAgICAgICAgICAgLy8gQ29ycG8gZG8gZS1tYWlsCiAgICAgICAgICAgIFN0cmluZyBjb3JwbyA9IGJ1aWxkRW1haWxCb2R5KHBlcmlvZG9EZXNjKTsKICAgICAgICAgICAgTWltZUJvZHlQYXJ0IHRleHRQYXJ0ID0gbmV3IE1pbWVCb2R5UGFydCgpOwogICAgICAgICAgICB0ZXh0UGFydC5zZXRUZXh0KGNvcnBvLCAiVVRGLTgiLCAicGxhaW4iKTsKCiAgICAgICAgICAgIC8vIEFuZXhvIFpJUAogICAgICAgICAgICBNaW1lQm9keVBhcnQgYXR0YWNoUGFydCA9IG5ldyBNaW1lQm9keVBhcnQoKTsKICAgICAgICAgICAgYXR0YWNoUGFydC5hdHRhY2hGaWxlKHppcEZpbGUudG9GaWxlKCkpOwogICAgICAgICAgICBhdHRhY2hQYXJ0LnNldEZpbGVOYW1lKE1pbWVVdGlsaXR5LmVuY29kZVRleHQoCiAgICAgICAgICAgICAgICB6aXBGaWxlLmdldEZpbGVOYW1lKCkudG9TdHJpbmcoKSwgIlVURi04IiwgIkIiKSk7CgogICAgICAgICAgICBNdWx0aXBhcnQgbXVsdGlwYXJ0ID0gbmV3IE1pbWVNdWx0aXBhcnQoKTsKICAgICAgICAgICAgbXVsdGlwYXJ0LmFkZEJvZHlQYXJ0KHRleHRQYXJ0KTsKICAgICAgICAgICAgbXVsdGlwYXJ0LmFkZEJvZHlQYXJ0KGF0dGFjaFBhcnQpOwogICAgICAgICAgICBtZXNzYWdlLnNldENvbnRlbnQobXVsdGlwYXJ0KTsKCiAgICAgICAgICAgIFRyYW5zcG9ydC5zZW5kKG1lc3NhZ2UpOwogICAgICAgICAgICBsb2cuaW5mbygiRS1tYWlsIGVudmlhZG8gY29tIHN1Y2Vzc28gcGFyYSB7fSBkZXN0aW5hdGFyaW8ocyk6IHt9IiwgCiAgICAgICAgICAgICAgICAgICAgIGRlc3RpbmF0YXJpb3Muc2l6ZSgpLCBkZXN0aW5hdGFyaW9zKTsKICAgICAgICAgICAgcmV0dXJuIHRydWU7CgogICAgICAgIH0gY2F0Y2ggKEF1dGhlbnRpY2F0aW9uRmFpbGVkRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLmVycm9yKCJGQUxIQSBERSBBVVRFTlRJQ0FDQU8gU01UUCAoZXJybyA1MzUpOiB1c3VhcmlvPXt9LCBob3N0PXt9LCBwb3J0YT17fSB8ICIgKwogICAgICAgICAgICAgICAgICAgICAgIlZlcmlmaXF1ZSB1c3VhcmlvL3NlbmhhIGUgc2UgYSBjb250YSBwZXJtaXRlIFNNVFAuIiwgCiAgICAgICAgICAgICAgICAgICAgICBjb25maWcudXN1YXJpbygpLCBjb25maWcuaG9zdCgpLCBjb25maWcucG9ydCgpLCBlKTsKICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgICAgIH0gY2F0Y2ggKFNlbmRGYWlsZWRFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZXJyb3IoIkZhbGhhIGFvIGVudmlhciBlLW1haWwgKGRlc3RpbmF0YXJpbyBpbnZhbGlkbz8pOiB7fSIsIGUuZ2V0TWVzc2FnZSgpLCBlKTsKICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgICAgIH0gY2F0Y2ggKE1lc3NhZ2luZ0V4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIGxvZy5lcnJvcigiRXJybyBTTVRQIGFvIGVudmlhciBlLW1haWw6IGhvc3Q9e30sIHBvcnRhPXt9LCB1c3VhcmlvPXt9IHwgRXJybzoge30iLAogICAgICAgICAgICAgICAgICAgICAgY29uZmlnLmhvc3QoKSwgY29uZmlnLnBvcnQoKSwgY29uZmlnLnVzdWFyaW8oKSwgZS5nZXRNZXNzYWdlKCksIGUpOwogICAgICAgICAgICByZXR1cm4gZmFsc2U7CiAgICAgICAgfSBjYXRjaCAoRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLmVycm9yKCJFcnJvIGluZXNwZXJhZG8gYW8gZW52aWFyIGUtbWFpbCIsIGUpOwogICAgICAgICAgICByZXR1cm4gZmFsc2U7CiAgICAgICAgfQogICAgfQoKICAgIC8qKgogICAgICogVGVzdGEgY29uZXjDo28gU01UUCBzZW0gZW52aWFyIG1lbnNhZ2VtLgogICAgICogQHJldHVybiB0cnVlIHNlIGNvbmV4w6NvIE9LCiAgICAgKi8KICAgIHB1YmxpYyBzdGF0aWMgYm9vbGVhbiB0ZXN0Q29ubmVjdGlvbihFbWFpbENvbmZpZyBjb25maWcpIHsKICAgICAgICBQcm9wZXJ0aWVzIHByb3BzID0gYnVpbGRQcm9wZXJ0aWVzKGNvbmZpZyk7CiAgICAgICAgcHJvcHMucHV0KCJtYWlsLnNtdHAuY29ubmVjdGlvbnRpbWVvdXQiLCAiODAwMCIpOwogICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnRpbWVvdXQiLCAiODAwMCIpOwoKICAgICAgICB0cnkgewogICAgICAgICAgICBTZXNzaW9uIHNlc3Npb24gPSBTZXNzaW9uLmdldEluc3RhbmNlKHByb3BzLCBjcmVhdGVBdXRoZW50aWNhdG9yKGNvbmZpZykpOwogICAgICAgICAgICB0cnkgKFRyYW5zcG9ydCB0cmFuc3BvcnQgPSBzZXNzaW9uLmdldFRyYW5zcG9ydCgic210cCIpKSB7CiAgICAgICAgICAgICAgICB0cmFuc3BvcnQuY29ubmVjdChjb25maWcuaG9zdCgpLCBjb25maWcucG9ydCgpLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uZmlnLnVzdWFyaW8oKSwgY29uZmlnLnNlbmhhKCkpOwogICAgICAgICAgICAgICAgbG9nLmluZm8oIlRlc3RlIGRlIGNvbmV4YW8gU01UUDogT0sgKHt9Ont9KSIsIGNvbmZpZy5ob3N0KCksIGNvbmZpZy5wb3J0KCkpOwogICAgICAgICAgICAgICAgcmV0dXJuIHRydWU7CiAgICAgICAgICAgIH0KICAgICAgICB9IGNhdGNoIChBdXRoZW50aWNhdGlvbkZhaWxlZEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIGxvZy5lcnJvcigiVGVzdGUgU01UUDogQVVURU5USUNBQ0FPIEZBTEhPVSAoZXJybyA1MzUpIHBhcmEgdXN1YXJpbyAne30nLiAiICsKICAgICAgICAgICAgICAgICAgICAgICJWZXJpZmlxdWUgYSBzZW5oYSBlIHBlcm1pc3NvZXMgU01UUC4iLCBjb25maWcudXN1YXJpbygpLCBlKTsKICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIGxvZy5lcnJvcigiVGVzdGUgU01UUDogRkFMSEEgZGUgY29uZXhhbyBlbSB7fTp7fSAtIHt9IiwgCiAgICAgICAgICAgICAgICAgICAgICBjb25maWcuaG9zdCgpLCBjb25maWcucG9ydCgpLCBlLmdldE1lc3NhZ2UoKSk7CiAgICAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICAgICB9CiAgICB9CgogICAgLy8g4pSA4pSAIFNlc3Npb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgogICAgcHJpdmF0ZSBzdGF0aWMgU2Vzc2lvbiBjcmVhdGVTZXNzaW9uKEVtYWlsQ29uZmlnIGNvbmZpZykgewogICAgICAgIFByb3BlcnRpZXMgcHJvcHMgPSBidWlsZFByb3BlcnRpZXMoY29uZmlnKTsKICAgICAgICByZXR1cm4gU2Vzc2lvbi5nZXRJbnN0YW5jZShwcm9wcywgY3JlYXRlQXV0aGVudGljYXRvcihjb25maWcpKTsKICAgIH0KCiAgICBwcml2YXRlIHN0YXRpYyBQcm9wZXJ0aWVzIGJ1aWxkUHJvcGVydGllcyhFbWFpbENvbmZpZyBjb25maWcpIHsKICAgICAgICBQcm9wZXJ0aWVzIHByb3BzID0gbmV3IFByb3BlcnRpZXMoKTsKICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5ob3N0IiwgY29uZmlnLmhvc3QoKSk7CiAgICAgICAgcHJvcHMucHV0KCJtYWlsLnNtdHAucG9ydCIsIFN0cmluZy52YWx1ZU9mKGNvbmZpZy5wb3J0KCkpKTsKICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5hdXRoIiwgInRydWUiKTsKICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5zc2wudHJ1c3QiLCBjb25maWcuaG9zdCgpKTsKICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5jb25uZWN0aW9udGltZW91dCIsICIxMDAwMCIpOwogICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnRpbWVvdXQiLCAiMzAwMDAiKTsKICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC53cml0ZXRpbWVvdXQiLCAiMzAwMDAiKTsKCiAgICAgICAgLy8gUG9ydGEgNDY1IOKGkiBTU0w7IFBvcnRhIDU4NyDihpIgU1RBUlRUTFM7IGRlbWFpcyDihpIgZGVwZW5kZSBkbyBmbGFnIHNzbAogICAgICAgIGlmIChjb25maWcucG9ydCgpID09IDQ2NSB8fCAoY29uZmlnLnNzbCgpICYmIGNvbmZpZy5wb3J0KCkgIT0gNTg3KSkgewogICAgICAgICAgICAvLyBTU0wgZGlyZXRvCiAgICAgICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnNzbC5lbmFibGUiLCAidHJ1ZSIpOwogICAgICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5zb2NrZXRGYWN0b3J5LmNsYXNzIiwgImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIpOwogICAgICAgICAgICBwcm9wcy5wdXQoIm1haWwuc210cC5zb2NrZXRGYWN0b3J5LnBvcnQiLCBTdHJpbmcudmFsdWVPZihjb25maWcucG9ydCgpKSk7CiAgICAgICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuZmFsbGJhY2siLCAiZmFsc2UiKTsKICAgICAgICAgICAgbG9nLmRlYnVnKCJTTVRQIG1vZG86IFNTTCAocG9ydGEge30pIiwgY29uZmlnLnBvcnQoKSk7CiAgICAgICAgfSBlbHNlIGlmIChjb25maWcucG9ydCgpID09IDU4NyB8fCAhY29uZmlnLnNzbCgpKSB7CiAgICAgICAgICAgIC8vIFNUQVJUVExTCiAgICAgICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnN0YXJ0dGxzLmVuYWJsZSIsICJ0cnVlIik7CiAgICAgICAgICAgIHByb3BzLnB1dCgibWFpbC5zbXRwLnN0YXJ0dGxzLnJlcXVpcmVkIiwgInRydWUiKTsKICAgICAgICAgICAgbG9nLmRlYnVnKCJTTVRQIG1vZG86IFNUQVJUVExTIChwb3J0YSB7fSkiLCBjb25maWcucG9ydCgpKTsKICAgICAgICB9CgogICAgICAgIHJldHVybiBwcm9wczsKICAgIH0KCiAgICBwcml2YXRlIHN0YXRpYyBBdXRoZW50aWNhdG9yIGNyZWF0ZUF1dGhlbnRpY2F0b3IoRW1haWxDb25maWcgY29uZmlnKSB7CiAgICAgICAgcmV0dXJuIG5ldyBBdXRoZW50aWNhdG9yKCkgewogICAgICAgICAgICBAT3ZlcnJpZGUKICAgICAgICAgICAgcHJvdGVjdGVkIFBhc3N3b3JkQXV0aGVudGljYXRpb24gZ2V0UGFzc3dvcmRBdXRoZW50aWNhdGlvbigpIHsKICAgICAgICAgICAgICAgIHJldHVybiBuZXcgUGFzc3dvcmRBdXRoZW50aWNhdGlvbihjb25maWcudXN1YXJpbygpLCBjb25maWcuc2VuaGEoKSk7CiAgICAgICAgICAgIH0KICAgICAgICB9OwogICAgfQoKICAgIC8vIOKUgOKUgCBDb3JwbyBkbyBlLW1haWwg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgogICAgcHJpdmF0ZSBzdGF0aWMgU3RyaW5nIGJ1aWxkRW1haWxCb2R5KFN0cmluZyBwZXJpb2RvRGVzYykgewogICAgICAgIFN0cmluZyBkYXRhID0gTG9jYWxEYXRlLm5vdygpLmZvcm1hdChEYXRlVGltZUZvcm1hdHRlci5vZlBhdHRlcm4oImRkL01NL3l5eXkiKSk7CiAgICAgICAgcmV0dXJuICIiIgogICAgICAgICAgICBQcmV6YWRvKGEpIENvbnRhZG9yKGEpLAoKICAgICAgICAgICAgU2VndWUgZW0gYW5leG8gbyBmZWNoYW1lbnRvIGZpc2NhbCBhdXRvbcOhdGljbyByZWZlcmVudGUgYW8gcGVyw61vZG86ICVzCiAgICAgICAgICAgIERhdGEgZGUgZW52aW86ICVzCgogICAgICAgICAgICBDb250ZcO6ZG8gZG8gYXJxdWl2byBaSVA6CiAgICAgICAgICAgIOKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgQogICAgICAgICAgICDinJMgWE1McyBkZSBORmUgKE5vdGFzIEZpc2NhaXMgZGUgU2HDrWRhKQogICAgICAgICAgICDinJMgWE1McyBkZSBORkNlIChDdXBvbnMgRmlzY2FpcykKICAgICAgICAgICAg4pyTIFhNTHMgZGUgQ29tcHJhcyAoRm9ybmVjZWRvcmVzKQogICAgICAgICAgICDinJMgWE1McyBDYW5jZWxhZG9zIGUgSW51dGlsaXphZG9zCiAgICAgICAgICAgIOKckyBTUEVEIEZpc2NhbAogICAgICAgICAgICDinJMgU1BFRCBDb250cmlidWnDp8O1ZXMKICAgICAgICAgICAg4pyTIFNJTlRFR1JBCiAgICAgICAgICAgIOKckyBSZXN1bW8gZGUgVmVuZGFzIChQREYpCiAgICAgICAgICAgIOKckyBSZXN1bW8gZGUgSW1wb3N0b3MgKFBERikKICAgICAgICAgICAg4pyTIFJlc3VtbyBkZSBDb21wcmFzIChQREYpCiAgICAgICAgICAgIOKckyBSZWxhdMOzcmlvIGRlIFNlcXXDqm5jaWFzCiAgICAgICAgICAgIOKckyBSZWxhdMOzcmlvIENTVC9DRk9QCiAgICAgICAgICAgIOKckyBSZWxhdMOzcmlvIE1vbm9mw6FzaWNvCiAgICAgICAgICAgIOKckyBSZWxhdMOzcmlvIGRlIERldm9sdcOnw7VlcwoKICAgICAgICAgICAgRXN0ZSBlLW1haWwgZm9pIGdlcmFkbyBhdXRvbWF0aWNhbWVudGUgcGVsbyBNw7NkdWxvIEZpc2NhbCBJbmZvQXRpdmEuCiAgICAgICAgICAgIAogICAgICAgICAgICBBdHQsCiAgICAgICAgICAgIE3Ds2R1bG8gRmlzY2FsIEluZm9BdGl2YQogICAgICAgICAgICAiIiIuZm9ybWF0dGVkKHBlcmlvZG9EZXNjLCBkYXRhKTsKICAgIH0KfQo=
+package br.com.infoativa.fiscal.mail;
+
+import br.com.infoativa.fiscal.domain.EmailConfig;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Properties;
+
+/**
+ * Serviço de e-mail SMTP com suporte duplo:
+ * - Porta 465 → SSL direto (mail.smtp.ssl.enable=true)
+ * - Porta 587 → STARTTLS (mail.smtp.starttls.enable=true)
+ * 
+ * Implementa:
+ * - Teste de conexão antes do envio
+ * - Log detalhado de erro SMTP (incluindo erro 535)
+ * - Tratamento de AuthenticationFailedException
+ * - Timeouts configurados
+ */
+public class EmailService {
+
+    private static final Logger log = LoggerFactory.getLogger(EmailService.class);
+
+    /**
+     * Envia ZIP fiscal aos destinatários configurados.
+     * @return true se enviado com sucesso
+     */
+    public static boolean sendZip(EmailConfig config, List<String> destinatarios,
+                                   Path zipFile, String periodoDesc) {
+        if (destinatarios == null || destinatarios.isEmpty()) {
+            log.warn("Nenhum destinatario configurado. E-mail nao enviado.");
+            return false;
+        }
+        if (config.senha() == null || config.senha().isBlank()) {
+            log.warn("Senha SMTP nao configurada. E-mail nao enviado.");
+            return false;
+        }
+
+        // Testar conexão antes de enviar
+        if (!testConnection(config)) {
+            log.error("Teste de conexao SMTP falhou. Envio cancelado.");
+            return false;
+        }
+
+        Session session = createSession(config);
+        session.setDebug(true); // Para diagnóstico detalhado em log
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(config.usuario(), "Módulo Fiscal InfoAtiva", "UTF-8"));
+
+            for (String dest : destinatarios) {
+                if (dest != null && !dest.isBlank()) {
+                    message.addRecipient(Message.RecipientType.TO,
+                        new InternetAddress(dest.trim()));
+                }
+            }
+
+            message.setSubject("Fechamento Fiscal - " + periodoDesc, "UTF-8");
+
+            // Corpo do e-mail
+            String corpo = buildEmailBody(periodoDesc);
+            MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setText(corpo, "UTF-8", "plain");
+
+            // Anexo ZIP
+            MimeBodyPart attachPart = new MimeBodyPart();
+            attachPart.attachFile(zipFile.toFile());
+            attachPart.setFileName(MimeUtility.encodeText(
+                zipFile.getFileName().toString(), "UTF-8", "B"));
+
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(textPart);
+            multipart.addBodyPart(attachPart);
+            message.setContent(multipart);
+
+            Transport.send(message);
+            log.info("E-mail enviado com sucesso para {} destinatario(s): {}", 
+                     destinatarios.size(), destinatarios);
+            return true;
+
+        } catch (AuthenticationFailedException e) {
+            log.error("FALHA DE AUTENTICACAO SMTP (erro 535): usuario={}, host={}, porta={} | " +
+                      "Verifique usuario/senha e se a conta permite SMTP.", 
+                      config.usuario(), config.host(), config.port(), e);
+            return false;
+        } catch (SendFailedException e) {
+            log.error("Falha ao enviar e-mail (destinatario invalido?): {}", e.getMessage(), e);
+            return false;
+        } catch (MessagingException e) {
+            log.error("Erro SMTP ao enviar e-mail: host={}, porta={}, usuario={} | Erro: {}",
+                      config.host(), config.port(), config.usuario(), e.getMessage(), e);
+            return false;
+        } catch (Exception e) {
+            log.error("Erro inesperado ao enviar e-mail", e);
+            return false;
+        }
+    }
+
+    /**
+     * Testa conexão SMTP sem enviar mensagem.
+     * @return true se conexão OK
+     */
+    public static boolean testConnection(EmailConfig config) {
+        Properties props = buildProperties(config);
+        props.put("mail.smtp.connectiontimeout", "8000");
+        props.put("mail.smtp.timeout", "8000");
+
+        try {
+            Session session = Session.getInstance(props, createAuthenticator(config));
+            try (Transport transport = session.getTransport("smtp")) {
+                transport.connect(config.host(), config.port(),
+                                  config.usuario(), config.senha());
+                log.info("Teste de conexao SMTP: OK ({}:{})", config.host(), config.port());
+                return true;
+            }
+        } catch (AuthenticationFailedException e) {
+            log.error("Teste SMTP: AUTENTICACAO FALHOU (erro 535) para usuario '{}'. " +
+                      "Verifique a senha e permissoes SMTP.", config.usuario(), e);
+            return false;
+        } catch (Exception e) {
+            log.error("Teste SMTP: FALHA de conexao em {}:{} - {}", 
+                      config.host(), config.port(), e.getMessage());
+            return false;
+        }
+    }
+
+    // ── Session ───────────────────────────────────────────────────────────────
+
+    private static Session createSession(EmailConfig config) {
+        Properties props = buildProperties(config);
+        return Session.getInstance(props, createAuthenticator(config));
+    }
+
+    private static Properties buildProperties(EmailConfig config) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", config.host());
+        props.put("mail.smtp.port", String.valueOf(config.port()));
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.ssl.trust", config.host());
+        props.put("mail.smtp.connectiontimeout", "10000");
+        props.put("mail.smtp.timeout", "30000");
+        props.put("mail.smtp.writetimeout", "30000");
+
+        // Porta 465 → SSL; Porta 587 → STARTTLS; demais → depende do flag ssl
+        if (config.port() == 465 || (config.ssl() && config.port() != 587)) {
+            // SSL direto
+            props.put("mail.smtp.ssl.enable", "true");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.socketFactory.port", String.valueOf(config.port()));
+            props.put("mail.smtp.socketFactory.fallback", "false");
+            log.debug("SMTP modo: SSL (porta {})", config.port());
+        } else if (config.port() == 587 || !config.ssl()) {
+            // STARTTLS
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.starttls.required", "true");
+            log.debug("SMTP modo: STARTTLS (porta {})", config.port());
+        }
+
+        return props;
+    }
+
+    private static Authenticator createAuthenticator(EmailConfig config) {
+        return new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(config.usuario(), config.senha());
+            }
+        };
+    }
+
+    // ── Corpo do e-mail ───────────────────────────────────────────────────────
+
+    private static String buildEmailBody(String periodoDesc) {
+        String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return """
+            Prezado(a) Contador(a),
+
+            Segue em anexo o fechamento fiscal automático referente ao período: %s
+            Data de envio: %s
+
+            Conteúdo do arquivo ZIP:
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ✓ XMLs de NFe (Notas Fiscais de Saída)
+            ✓ XMLs de NFCe (Cupons Fiscais)
+            ✓ XMLs de Compras (Fornecedores)
+            ✓ XMLs Cancelados e Inutilizados
+            ✓ SPED Fiscal
+            ✓ SPED Contribuições
+            ✓ SINTEGRA
+            ✓ Resumo de Vendas (PDF)
+            ✓ Resumo de Impostos (PDF)
+            ✓ Resumo de Compras (PDF)
+            ✓ Relatório de Sequências
+            ✓ Relatório CST/CFOP
+            ✓ Relatório Monofásico
+            ✓ Relatório de Devoluções
+
+            Este e-mail foi gerado automaticamente pelo Módulo Fiscal InfoAtiva.
+            
+            Att,
+            Módulo Fiscal InfoAtiva
+            """.formatted(periodoDesc, data);
+    }
+}
