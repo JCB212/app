@@ -1,9 +1,1 @@
-package br.com.infoativa.fiscal;
-
-import br.com.infoativa.fiscal.ui.FiscalApp;
-
-public class Launcher {
-    public static void main(String[] args) {
-        FiscalApp.main(args);
-    }
-}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbDsKCmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC51aS5GaXNjYWxBcHA7CgovKioKICogTGF1bmNoZXIgcHJpbmNpcGFsIOKAlCBwb250byBkZSBlbnRyYWRhIGRvIEpBUi4KICogTmVjZXNzw6FyaW8gcGFyYSBKYXZhRlggcXVhbmRvIGVtcGFjb3RhZG8gY29tbyBmYXQtamFyLgogKi8KcHVibGljIGNsYXNzIExhdW5jaGVyIHsKICAgIHB1YmxpYyBzdGF0aWMgdm9pZCBtYWluKFN0cmluZ1tdIGFyZ3MpIHsKICAgICAgICBGaXNjYWxBcHAubWFpbihhcmdzKTsKICAgIH0KfQo=
