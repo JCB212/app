@@ -1,135 +1,257 @@
 package br.com.infoativa.fiscal.fiscal;
 
 import br.com.infoativa.fiscal.domain.*;
-import br.com.infoativa.fiscal.repository.NfceRepository;
-import br.com.infoativa.fiscal.repository.NfeRepository;
-import br.com.infoativa.fiscal.repository.CompraRepository;
+import br.com.infoativa.fiscal.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.sql.Connection;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.*;
 
-public class SpedFiscalStrategy implements FiscalObligationStrategy {
+/**
+ * SPED EFD Fiscal — Geração completa baseada no layout real do cliente.
+ *
+ * Blocos implementados:
+ *   0 → Abertura, empresa, participantes (0000/0001/0005/0100/0150/0990)
+ *   B → Escrituração de serviços (zerado — padrão comércio)
+ *   C → NF-e saída (C100 + C190 por CST/CFOP)
+ *   D → NF transporte/serviço (zerado)
+ *   E → Apuração ICMS (E100/E110)
+ *   G → Diferimento ICMS ativo (zerado)
+ *   H → Inventário (zerado)
+ *   K → Controle da produção (zerado)
+ *   9 → Encerramento + 9900 (qtd por registro) + 9999
+ *
+ * Formato de campos: valores decimais com vírgula (padrão SPED)
+ */
+public final class SpedFiscalStrategy implements FiscalObligationStrategy {
 
     private static final Logger log = LoggerFactory.getLogger(SpedFiscalStrategy.class);
-    private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("ddMMyyyy");
-    private final AtomicInteger lineCount = new AtomicInteger(0);
+    private static final DateTimeFormatter SPED_DATE = DateTimeFormatter.ofPattern("ddMMyyyy");
 
     @Override
     public String name() { return "SPED_FISCAL"; }
 
     @Override
-    public void generate(Connection conn, Periodo periodo, Path outputDir) throws Exception {
-        Path file = outputDir.resolve("TXT").resolve("SPED_FISCAL_" + periodo.mesAnoRef() + ".txt");
-        NfceRepository nfceRepo = new NfceRepository(conn);
+    public Path generate(Connection conn, Periodo periodo, Path outputDir) throws Exception {
+        log.info("Gerando SPED Fiscal: {}", periodo.descricao());
+
         NfeRepository nfeRepo = new NfeRepository(conn);
-        CompraRepository compraRepo = new CompraRepository(conn);
-
-        List<NfceRegistro> nfces = nfceRepo.findByPeriodo(periodo);
         List<NfeRegistro> nfes = nfeRepo.findByPeriodo(periodo);
-        List<CompraRegistro> compras = compraRepo.findByPeriodo(periodo);
 
-        BigDecimal totalIcms = BigDecimal.ZERO;
-        BigDecimal totalIcmsSt = BigDecimal.ZERO;
-        BigDecimal totalPis = BigDecimal.ZERO;
-        BigDecimal totalCofins = BigDecimal.ZERO;
+        log.info("NFe encontradas para SPED Fiscal: {}", nfes.size());
 
-        try (BufferedWriter w = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
-            // Bloco 0 - Abertura
-            writeLine(w, "|0000|015|0|" + fmt(periodo.inicio()) + "|" + fmt(periodo.fim()) + "|||||||BRL|");
-            writeLine(w, "|0001|0|");
-            writeLine(w, "|0005||||||||");
-            writeLine(w, "|0100||||||||||||||");
-            writeLine(w, "|0990|5|");
+        // Buscar dados da empresa via parâmetros
+        String cnpj        = getParam(conn, "CNPJ", "");
+        String nomeEmp     = getParam(conn, "NOME_FANTASIA", getParam(conn, "RAZAO_SOCIAL", "EMPRESA"));
+        String ie          = getParam(conn, "INSCRICAO_ESTADUAL", "");
+        String im          = getParam(conn, "INSCRICAO_MUNICIPAL", "");
+        String uf          = getParam(conn, "UF", "BA");
+        String codMun      = getParam(conn, "CODIGO_MUNICIPIO", "2910800");
+        String suframa     = getParam(conn, "SUFRAMA", "");
+        String contato     = getParam(conn, "CONTATO_FISCAL", "");
+        String fone        = getParam(conn, "TELEFONE", "");
+        String email       = getParam(conn, "EMAIL_FISCAL", "");
+        String logradouro  = getParam(conn, "LOGRADOURO", "");
+        String numero      = getParam(conn, "NUMERO", "");
+        String bairro      = getParam(conn, "BAIRRO", "");
+        String cep         = getParam(conn, "CEP", "");
+        String regTrib     = getParam(conn, "REGIME_TRIBUTARIO", "1"); // 1=SN, 2=LP, 3=LR
+        String nomeContab  = getParam(conn, "NOME_CONTABILISTA", contato);
 
-            // Bloco C - Documentos Fiscais
-            writeLine(w, "|C001|0|");
+        // ── Construir arquivo ──────────────────────────────────────────────
+        List<String> linhas = new ArrayList<>();
+        Map<String, Integer> contadores = new LinkedHashMap<>();
 
-            // NFe (modelo 55) saidas
-            for (NfeRegistro nfe : nfes) {
-                if ("N".equals(nfe.cancelado()) || nfe.cancelado() == null) {
-                    String es = "1".equals(nfe.entradaSaida()) ? "1" : "0";
-                    writeLine(w, "|C100|" + es + "|1||55|00|" + nfe.nfeSerie() + "|" + nfe.nfeNumero()
-                        + "|" + safe(nfe.nfeChaveAcesso()) + "|" + fmtDate(nfe.nfeDataEmissao())
-                        + "|" + fmtDate(nfe.nfeDataEmissao())
-                        + "|" + bd(nfe.totalProdutos()) + "|" + bd(nfe.desconto())
-                        + "|0,00|" + bd(nfe.valorFrete()) + "|" + bd(nfe.valorSeguro())
-                        + "|0,00|0,00|" + bd(nfe.valorFinal())
-                        + "|" + bd(nfe.valorBaseIcms()) + "|" + bd(nfe.valorIcms())
-                        + "|" + bd(nfe.valorBaseIcmsSt()) + "|" + bd(nfe.valorIcmsSt())
-                        + "|" + bd(nfe.valorIpi())
-                        + "|" + bd(nfe.valorPis()) + "|" + bd(nfe.valorCofins()) + "|0,00|");
-                    totalIcms = totalIcms.add(nfe.valorIcms());
-                    totalIcmsSt = totalIcmsSt.add(nfe.valorIcmsSt());
-                    totalPis = totalPis.add(nfe.valorPis());
-                    totalCofins = totalCofins.add(nfe.valorCofins());
-                }
+        String dtIni = periodo.inicio().format(SPED_DATE);
+        String dtFin = periodo.fim().format(SPED_DATE);
+
+        // ── BLOCO 0 ────────────────────────────────────────────────────────
+        add(linhas, contadores, reg("0000",
+            "019", "0", dtIni, dtFin, nomeEmp, cnpj, suframa, uf, ie, codMun,
+            im, suframa, regTrib, "1"));
+        add(linhas, contadores, reg("0001", "0"));
+        add(linhas, contadores, reg("0005",
+            nomeEmp, cep, logradouro, numero, "", bairro, fone, fone, email));
+        add(linhas, contadores, reg("0100",
+            nomeContab, "", "", "", "", "", "", "", "", fone, "", email, codMun));
+
+        // Participantes (clientes com NFe no período)
+        Set<String> partsCod = new LinkedHashSet<>();
+        for (NfeRegistro nfe : nfes) {
+            String cod = "C" + String.format("%06d", nfe.idCliente());
+            if (partsCod.add(cod)) {
+                add(linhas, contadores, reg("0150",
+                    cod, nfe.nomeCliente() != null ? nfe.nomeCliente() : "",
+                    "01058",
+                    nfe.cnpjCliente() != null ? nfe.cnpjCliente() : "",
+                    nfe.cpfCliente() != null ? nfe.cpfCliente() : "",
+                    nfe.ieCliente() != null ? nfe.ieCliente() : "",
+                    codMun, "", "", "", "", ""));
             }
-
-            // NFCe (modelo 65) - usando registro C400/C405/C420
-            if (!nfces.isEmpty()) {
-                writeLine(w, "|C400|2D|65|001|");
-                BigDecimal totalNfce = BigDecimal.ZERO;
-                BigDecimal totalCancNfce = BigDecimal.ZERO;
-                for (NfceRegistro nfce : nfces) {
-                    if ("N".equals(nfce.cupomCancelado()) || nfce.cupomCancelado() == null) {
-                        totalNfce = totalNfce.add(nfce.valorFinal());
-                        totalIcms = totalIcms.add(nfce.icms());
-                        totalPis = totalPis.add(nfce.pis());
-                        totalCofins = totalCofins.add(nfce.cofins());
-                    } else {
-                        totalCancNfce = totalCancNfce.add(nfce.valorFinal());
-                    }
-                }
-                writeLine(w, "|C405|" + fmt(periodo.fim()) + "|1|"
-                    + nfces.get(nfces.size()-1).nfceNumero() + "|" + bd(totalNfce)
-                    + "|0,00|" + bd(totalCancNfce) + "|");
-                writeLine(w, "|C420|F|" + bd(totalNfce) + "|0060|");
-                writeLine(w, "|C490|" + nfces.get(0).cfop() + "|" + bd(totalNfce) + "|||||||");
-            }
-
-            int blocoC = lineCount.get() - 5; // approximate
-            writeLine(w, "|C990|" + (blocoC + 2) + "|");
-
-            // Bloco E - Apuracao ICMS
-            writeLine(w, "|E001|0|");
-            writeLine(w, "|E100|" + fmt(periodo.inicio()) + "|" + fmt(periodo.fim()) + "|");
-            writeLine(w, "|E110|" + bd(totalIcms) + "|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|"
-                + bd(totalIcms) + "|0,00|" + bd(totalIcms) + "|");
-            writeLine(w, "|E990|4|");
-
-            // Bloco H - Inventario (vazio)
-            writeLine(w, "|H001|1|");
-            writeLine(w, "|H990|2|");
-
-            // Bloco 9 - Encerramento
-            writeLine(w, "|9001|0|");
-            writeLine(w, "|9900|0000|1|");
-            writeLine(w, "|9900|C100|" + nfes.size() + "|");
-            writeLine(w, "|9900|9999|1|");
-            writeLine(w, "|9990|4|");
-            writeLine(w, "|9999|" + lineCount.get() + "|");
         }
 
-        log.info("SPED Fiscal gerado: {} ({} linhas)", file, lineCount.get());
+        add(linhas, contadores, reg("0990", String.valueOf(
+            contadores.values().stream().mapToInt(i -> i).sum() + 1)));
+
+        // ── BLOCO B (zerado) ────────────────────────────────────────────────
+        add(linhas, contadores, reg("B001", "1"));
+        add(linhas, contadores, reg("B990", "2"));
+
+        // ── BLOCO C (NF-e saída) ────────────────────────────────────────────
+        add(linhas, contadores, reg("C001", "0"));
+
+        for (NfeRegistro nfe : nfes) {
+            String codPart = "C" + String.format("%06d", nfe.idCliente());
+            String codSit  = nfe.cancelado() != null && "S".equals(nfe.cancelado()) ? "02" : "00";
+            String dtDoc   = nfe.nfeDataEmissao() != null ? nfe.nfeDataEmissao().format(SPED_DATE) : dtIni;
+
+            add(linhas, contadores, reg("C100",
+                "1", "0", codPart,
+                str(nfe.nfeModelo() > 0 ? nfe.nfeModelo() : 55),
+                codSit, "1",
+                String.format("%09d", nfe.nfeNumero()),
+                nfe.nfeChaveAcesso() != null ? nfe.nfeChaveAcesso() : "",
+                dtDoc, dtDoc,
+                fmt(nfe.valorFinal()), "0",
+                fmt(nfe.desconto()), "0,00",
+                fmt(nfe.totalProdutos()), "0",
+                fmt(nfe.valorFrete()), fmt(nfe.valorSeguro()), "0,00",
+                fmt(nfe.valorBaseIcms()), fmt(nfe.valorIcms()),
+                "0,00", "0,00",
+                fmt(nfe.valorIpi()),
+                fmt(nfe.valorPis()), fmt(nfe.valorCofins()),
+                "0,00", "0,00"));
+
+            // C190: linha por combinação CST+CFOP (agrupa por CFOP da nota)
+            String cfop = nfe.cfop() != null && !nfe.cfop().isBlank()
+                          ? nfe.cfop() : "5102";
+
+            // CST ICMS baseado no regime tributário
+            String cstIcms = "1".equals(regTrib) ? "500" :  // Simples Nacional
+                             "102";                          // Normal (isento)
+
+            add(linhas, contadores, reg("C190",
+                cstIcms, cfop, "0,00",
+                fmt(nfe.totalProdutos()),
+                fmt(nfe.valorBaseIcms()), fmt(nfe.valorIcms()),
+                "0,00", "0,00", "0,00",
+                fmt(nfe.valorIpi()), ""));
+        }
+
+        add(linhas, contadores, reg("C990",
+            String.valueOf(contadores.getOrDefault("C100", 0)
+                + contadores.getOrDefault("C190", 0) + 2)));
+
+        // ── BLOCO D (zerado) ────────────────────────────────────────────────
+        add(linhas, contadores, reg("D001", "1"));
+        add(linhas, contadores, reg("D990", "2"));
+
+        // ── BLOCO E (apuração ICMS) ─────────────────────────────────────────
+        BigDecimal totalIcms = nfes.stream()
+            .filter(n -> !"S".equals(n.cancelado()))
+            .map(NfeRegistro::valorIcms).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalBcIcms = nfes.stream()
+            .filter(n -> !"S".equals(n.cancelado()))
+            .map(NfeRegistro::valorBaseIcms).reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        add(linhas, contadores, reg("E001", "0"));
+        add(linhas, contadores, reg("E100", dtIni, dtFin));
+        // E110: apuração ICMS (baseado na estrutura real do arquivo)
+        add(linhas, contadores, reg("E110",
+            fmt(totalBcIcms), "0,00", "0,00", "0,00", "0,00",
+            fmt(totalIcms),
+            "0,00", "0,00", "0,00", "0,00", "0,00",
+            fmt(totalIcms), "0,00", "0,00"));
+        add(linhas, contadores, reg("E990",
+            String.valueOf(contadores.getOrDefault("E001", 0)
+                + contadores.getOrDefault("E100", 0)
+                + contadores.getOrDefault("E110", 0) + 2)));
+
+        // ── BLOCO G (zerado) ────────────────────────────────────────────────
+        add(linhas, contadores, reg("G001", "1"));
+        add(linhas, contadores, reg("G990", "2"));
+
+        // ── BLOCO H (inventário — zerado) ───────────────────────────────────
+        add(linhas, contadores, reg("H001", "1"));
+        add(linhas, contadores, reg("H990", "2"));
+
+        // ── BLOCO K (produção — zerado) ──────────────────────────────────────
+        add(linhas, contadores, reg("K001", "1"));
+        add(linhas, contadores, reg("K990", "2"));
+
+        // ── BLOCO 1 (complementar — informações analíticas) ─────────────────
+        add(linhas, contadores, reg("1001", "1"));
+        add(linhas, contadores, reg("1010",
+            "N", "N", "N", "N", "N", "N", "N", "N", "N", "N",
+            "N", "N", "N", "N", "N", "N", "N", "N"));
+        add(linhas, contadores, reg("1990", "3"));
+
+        // ── BLOCO 9 (encerramento) ───────────────────────────────────────────
+        add(linhas, contadores, reg("9001", "0"));
+
+        // 9900 — quantidade por tipo de registro
+        for (Map.Entry<String, Integer> e : contadores.entrySet()) {
+            add(linhas, contadores, reg("9900", e.getKey(), str(e.getValue())));
+        }
+
+        int total = linhas.size() + 2; // +9990 +9999
+        add(linhas, contadores, reg("9990", str(total)));
+        add(linhas, contadores, reg("9999", str(linhas.size() + 1)));
+
+        // ── Gravar arquivo ────────────────────────────────────────────────────
+        Path spedDir = outputDir.resolve("TXT");
+        Files.createDirectories(spedDir);
+        Path out = spedDir.resolve("SPED_FISCAL_" + dtIni + "_" + dtFin + ".txt");
+        Files.write(out, linhas, StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        log.info("SPED Fiscal gerado: {} ({} linhas)", out.getFileName(), linhas.size());
+        return out;
     }
 
-    private void writeLine(BufferedWriter w, String line) throws Exception {
-        w.write(line);
-        w.newLine();
-        lineCount.incrementAndGet();
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    private String reg(String tipo, String... campos) {
+        StringBuilder sb = new StringBuilder("|").append(tipo).append("|");
+        for (int i = 0; i < campos.length; i++) {
+            sb.append(campos[i] != null ? campos[i] : "");
+            if (i < campos.length - 1) sb.append("|");
+        }
+        sb.append("|");
+        return sb.toString();
     }
 
-    private String fmt(LocalDate d) { return d != null ? d.format(FMT) : ""; }
-    private String fmtDate(LocalDate d) { return d != null ? d.format(FMT) : ""; }
-    private String bd(BigDecimal v) { return v != null ? v.setScale(2).toPlainString().replace(".", ",") : "0,00"; }
-    private String safe(String s) { return s != null ? s : ""; }
+    private void add(List<String> linhas, Map<String, Integer> cnt, String linha) {
+        linhas.add(linha);
+        // Extrair tipo do registro (entre primeiro e segundo pipe)
+        String tipo = linha.substring(1, linha.indexOf('|', 1));
+        cnt.merge(tipo, 1, Integer::sum);
+    }
+
+    private String fmt(BigDecimal v) {
+        if (v == null || v.compareTo(BigDecimal.ZERO) == 0) return "0,00";
+        return String.format("%.2f", v).replace(".", ",");
+    }
+
+    private String str(Object v) { return v == null ? "" : v.toString(); }
+
+    private String getParam(Connection conn, String campo, String def) {
+        for (String tbl : new String[]{"PARAMETROS", "EMPRESA", "CONFIGURACOES"}) {
+            try (Statement st = conn.createStatement();
+                 ResultSet rs = st.executeQuery(
+                     "SELECT " + campo + " FROM " + tbl + " ROWS 1")) {
+                if (rs.next()) {
+                    String v = rs.getString(1);
+                    if (v != null && !v.isBlank()) return v.trim();
+                }
+            } catch (Exception ignored) {}
+        }
+        return def;
+    }
 }
