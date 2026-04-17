@@ -1,16 +1,1 @@
-package br.com.infoativa.fiscal.domain;
-
-public record UsuarioRegistro(
-    long id,
-    String usuario,
-    String senha,
-    String funcao,
-    int nivel,
-    String bloqueado,
-    String hashTripa,
-    String controle
-) {
-    public boolean isBloqueado() {
-        return "S".equalsIgnoreCase(bloqueado) || "SIM".equalsIgnoreCase(bloqueado);
-    }
-}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kb21haW47CgpwdWJsaWMgcmVjb3JkIFVzdWFyaW9SZWdpc3Rybyhsb25nIGlkLCBTdHJpbmcgbm9tZSwgU3RyaW5nIGxvZ2luLCBTdHJpbmcgc2VuaGEsIFN0cmluZyBwZXJmaWwpIHt9Cg==
