@@ -1,40 +1,52 @@
 package br.com.infoativa.fiscal.db;
 
+import br.com.infoativa.fiscal.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DatabaseGateway implements AutoCloseable {
+/**
+ * Gateway de banco de dados Firebird com try-with-resources support.
+ * Mantém uma única conexão por instância (pool controlado).
+ */
+public final class DatabaseGateway implements AutoCloseable {
 
     private static final Logger log = LoggerFactory.getLogger(DatabaseGateway.class);
-    private final FirebirdConnectionFactory factory;
     private Connection connection;
+    private final AppConfig config;
 
-    public DatabaseGateway(FirebirdConnectionFactory factory) {
-        this.factory = factory;
+    private DatabaseGateway(AppConfig config, Connection connection) {
+        this.config = config;
+        this.connection = connection;
     }
 
-    public Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = factory.createConnection();
-            log.info("Conexao com Firebird estabelecida");
+    public static DatabaseGateway open(AppConfig config) throws SQLException {
+        Connection conn = FirebirdConnectionFactory.open(config);
+        return new DatabaseGateway(config, conn);
+    }
+
+    public Connection getConnection() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                log.info("Conexão fechada, reconectando...");
+                connection = FirebirdConnectionFactory.open(config);
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao verificar/reabrir conexão", e);
         }
         return connection;
     }
 
-    public boolean testConnection() {
+    /** @deprecated use getConnection() */
+    @Deprecated
+    public Connection connection() { return getConnection(); }
+
+    public boolean isConnected() {
         try {
-            Connection conn = getConnection();
-            boolean valid = conn != null && !conn.isClosed();
-            if (valid) {
-                conn.createStatement().execute("SELECT 1 FROM RDB$DATABASE");
-            }
-            log.info("Teste de conexao: {}", valid ? "OK" : "FALHOU");
-            return valid;
+            return connection != null && !connection.isClosed() && connection.isValid(3);
         } catch (SQLException e) {
-            log.error("Falha no teste de conexao: {}", e.getMessage());
             return false;
         }
     }
@@ -43,11 +55,9 @@ public class DatabaseGateway implements AutoCloseable {
     public void close() {
         if (connection != null) {
             try {
-                connection.close();
-                log.info("Conexao com Firebird fechada");
-            } catch (SQLException e) {
-                log.error("Erro ao fechar conexao: {}", e.getMessage());
-            }
+                if (!connection.isClosed()) connection.close();
+                log.debug("Conexão Firebird fechada");
+            } catch (SQLException ignored) {}
         }
     }
 }
