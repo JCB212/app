@@ -1,1 +1,176 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC50cmF5OwoKaW1wb3J0IGphdmFmeC5hbmltYXRpb24uKjsKaW1wb3J0IGphdmFmeC5hcHBsaWNhdGlvbi5QbGF0Zm9ybTsKaW1wb3J0IGphdmFmeC5nZW9tZXRyeS5JbnNldHM7CmltcG9ydCBqYXZhZnguZ2VvbWV0cnkuUG9zOwppbXBvcnQgamF2YWZ4LnNjZW5lLlNjZW5lOwppbXBvcnQgamF2YWZ4LnNjZW5lLmNvbnRyb2wuQnV0dG9uOwppbXBvcnQgamF2YWZ4LnNjZW5lLmNvbnRyb2wuTGFiZWw7CmltcG9ydCBqYXZhZnguc2NlbmUubGF5b3V0Lio7CmltcG9ydCBqYXZhZnguc2NlbmUucGFpbnQuQ29sb3I7CmltcG9ydCBqYXZhZnguc2NlbmUudGV4dC5Gb250OwppbXBvcnQgamF2YWZ4LnNjZW5lLnRleHQuRm9udFdlaWdodDsKaW1wb3J0IGphdmFmeC5zdGFnZS4qOwppbXBvcnQgamF2YWZ4LnV0aWwuRHVyYXRpb247CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyOwppbXBvcnQgb3JnLnNsZjRqLkxvZ2dlckZhY3Rvcnk7CgppbXBvcnQgamF2YS5hd3QuKjsKCi8qKgogKiBUb2FzdCBub3RpZmljYXRpb24gcHJvZmlzc2lvbmFsIG5vIGNhbnRvIGluZmVyaW9yIGVzcXVlcmRvLgogKiBFeGliaWRvIHBvciBOIHNlZ3VuZG9zIGNvbSBvcMOnw6NvIGRlIGZlY2hhciBtYW51YWxtZW50ZS4KICogRGVzaWduIG1vZGVybm8sIHNvbWJyYSBlIGFuaW1hw6fDo28gZGUgZW50cmFkYS9zYcOtZGEuCiAqLwpwdWJsaWMgY2xhc3MgRmlzY2FsVG9hc3ROb3RpZmljYXRpb24gewoKICAgIHByaXZhdGUgc3RhdGljIGZpbmFsIExvZ2dlciBsb2cgPSBMb2dnZXJGYWN0b3J5LmdldExvZ2dlcihGaXNjYWxUb2FzdE5vdGlmaWNhdGlvbi5jbGFzcyk7CgogICAgcHJpdmF0ZSBmaW5hbCBTdHJpbmcgdGl0bGU7CiAgICBwcml2YXRlIGZpbmFsIFN0cmluZyBtZXNzYWdlOwogICAgcHJpdmF0ZSBmaW5hbCBpbnQgZHVyYXRpb25TZWNvbmRzOwogICAgcHJpdmF0ZSBTdGFnZSBzdGFnZTsKCiAgICBwdWJsaWMgRmlzY2FsVG9hc3ROb3RpZmljYXRpb24oU3RyaW5nIHRpdGxlLCBTdHJpbmcgbWVzc2FnZSwgaW50IGR1cmF0aW9uU2Vjb25kcykgewogICAgICAgIHRoaXMudGl0bGUgPSB0aXRsZTsKICAgICAgICB0aGlzLm1lc3NhZ2UgPSBtZXNzYWdlOwogICAgICAgIHRoaXMuZHVyYXRpb25TZWNvbmRzID0gZHVyYXRpb25TZWNvbmRzOwogICAgfQoKICAgIHB1YmxpYyB2b2lkIHNob3coKSB7CiAgICAgICAgUGxhdGZvcm0ucnVuTGF0ZXIodGhpczo6YnVpbGRBbmRTaG93KTsKICAgIH0KCiAgICBwcml2YXRlIHZvaWQgYnVpbGRBbmRTaG93KCkgewogICAgICAgIHN0YWdlID0gbmV3IFN0YWdlKCk7CiAgICAgICAgc3RhZ2UuaW5pdFN0eWxlKFN0YWdlU3R5bGUuVFJBTlNQQVJFTlQpOwogICAgICAgIHN0YWdlLnNldEFsd2F5c09uVG9wKHRydWUpOwogICAgICAgIHN0YWdlLmluaXRNb2RhbGl0eShNb2RhbGl0eS5OT05FKTsKICAgICAgICBzdGFnZS5zZXRSZXNpemFibGUoZmFsc2UpOwoKICAgICAgICAvLyBDb250YWluZXIgcHJpbmNpcGFsCiAgICAgICAgVkJveCByb290ID0gbmV3IFZCb3goMTIpOwogICAgICAgIHJvb3Quc2V0UGFkZGluZyhuZXcgSW5zZXRzKDE4LCAyMiwgMTgsIDIyKSk7CiAgICAgICAgcm9vdC5zZXRTdHlsZSgKICAgICAgICAgICAgIi1meC1iYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LDAuOTcpOyIgKwogICAgICAgICAgICAiLWZ4LWJhY2tncm91bmQtcmFkaXVzOiAxMnB4OyIgKwogICAgICAgICAgICAiLWZ4LWVmZmVjdDogZHJvcHNoYWRvdyh0aHJlZS1wYXNzLWJveCwgcmdiYSgwLDAsMCwwLjM1KSwgMTgsIDAuMSwgMCwgNCk7IiArCiAgICAgICAgICAgICItZngtYm9yZGVyLWNvbG9yOiAjMjJjNTVlOyIgKwogICAgICAgICAgICAiLWZ4LWJvcmRlci13aWR0aDogMCAwIDAgNXB4OyIgKwogICAgICAgICAgICAiLWZ4LWJvcmRlci1yYWRpdXM6IDEycHg7IiArCiAgICAgICAgICAgICItZngtbWluLXdpZHRoOiAzNDBweDsiICsKICAgICAgICAgICAgIi1meC1tYXgtd2lkdGg6IDM4MHB4OyIKICAgICAgICApOwoKICAgICAgICAvLyBIZWFkZXIKICAgICAgICBIQm94IGhlYWRlciA9IG5ldyBIQm94KDEwKTsKICAgICAgICBoZWFkZXIuc2V0QWxpZ25tZW50KFBvcy5DRU5URVJfTEVGVCk7CgogICAgICAgIExhYmVsIGljb25MYWJlbCA9IG5ldyBMYWJlbCgi4pyFIik7CiAgICAgICAgaWNvbkxhYmVsLnNldFN0eWxlKCItZngtZm9udC1zaXplOiAyMnB4OyIpOwoKICAgICAgICBWQm94IHRleHRCb3ggPSBuZXcgVkJveCg0KTsKICAgICAgICBMYWJlbCB0aXRsZUxhYmVsID0gbmV3IExhYmVsKHRpdGxlKTsKICAgICAgICB0aXRsZUxhYmVsLnNldEZvbnQoRm9udC5mb250KCJTZWdvZSBVSSIsIEZvbnRXZWlnaHQuQk9MRCwgMTQpKTsKICAgICAgICB0aXRsZUxhYmVsLnNldFN0eWxlKCItZngtdGV4dC1maWxsOiAjMTU4MDNkOyIpOwoKICAgICAgICBMYWJlbCBtc2dMYWJlbCA9IG5ldyBMYWJlbChtZXNzYWdlKTsKICAgICAgICBtc2dMYWJlbC5zZXRGb250KEZvbnQuZm9udCgiU2Vnb2UgVUkiLCAxMikpOwogICAgICAgIG1zZ0xhYmVsLnNldFN0eWxlKCItZngtdGV4dC1maWxsOiAjMzc0MTUxOyIpOwogICAgICAgIG1zZ0xhYmVsLnNldFdyYXBUZXh0KHRydWUpOwogICAgICAgIG1zZ0xhYmVsLnNldE1heFdpZHRoKDI4MCk7CgogICAgICAgIHRleHRCb3guZ2V0Q2hpbGRyZW4oKS5hZGRBbGwodGl0bGVMYWJlbCwgbXNnTGFiZWwpOwogICAgICAgIGhlYWRlci5nZXRDaGlsZHJlbigpLmFkZEFsbChpY29uTGFiZWwsIHRleHRCb3gpOwoKICAgICAgICAvLyBQcm9ncmVzcyBiYXIgKyB0aW1lcgogICAgICAgIEhCb3ggZm9vdGVyID0gbmV3IEhCb3goMTApOwogICAgICAgIGZvb3Rlci5zZXRBbGlnbm1lbnQoUG9zLkNFTlRFUik7CgogICAgICAgIExhYmVsIHRpbWVyTGFiZWwgPSBuZXcgTGFiZWwoZm9ybWF0VGltZShkdXJhdGlvblNlY29uZHMpKTsKICAgICAgICB0aW1lckxhYmVsLnNldFN0eWxlKCItZngtZm9udC1zaXplOiAxMXB4OyAtZngtdGV4dC1maWxsOiAjNmI3MjgwOyIpOwoKICAgICAgICBSZWdpb24gc3BhY2VyID0gbmV3IFJlZ2lvbigpOwogICAgICAgIEhCb3guc2V0SGdyb3coc3BhY2VyLCBQcmlvcml0eS5BTFdBWVMpOwoKICAgICAgICBCdXR0b24gY2xvc2VCdG4gPSBuZXcgQnV0dG9uKCJGZWNoYXIiKTsKICAgICAgICBjbG9zZUJ0bi5zZXRTdHlsZSgKICAgICAgICAgICAgIi1meC1iYWNrZ3JvdW5kLWNvbG9yOiAjZjNmNGY2OyIgKwogICAgICAgICAgICAiLWZ4LXRleHQtZmlsbDogIzM3NDE1MTsiICsKICAgICAgICAgICAgIi1meC1mb250LXNpemU6IDExcHg7IiArCiAgICAgICAgICAgICItZngtcGFkZGluZzogNCAxMiA0IDEyOyIgKwogICAgICAgICAgICAiLWZ4LWJhY2tncm91bmQtcmFkaXVzOiA2cHg7IiArCiAgICAgICAgICAgICItZngtY3Vyc29yOiBoYW5kOyIKICAgICAgICApOwogICAgICAgIGNsb3NlQnRuLnNldE9uQWN0aW9uKGUgLT4gZGlzbWlzcygpKTsKCiAgICAgICAgZm9vdGVyLmdldENoaWxkcmVuKCkuYWRkQWxsKHRpbWVyTGFiZWwsIHNwYWNlciwgY2xvc2VCdG4pOwogICAgICAgIHJvb3QuZ2V0Q2hpbGRyZW4oKS5hZGRBbGwoaGVhZGVyLCBmb290ZXIpOwoKICAgICAgICBTY2VuZSBzY2VuZSA9IG5ldyBTY2VuZShyb290KTsKICAgICAgICBzY2VuZS5zZXRGaWxsKENvbG9yLlRSQU5TUEFSRU5UKTsKICAgICAgICBzdGFnZS5zZXRTY2VuZShzY2VuZSk7CgogICAgICAgIC8vIFBvc2nDp8OjbzogY2FudG8gaW5mZXJpb3IgZXNxdWVyZG8KICAgICAgICBwb3NpdGlvbkJvdHRvbUxlZnQoKTsKCiAgICAgICAgLy8gQW5pbWHDp8OjbyBkZSBlbnRyYWRhCiAgICAgICAgcm9vdC5zZXRPcGFjaXR5KDApOwogICAgICAgIHN0YWdlLnNob3coKTsKCiAgICAgICAgRmFkZVRyYW5zaXRpb24gZmFkZUluID0gbmV3IEZhZGVUcmFuc2l0aW9uKER1cmF0aW9uLm1pbGxpcyg0MDApLCByb290KTsKICAgICAgICBmYWRlSW4uc2V0RnJvbVZhbHVlKDApOwogICAgICAgIGZhZGVJbi5zZXRUb1ZhbHVlKDEpOwogICAgICAgIGZhZGVJbi5wbGF5KCk7CgogICAgICAgIC8vIENvdW50ZG93biB0aW1lcgogICAgICAgIGZpbmFsIGludFtdIHJlbWFpbmluZyA9IHtkdXJhdGlvblNlY29uZHN9OwogICAgICAgIFRpbWVsaW5lIGNvdW50ZG93biA9IG5ldyBUaW1lbGluZSgKICAgICAgICAgICAgbmV3IEtleUZyYW1lKER1cmF0aW9uLnNlY29uZHMoMSksIGUgLT4gewogICAgICAgICAgICAgICAgcmVtYWluaW5nWzBdLS07CiAgICAgICAgICAgICAgICB0aW1lckxhYmVsLnNldFRleHQoZm9ybWF0VGltZShyZW1haW5pbmdbMF0pKTsKICAgICAgICAgICAgICAgIGlmIChyZW1haW5pbmdbMF0gPD0gMCkgewogICAgICAgICAgICAgICAgICAgIGRpc21pc3MoKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfSkKICAgICAgICApOwogICAgICAgIGNvdW50ZG93bi5zZXRDeWNsZUNvdW50KGR1cmF0aW9uU2Vjb25kcyk7CiAgICAgICAgY291bnRkb3duLnBsYXkoKTsKCiAgICAgICAgbG9nLmluZm8oIlRvYXN0IG5vdGlmaWNhdGlvbiBleGliaWRvOiB7fSAoe31zKSIsIHRpdGxlLCBkdXJhdGlvblNlY29uZHMpOwogICAgfQoKICAgIHByaXZhdGUgdm9pZCBkaXNtaXNzKCkgewogICAgICAgIGlmIChzdGFnZSA9PSBudWxsKSByZXR1cm47CiAgICAgICAgRmFkZVRyYW5zaXRpb24gZmFkZU91dCA9IG5ldyBGYWRlVHJhbnNpdGlvbihEdXJhdGlvbi5taWxsaXMoMzAwKSwgc3RhZ2UuZ2V0U2NlbmUoKS5nZXRSb290KCkpOwogICAgICAgIGZhZGVPdXQuc2V0RnJvbVZhbHVlKDEpOwogICAgICAgIGZhZGVPdXQuc2V0VG9WYWx1ZSgwKTsKICAgICAgICBmYWRlT3V0LnNldE9uRmluaXNoZWQoZSAtPiB7CiAgICAgICAgICAgIHN0YWdlLmNsb3NlKCk7CiAgICAgICAgICAgIGxvZy5pbmZvKCJUb2FzdCBub3RpZmljYXRpb24gZmVjaGFkbzoge30iLCB0aXRsZSk7CiAgICAgICAgfSk7CiAgICAgICAgZmFkZU91dC5wbGF5KCk7CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIHBvc2l0aW9uQm90dG9tTGVmdCgpIHsKICAgICAgICAvLyBEZXRlY3RhciBkaW1lbnPDo28gZGEgdGVsYQogICAgICAgIEdyYXBoaWNzRGV2aWNlIGdkID0gR3JhcGhpY3NFbnZpcm9ubWVudC5nZXRMb2NhbEdyYXBoaWNzRW52aXJvbm1lbnQoKS5nZXREZWZhdWx0U2NyZWVuRGV2aWNlKCk7CiAgICAgICAgaW50IHNjcmVlbldpZHRoID0gZ2QuZ2V0RGlzcGxheU1vZGUoKS5nZXRXaWR0aCgpOwogICAgICAgIGludCBzY3JlZW5IZWlnaHQgPSBnZC5nZXREaXNwbGF5TW9kZSgpLmdldEhlaWdodCgpOwoKICAgICAgICAvLyBUYXNrYmFyIOKJiCA0MHB4LCBtYXJnaW4gMjBweAogICAgICAgIGRvdWJsZSB4ID0gMjA7CiAgICAgICAgZG91YmxlIHkgPSBzY3JlZW5IZWlnaHQgLSAxODA7IC8vIGFsdHVyYSBhcHJveCBkbyBwb3B1cAoKICAgICAgICBzdGFnZS5zZXRYKHgpOwogICAgICAgIHN0YWdlLnNldFkoeSk7CiAgICB9CgogICAgcHJpdmF0ZSBTdHJpbmcgZm9ybWF0VGltZShpbnQgc2Vjb25kcykgewogICAgICAgIGludCBtID0gc2Vjb25kcyAvIDYwOwogICAgICAgIGludCBzID0gc2Vjb25kcyAlIDYwOwogICAgICAgIGlmIChtID4gMCkgcmV0dXJuIFN0cmluZy5mb3JtYXQoIkZlY2hhIGVtICVkbSAlZHMiLCBtLCBzKTsKICAgICAgICByZXR1cm4gU3RyaW5nLmZvcm1hdCgiRmVjaGEgZW0gJWRzIiwgcyk7CiAgICB9Cn0K
+package br.com.infoativa.fiscal.tray;
+
+import javafx.animation.*;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.*;
+import javafx.util.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.awt.*;
+
+/**
+ * Toast notification profissional no canto inferior esquerdo.
+ * Exibido por N segundos com opção de fechar manualmente.
+ * Design moderno, sombra e animação de entrada/saída.
+ */
+public class FiscalToastNotification {
+
+    private static final Logger log = LoggerFactory.getLogger(FiscalToastNotification.class);
+
+    private final String title;
+    private final String message;
+    private final int durationSeconds;
+    private Stage stage;
+
+    public FiscalToastNotification(String title, String message, int durationSeconds) {
+        this.title = title;
+        this.message = message;
+        this.durationSeconds = durationSeconds;
+    }
+
+    public void show() {
+        Platform.runLater(this::buildAndShow);
+    }
+
+    private void buildAndShow() {
+        stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setAlwaysOnTop(true);
+        stage.initModality(Modality.NONE);
+        stage.setResizable(false);
+
+        // Container principal
+        VBox root = new VBox(12);
+        root.setPadding(new Insets(18, 22, 18, 22));
+        root.setStyle(
+            "-fx-background-color: rgba(255,255,255,0.97);" +
+            "-fx-background-radius: 12px;" +
+            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 18, 0.1, 0, 4);" +
+            "-fx-border-color: #22c55e;" +
+            "-fx-border-width: 0 0 0 5px;" +
+            "-fx-border-radius: 12px;" +
+            "-fx-min-width: 340px;" +
+            "-fx-max-width: 380px;"
+        );
+
+        // Header
+        HBox header = new HBox(10);
+        header.setAlignment(Pos.CENTER_LEFT);
+
+        Label iconLabel = new Label("✅");
+        iconLabel.setStyle("-fx-font-size: 22px;");
+
+        VBox textBox = new VBox(4);
+        Label titleLabel = new Label(title);
+        titleLabel.setFont(Font.font("Segoe UI", FontWeight.BOLD, 14));
+        titleLabel.setStyle("-fx-text-fill: #15803d;");
+
+        Label msgLabel = new Label(message);
+        msgLabel.setFont(Font.font("Segoe UI", 12));
+        msgLabel.setStyle("-fx-text-fill: #374151;");
+        msgLabel.setWrapText(true);
+        msgLabel.setMaxWidth(280);
+
+        textBox.getChildren().addAll(titleLabel, msgLabel);
+        header.getChildren().addAll(iconLabel, textBox);
+
+        // Progress bar + timer
+        HBox footer = new HBox(10);
+        footer.setAlignment(Pos.CENTER);
+
+        Label timerLabel = new Label(formatTime(durationSeconds));
+        timerLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #6b7280;");
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        Button closeBtn = new Button("Fechar");
+        closeBtn.setStyle(
+            "-fx-background-color: #f3f4f6;" +
+            "-fx-text-fill: #374151;" +
+            "-fx-font-size: 11px;" +
+            "-fx-padding: 4 12 4 12;" +
+            "-fx-background-radius: 6px;" +
+            "-fx-cursor: hand;"
+        );
+        closeBtn.setOnAction(e -> dismiss());
+
+        footer.getChildren().addAll(timerLabel, spacer, closeBtn);
+        root.getChildren().addAll(header, footer);
+
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+
+        // Posição: canto inferior esquerdo
+        positionBottomLeft();
+
+        // Animação de entrada
+        root.setOpacity(0);
+        stage.show();
+
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(400), root);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.play();
+
+        // Countdown timer
+        final int[] remaining = {durationSeconds};
+        Timeline countdown = new Timeline(
+            new KeyFrame(Duration.seconds(1), e -> {
+                remaining[0]--;
+                timerLabel.setText(formatTime(remaining[0]));
+                if (remaining[0] <= 0) {
+                    dismiss();
+                }
+            })
+        );
+        countdown.setCycleCount(durationSeconds);
+        countdown.play();
+
+        log.info("Toast notification exibido: {} ({}s)", title, durationSeconds);
+    }
+
+    private void dismiss() {
+        if (stage == null) return;
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(300), stage.getScene().getRoot());
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setOnFinished(e -> {
+            stage.close();
+            log.info("Toast notification fechado: {}", title);
+        });
+        fadeOut.play();
+    }
+
+    private void positionBottomLeft() {
+        // Detectar dimensão da tela
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int screenWidth = gd.getDisplayMode().getWidth();
+        int screenHeight = gd.getDisplayMode().getHeight();
+
+        // Taskbar ≈ 40px, margin 20px
+        double x = 20;
+        double y = screenHeight - 180; // altura aprox do popup
+
+        stage.setX(x);
+        stage.setY(y);
+    }
+
+    private String formatTime(int seconds) {
+        int m = seconds / 60;
+        int s = seconds % 60;
+        if (m > 0) return String.format("Fecha em %dm %ds", m, s);
+        return String.format("Fecha em %ds", s);
+    }
+}
