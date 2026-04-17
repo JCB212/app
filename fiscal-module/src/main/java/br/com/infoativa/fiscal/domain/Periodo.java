@@ -1,15 +1,1 @@
-package br.com.infoativa.fiscal.domain;
-
-import java.time.LocalDate;
-
-public record Periodo(LocalDate inicio, LocalDate fim) {
-    public String descricao() {
-        return String.format("%02d/%d a %02d/%d",
-            inicio.getMonthValue(), inicio.getYear(),
-            fim.getMonthValue(), fim.getYear());
-    }
-
-    public String mesAnoRef() {
-        return String.format("%02d_%d", inicio.getMonthValue(), inicio.getYear());
-    }
-}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kb21haW47CgppbXBvcnQgamF2YS50aW1lLkxvY2FsRGF0ZTsKCnB1YmxpYyByZWNvcmQgUGVyaW9kbyhMb2NhbERhdGUgaW5pY2lvLCBMb2NhbERhdGUgZmltKSB7CgogICAgcHVibGljIFN0cmluZyBkZXNjcmljYW8oKSB7CiAgICAgICAgcmV0dXJuIFN0cmluZy5mb3JtYXQoIiUwMmQvJWQgYSAlMDJkLyVkIiwKICAgICAgICAgICAgaW5pY2lvLmdldE1vbnRoVmFsdWUoKSwgaW5pY2lvLmdldFllYXIoKSwKICAgICAgICAgICAgZmltLmdldE1vbnRoVmFsdWUoKSwgZmltLmdldFllYXIoKSk7CiAgICB9CgogICAgcHVibGljIFN0cmluZyBtZXNBbm9SZWYoKSB7CiAgICAgICAgcmV0dXJuIFN0cmluZy5mb3JtYXQoIiUwMmRfJWQiLCBpbmljaW8uZ2V0TW9udGhWYWx1ZSgpLCBpbmljaW8uZ2V0WWVhcigpKTsKICAgIH0KCiAgICAvKiogVmVyaWZpY2Egc2UgdW1hIGRhdGEgZXN0w6EgZGVudHJvIGRvIHBlcsOtb2RvICovCiAgICBwdWJsaWMgYm9vbGVhbiBjb250ZW0oTG9jYWxEYXRlIGRhdGEpIHsKICAgICAgICByZXR1cm4gZGF0YSAhPSBudWxsICYmICFkYXRhLmlzQmVmb3JlKGluaWNpbykgJiYgIWRhdGEuaXNBZnRlcihmaW0pOwogICAgfQp9Cg==
