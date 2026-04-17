@@ -1,1 +1,104 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kYjsKCmltcG9ydCBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5jb25maWcuQXBwQ29uZmlnOwppbXBvcnQgb3JnLnNsZjRqLkxvZ2dlcjsKaW1wb3J0IG9yZy5zbGY0ai5Mb2dnZXJGYWN0b3J5OwoKaW1wb3J0IGphdmEuc3FsLkNvbm5lY3Rpb247CmltcG9ydCBqYXZhLnNxbC5Ecml2ZXJNYW5hZ2VyOwppbXBvcnQgamF2YS5zcWwuU1FMRXhjZXB0aW9uOwppbXBvcnQgamF2YS51dGlsLlByb3BlcnRpZXM7CgovKioKICogRmFjdG9yeSBkZSBjb25leMOjbyBGaXJlYmlyZCBjb206CiAqIC0gQ2hhcnNldCBwcmVmZXJlbmNpYWwgVVRGOCwgZmFsbGJhY2sgQ3AxMjUyIChXaW4xMjUyKQogKiAtIFRpbWVvdXQgZGUgY29uZXjDo28gY29uZmlndXLDoXZlbAogKiAtIFBvb2wgYsOhc2ljbyAoc2luZ2xldG9uIGNvbm5lY3Rpb24gcG9yIGdhdGV3YXkpCiAqIC0gdHJ5LXdpdGgtcmVzb3VyY2VzIGZyaWVuZGx5IHZpYSBEYXRhYmFzZUdhdGV3YXkKICovCnB1YmxpYyBmaW5hbCBjbGFzcyBGaXJlYmlyZENvbm5lY3Rpb25GYWN0b3J5IHsKCiAgICBwcml2YXRlIHN0YXRpYyBmaW5hbCBMb2dnZXIgbG9nID0gTG9nZ2VyRmFjdG9yeS5nZXRMb2dnZXIoRmlyZWJpcmRDb25uZWN0aW9uRmFjdG9yeS5jbGFzcyk7CiAgICBwcml2YXRlIHN0YXRpYyBmaW5hbCBpbnQgQ09OTkVDVElPTl9USU1FT1VUX01TID0gMTUwMDA7CiAgICBwcml2YXRlIHN0YXRpYyBmaW5hbCBpbnQgU09DS0VUX1RJTUVPVVRfTVMgPSA2MDAwMDsKCiAgICBwcml2YXRlIEZpcmViaXJkQ29ubmVjdGlvbkZhY3RvcnkoKSB7fQoKICAgIC8qKgogICAgICogQWJyZSBjb25leMOjbyBjb20gY2hhcnNldCBVVEY4LCBmYWxsYmFjayBhdXRvbcOhdGljbyBwYXJhIENwMTI1Mi4KICAgICAqLwogICAgcHVibGljIHN0YXRpYyBDb25uZWN0aW9uIG9wZW4oQXBwQ29uZmlnIGNvbmZpZykgdGhyb3dzIFNRTEV4Y2VwdGlvbiB7CiAgICAgICAgLy8gVGVudGFyIFVURjggcHJpbWVpcm8KICAgICAgICB0cnkgewogICAgICAgICAgICBDb25uZWN0aW9uIGNvbm4gPSBvcGVuV2l0aENoYXJzZXQoY29uZmlnLCAiVVRGOCIpOwogICAgICAgICAgICBsb2cuaW5mbygiQ29uZXhhbyBGaXJlYmlyZCBlc3RhYmVsZWNpZGEgKFVURjgpOiB7fTp7fS97fSIsIAogICAgICAgICAgICAgICAgICAgICBjb25maWcuaXBTZXJ2aWRvcigpLCBjb25maWcucG9ydGEoKSwgY29uZmlnLmJhc2VQYXRoKCkpOwogICAgICAgICAgICByZXR1cm4gY29ubjsKICAgICAgICB9IGNhdGNoIChTUUxFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cud2FybigiRmFsaGEgY29tIGNoYXJzZXQgVVRGOCwgdGVudGFuZG8gQ3AxMjUyOiB7fSIsIGUuZ2V0TWVzc2FnZSgpKTsKICAgICAgICB9CiAgICAgICAgLy8gRmFsbGJhY2s6IENwMTI1MiAoV2luZG93cy0xMjUyKQogICAgICAgIHRyeSB7CiAgICAgICAgICAgIENvbm5lY3Rpb24gY29ubiA9IG9wZW5XaXRoQ2hhcnNldChjb25maWcsICJXSU4xMjUyIik7CiAgICAgICAgICAgIGxvZy5pbmZvKCJDb25leGFvIEZpcmViaXJkIGVzdGFiZWxlY2lkYSAoQ3AxMjUyL1dJTjEyNTIpOiB7fTp7fS97fSIsIAogICAgICAgICAgICAgICAgICAgICBjb25maWcuaXBTZXJ2aWRvcigpLCBjb25maWcucG9ydGEoKSwgY29uZmlnLmJhc2VQYXRoKCkpOwogICAgICAgICAgICByZXR1cm4gY29ubjsKICAgICAgICB9IGNhdGNoIChTUUxFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZXJyb3IoIkZhbGhhIGFvIGNvbmVjdGFyIGFvIEZpcmViaXJkIGNvbSBVVEY4IGUgQ3AxMjUyIiwgZSk7CiAgICAgICAgICAgIHRocm93IG5ldyBTUUxFeGNlcHRpb24oCiAgICAgICAgICAgICAgICAiTsOjbyBmb2kgcG9zc8OtdmVsIGNvbmVjdGFyIGFvIGJhbmNvIGRlIGRhZG9zIEZpcmViaXJkIGVtICIgKwogICAgICAgICAgICAgICAgY29uZmlnLmlwU2Vydmlkb3IoKSArICI6IiArIGNvbmZpZy5wb3J0YSgpICsgIi4gIiArCiAgICAgICAgICAgICAgICAiVmVyaWZpcXVlIHNlIG8gc2Vydmlkb3IgZXN0w6Egcm9kYW5kbyBlIGFzIGNvbmZpZ3VyYcOnw7Vlcy4iLCBlKTsKICAgICAgICB9CiAgICB9CgogICAgcHJpdmF0ZSBzdGF0aWMgQ29ubmVjdGlvbiBvcGVuV2l0aENoYXJzZXQoQXBwQ29uZmlnIGNvbmZpZywgU3RyaW5nIGNoYXJzZXQpIHRocm93cyBTUUxFeGNlcHRpb24gewogICAgICAgIFN0cmluZyB1cmwgPSBidWlsZFVybChjb25maWcsIGNoYXJzZXQpOwoKICAgICAgICBQcm9wZXJ0aWVzIHByb3BzID0gbmV3IFByb3BlcnRpZXMoKTsKICAgICAgICBwcm9wcy5zZXRQcm9wZXJ0eSgidXNlciIsICJTWVNEQkEiKTsKICAgICAgICBwcm9wcy5zZXRQcm9wZXJ0eSgicGFzc3dvcmQiLCAibWFzdGVya2V5Iik7CiAgICAgICAgcHJvcHMuc2V0UHJvcGVydHkoImVuY29kaW5nIiwgY2hhcnNldCk7CiAgICAgICAgcHJvcHMuc2V0UHJvcGVydHkoInNvY2tldFRpbWVvdXQiLCBTdHJpbmcudmFsdWVPZihTT0NLRVRfVElNRU9VVF9NUykpOwogICAgICAgIHByb3BzLnNldFByb3BlcnR5KCJsb2dpblRpbWVvdXQiLCBTdHJpbmcudmFsdWVPZihDT05ORUNUSU9OX1RJTUVPVVRfTVMgLyAxMDAwKSk7CiAgICAgICAgcHJvcHMuc2V0UHJvcGVydHkoImNvbm5lY3RUaW1lb3V0IiwgU3RyaW5nLnZhbHVlT2YoQ09OTkVDVElPTl9USU1FT1VUX01TIC8gMTAwMCkpOwogICAgICAgIC8vIERlc2FiaWxpdGFyIGF1dG9jb21taXQgcGFyYSBjb250cm9sZSBleHBsw61jaXRvCiAgICAgICAgcHJvcHMuc2V0UHJvcGVydHkoInVzZUZpcmViaXJkQXV0b2NvbW1pdCIsICJmYWxzZSIpOwoKICAgICAgICBDb25uZWN0aW9uIGNvbm4gPSBEcml2ZXJNYW5hZ2VyLmdldENvbm5lY3Rpb24odXJsLCBwcm9wcyk7CiAgICAgICAgY29ubi5zZXRBdXRvQ29tbWl0KGZhbHNlKTsKICAgICAgICByZXR1cm4gY29ubjsKICAgIH0KCiAgICBwcml2YXRlIHN0YXRpYyBTdHJpbmcgYnVpbGRVcmwoQXBwQ29uZmlnIGNvbmZpZywgU3RyaW5nIGNoYXJzZXQpIHsKICAgICAgICAvLyBGb3JtYXRvOiBqZGJjOmZpcmViaXJkc3FsOi8vaG9zdDpwb3J0L3BhdGg/ZW5jb2Rpbmc9Q0hBUlNFVAogICAgICAgIFN0cmluZyBob3N0ID0gY29uZmlnLmlwU2Vydmlkb3IoKTsKICAgICAgICBpbnQgcG9ydCA9IGNvbmZpZy5wb3J0YSgpOwogICAgICAgIFN0cmluZyBiYXNlID0gY29uZmlnLmJhc2VQYXRoKCk7CgogICAgICAgIC8vIE5vcm1hbGl6YXIgcGF0aCBkbyBiYW5jbwogICAgICAgIGlmIChiYXNlID09IG51bGwgfHwgYmFzZS5pc0JsYW5rKCkpIHsKICAgICAgICAgICAgYmFzZSA9ICJDOi9UU0QvSG9zdC9IT1NULkZEQiI7CiAgICAgICAgICAgIGxvZy53YXJuKCJCQVNFSE9TVCBuYW8gY29uZmlndXJhZG8sIHVzYW5kbyBwYWRyYW86IHt9IiwgYmFzZSk7CiAgICAgICAgfQoKICAgICAgICByZXR1cm4gU3RyaW5nLmZvcm1hdCgKICAgICAgICAgICAgImpkYmM6ZmlyZWJpcmRzcWw6Ly8lczolZC8lcz9lbmNvZGluZz0lcyZ1c2VGaXJlYmlyZEF1dG9jb21taXQ9ZmFsc2UiLAogICAgICAgICAgICBob3N0LCBwb3J0LCBiYXNlLCBjaGFyc2V0CiAgICAgICAgKTsKICAgIH0KCiAgICAvKioKICAgICAqIFRlc3RhIHNlIGEgY29uZXjDo28gZXN0w6EgYWNlc3PDrXZlbCAocGluZyByw6FwaWRvKS4KICAgICAqLwogICAgcHVibGljIHN0YXRpYyBib29sZWFuIHRlc3RDb25uZWN0aW9uKEFwcENvbmZpZyBjb25maWcpIHsKICAgICAgICB0cnkgKENvbm5lY3Rpb24gY29ubiA9IG9wZW4oY29uZmlnKSkgewogICAgICAgICAgICBib29sZWFuIHZhbGlkID0gY29ubi5pc1ZhbGlkKDUpOwogICAgICAgICAgICBpZiAodmFsaWQpIGxvZy5pbmZvKCJUZXN0ZSBkZSBjb25leGFvIEZpcmViaXJkOiBPSyIpOwogICAgICAgICAgICByZXR1cm4gdmFsaWQ7CiAgICAgICAgfSBjYXRjaCAoU1FMRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgbG9nLndhcm4oIlRlc3RlIGRlIGNvbmV4YW8gRmlyZWJpcmQgZmFsaG91OiB7fSIsIGUuZ2V0TWVzc2FnZSgpKTsKICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgICAgIH0KICAgIH0KfQo=
+package br.com.infoativa.fiscal.db;
+
+import br.com.infoativa.fiscal.config.AppConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+/**
+ * Factory de conexão Firebird com:
+ * - Charset preferencial UTF8, fallback Cp1252 (Win1252)
+ * - Timeout de conexão configurável
+ * - Pool básico (singleton connection por gateway)
+ * - try-with-resources friendly via DatabaseGateway
+ */
+public final class FirebirdConnectionFactory {
+
+    private static final Logger log = LoggerFactory.getLogger(FirebirdConnectionFactory.class);
+    private static final int CONNECTION_TIMEOUT_MS = 15000;
+    private static final int SOCKET_TIMEOUT_MS = 60000;
+
+    private FirebirdConnectionFactory() {}
+
+    /**
+     * Abre conexão com charset UTF8, fallback automático para Cp1252.
+     */
+    public static Connection open(AppConfig config) throws SQLException {
+        // Tentar UTF8 primeiro
+        try {
+            Connection conn = openWithCharset(config, "UTF8");
+            log.info("Conexao Firebird estabelecida (UTF8): {}:{}/{}", 
+                     config.ipServidor(), config.porta(), config.basePath());
+            return conn;
+        } catch (SQLException e) {
+            log.warn("Falha com charset UTF8, tentando Cp1252: {}", e.getMessage());
+        }
+        // Fallback: Cp1252 (Windows-1252)
+        try {
+            Connection conn = openWithCharset(config, "WIN1252");
+            log.info("Conexao Firebird estabelecida (Cp1252/WIN1252): {}:{}/{}", 
+                     config.ipServidor(), config.porta(), config.basePath());
+            return conn;
+        } catch (SQLException e) {
+            log.error("Falha ao conectar ao Firebird com UTF8 e Cp1252", e);
+            throw new SQLException(
+                "Não foi possível conectar ao banco de dados Firebird em " +
+                config.ipServidor() + ":" + config.porta() + ". " +
+                "Verifique se o servidor está rodando e as configurações.", e);
+        }
+    }
+
+    private static Connection openWithCharset(AppConfig config, String charset) throws SQLException {
+        String url = buildUrl(config, charset);
+
+        Properties props = new Properties();
+        props.setProperty("user", "SYSDBA");
+        props.setProperty("password", "masterkey");
+        props.setProperty("encoding", charset);
+        props.setProperty("socketTimeout", String.valueOf(SOCKET_TIMEOUT_MS));
+        props.setProperty("loginTimeout", String.valueOf(CONNECTION_TIMEOUT_MS / 1000));
+        props.setProperty("connectTimeout", String.valueOf(CONNECTION_TIMEOUT_MS / 1000));
+        // Desabilitar autocommit para controle explícito
+        props.setProperty("useFirebirdAutocommit", "false");
+
+        Connection conn = DriverManager.getConnection(url, props);
+        conn.setAutoCommit(false);
+        return conn;
+    }
+
+    private static String buildUrl(AppConfig config, String charset) {
+        // Formato: jdbc:firebirdsql://host:port/path?encoding=CHARSET
+        String host = config.ipServidor();
+        int port = config.porta();
+        String base = config.basePath();
+
+        // Normalizar path do banco
+        if (base == null || base.isBlank()) {
+            base = "C:/TSD/Host/HOST.FDB";
+            log.warn("BASEHOST nao configurado, usando padrao: {}", base);
+        }
+
+        return String.format(
+            "jdbc:firebirdsql://%s:%d/%s?encoding=%s&useFirebirdAutocommit=false",
+            host, port, base, charset
+        );
+    }
+
+    /**
+     * Testa se a conexão está acessível (ping rápido).
+     */
+    public static boolean testConnection(AppConfig config) {
+        try (Connection conn = open(config)) {
+            boolean valid = conn.isValid(5);
+            if (valid) log.info("Teste de conexao Firebird: OK");
+            return valid;
+        } catch (SQLException e) {
+            log.warn("Teste de conexao Firebird falhou: {}", e.getMessage());
+            return false;
+        }
+    }
+}
