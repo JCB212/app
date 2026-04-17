@@ -1,11 +1,1 @@
-package br.com.infoativa.fiscal.fiscal;
-
-import br.com.infoativa.fiscal.domain.Periodo;
-
-import java.nio.file.Path;
-import java.sql.Connection;
-
-public interface FiscalObligationStrategy {
-    String name();
-    void generate(Connection conn, Periodo periodo, Path outputDir) throws Exception;
-}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5maXNjYWw7CgppbXBvcnQgYnIuY29tLmluZm9hdGl2YS5maXNjYWwuZG9tYWluLlBlcmlvZG87CmltcG9ydCBqYXZhLm5pby5maWxlLlBhdGg7CmltcG9ydCBqYXZhLnNxbC5Db25uZWN0aW9uOwoKcHVibGljIGludGVyZmFjZSBGaXNjYWxPYmxpZ2F0aW9uU3RyYXRlZ3kgewogICAgU3RyaW5nIG5hbWUoKTsKICAgIFBhdGggZ2VuZXJhdGUoQ29ubmVjdGlvbiBjb25uLCBQZXJpb2RvIHBlcmlvZG8sIFBhdGggb3V0cHV0RGlyKSB0aHJvd3MgRXhjZXB0aW9uOwp9Cg==
