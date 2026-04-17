@@ -1,30 +1,20 @@
 package br.com.infoativa.fiscal.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 
-public class OutputStructureService {
+public final class OutputStructureService {
 
-    private static final Logger log = LoggerFactory.getLogger(OutputStructureService.class);
+    private static final String BASE_DIR = System.getProperty("user.dir");
 
-    public static Path createStructure(String baseName) throws IOException {
-        Path root = Path.of(System.getProperty("user.dir"), "XMLContabilidade", baseName);
-        Files.createDirectories(root.resolve("NFe"));
-        Files.createDirectories(root.resolve("NFCe"));
-        Files.createDirectories(root.resolve("Compras"));
-        Files.createDirectories(root.resolve("Cancelados"));
-        Files.createDirectories(root.resolve("Inutilizados"));
-        Files.createDirectories(root.resolve("TXT"));
-        Files.createDirectories(root.resolve("PDF"));
-        log.info("Estrutura de saida criada: {}", root);
+    private OutputStructureService() {}
+
+    public static Path createStructure(String mesAnoRef) throws IOException {
+        Path root = Path.of(BASE_DIR, "XMLContabilidade", mesAnoRef);
+        for (String sub : new String[]{"NFe", "NFCe", "Compras", "Cancelados",
+                                        "Inutilizados", "Contingencia", "PDF", "TXT"}) {
+            Files.createDirectories(root.resolve(sub));
+        }
         return root;
-    }
-
-    public static Path getXmlContabilidadeRoot() {
-        return Path.of(System.getProperty("user.dir"), "XMLContabilidade");
     }
 }
