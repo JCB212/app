@@ -1,15 +1,1 @@
-package br.com.infoativa.fiscal.domain;
-
-import java.math.BigDecimal;
-
-public record NfceItemRegistro(
-    long id, long idProduto, long idNfce,
-    String cfop, String gtin, int item,
-    BigDecimal quantidade, BigDecimal valorUnitario, BigDecimal valorTotal, BigDecimal totalItem,
-    BigDecimal baseIcms, BigDecimal taxaIcms, BigDecimal icms,
-    BigDecimal taxaPis, BigDecimal pis, BigDecimal taxaCofins, BigDecimal cofins,
-    BigDecimal desconto, BigDecimal acrescimo,
-    String cst, String csosn, String cancelado,
-    BigDecimal icmsMonoRetValor, BigDecimal icmsMonoRetTaxa, BigDecimal icmsMonoRetQtde,
-    BigDecimal redBaseIcms
-) {}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5kb21haW47CgppbXBvcnQgamF2YS5tYXRoLkJpZ0RlY2ltYWw7CgpwdWJsaWMgcmVjb3JkIE5mY2VJdGVtUmVnaXN0cm8oCiAgICBsb25nICAgICAgIGlkLAogICAgbG9uZyAgICAgICBuZmNlSWQsCiAgICBpbnQgICAgICAgIGl0ZW0sCiAgICBTdHJpbmcgICAgIGRlc2NyaWNhbywKICAgIFN0cmluZyAgICAgbmNtLAogICAgU3RyaW5nICAgICBjc3QsCiAgICBCaWdEZWNpbWFsIHF1YW50aWRhZGUsCiAgICBCaWdEZWNpbWFsIHZhbG9yVW5pdGFyaW8sCiAgICBCaWdEZWNpbWFsIHZhbG9yVG90YWwKKSB7fQo=
