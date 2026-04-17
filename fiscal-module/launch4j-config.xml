@@ -1,39 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Launch4j — Configuração para empacotar fiscal-module.jar como .exe Windows
+  com suporte completo a System Tray e inicialização automática.
+
+  Requisitos:
+    - JRE 17+ (bundled ou instalado)
+    - fiscal-module.jar gerado por: mvn clean package
+    - Launch4j >= 3.14 (https://launch4j.sourceforge.net/)
+
+  Para empacotar com JRE bundled (recomendado para distribuição):
+    1. Baixar JRE 17 Windows x64 (.zip)
+    2. Extrair para fiscal-module/jre/
+    3. Ajustar <path> abaixo para "jre"
+-->
 <launch4jConfig>
+
+  <!-- ── Output ──────────────────────────────────────────────────────── -->
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>fiscal-module-1.0.0.jar</jar>
+  <!-- headerType=gui: não abre console preta no Windows (modo tray/kiosk) -->
+
+  <jar>target/fiscal-module.jar</jar>
   <outfile>FiscalModule.exe</outfile>
-  <errTitle>Modulo Fiscal</errTitle>
-  <cmdLine></cmdLine>
-  <chdir>.</chdir>
-  <priority>normal</priority>
-  <downloadUrl>https://adoptium.net/</downloadUrl>
-  <supportUrl></supportUrl>
-  <stayAlive>false</stayAlive>
-  <restartOnCrash>false</restartOnCrash>
-  <manifest></manifest>
+
+  <!-- Ícone personalizado (converter .png para .ico com IcoFX ou similar) -->
+  <!-- <icon>src/main/resources/icons/fiscal.ico</icon> -->
+
+  <!-- ── Classe principal ───────────────────────────────────────────── -->
   <classPath>
     <mainClass>br.com.infoativa.fiscal.Launcher</mainClass>
   </classPath>
+
+  <!-- ── JVM e argumentos ────────────────────────────────────────────── -->
   <jre>
-    <path></path>
-    <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <!-- JRE mínimo: Java 17 -->
     <minVersion>17</minVersion>
     <maxVersion></maxVersion>
-    <jdkPreference>preferJre</jdkPreference>
-    <runtimeBits>64/32</runtimeBits>
+
+    <!-- Usar JRE bundled se existir, senão procurar no sistema -->
+    <!-- <path>jre</path> -->
+
+    <jvmArgs>
+      <!-- Módulos JavaFX necessários para interface gráfica + tray -->
+      --add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+      --add-opens=java.desktop/sun.awt=ALL-UNNAMED
+      --add-opens=java.desktop/java.awt=ALL-UNNAMED
+
+      <!-- Memória: ajustar conforme volume de XMLs -->
+      -Xms64m
+      -Xmx512m
+
+      <!-- Encoding UTF-8 obrigatório para caracteres fiscais -->
+      -Dfile.encoding=UTF-8
+      -Dsun.stdout.encoding=UTF-8
+      -Dsun.stderr.encoding=UTF-8
+
+      <!-- Diretório de trabalho = pasta do .exe -->
+      -Duser.dir=${LAUNCH4J_APP_DIR}
+
+      <!-- System Tray: forçar AWT no thread do sistema -->
+      -Djava.awt.headless=false
+      -Djavafx.embed.singleThread=true
+
+      <!-- DPI alto (telas 4K/125%) -->
+      -Dglass.win.uiScale=system
+    </jvmArgs>
   </jre>
+
+  <!-- ── Informações do executável (Propriedades Windows) ─────────────── -->
   <versionInfo>
-    <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.0.0</txtFileVersion>
-    <fileDescription>Modulo de Fechamento Fiscal</fileDescription>
-    <copyright>InfoAtiva</copyright>
-    <productVersion>1.0.0.0</productVersion>
-    <txtProductVersion>1.0.0</txtProductVersion>
-    <productName>Modulo Fiscal InfoAtiva</productName>
-    <companyName>InfoAtiva</companyName>
+    <fileVersion>2.0.0.0</fileVersion>
+    <txtFileVersion>2.0.0</txtFileVersion>
+    <fileDescription>Módulo de Fechamento Fiscal InfoAtiva</fileDescription>
+    <copyright>InfoAtiva Sistemas © 2024-2026</copyright>
+    <productVersion>2.0.0.0</productVersion>
+    <txtProductVersion>2.0.0</txtProductVersion>
+    <productName>Módulo Fiscal InfoAtiva</productName>
+    <companyName>InfoAtiva Sistemas</companyName>
     <internalName>FiscalModule</internalName>
     <originalFilename>FiscalModule.exe</originalFilename>
   </versionInfo>
+
+  <!-- ── Manifesto (obrigatório para System Tray funcionar no Windows 10+) ─ -->
+  <manifest>
+    <requestedExecutionLevel>asInvoker</requestedExecutionLevel>
+    <!-- Use "requireAdministrator" se precisar de acesso ao registro de startup -->
+  </manifest>
+
+  <!-- ── Splash screen (opcional) ────────────────────────────────────── -->
+  <!--
+  <splash>
+    <file>src/main/resources/splash.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  -->
+
+  <!-- ── Erro se JRE não encontrado ─────────────────────────────────── -->
+  <messages>
+    <startupErr>Erro ao iniciar o Módulo Fiscal.</startupErr>
+    <bundledJreErr>O Java Runtime não foi encontrado em: %s</bundledJreErr>
+    <jreVersionErr>Java 17 ou superior é necessário. Baixe em java.com</jreVersionErr>
+    <launcherErr>Não foi possível iniciar a aplicação.</launcherErr>
+  </messages>
+
 </launch4jConfig>
