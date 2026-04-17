@@ -1,14 +1,1 @@
-package br.com.infoativa.fiscal.service;
-
-public enum ProcessingMode {
-    AUTO, ANUAL, MANUAL;
-
-    public static ProcessingMode fromString(String mode) {
-        if (mode == null) return AUTO;
-        return switch (mode.toUpperCase()) {
-            case "ANUAL" -> ANUAL;
-            case "MANUAL" -> MANUAL;
-            default -> AUTO;
-        };
-    }
-}
+cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC5zZXJ2aWNlOwoKcHVibGljIGVudW0gUHJvY2Vzc2luZ01vZGUgewogICAgQVVUTywgICAgLy8gTcOqcyBhbnRlcmlvciBhdXRvbcOhdGljbwogICAgTUFOVUFMLCAgLy8gUGVyw61vZG8gbWFudWFsIGRlZmluaWRvIHBlbG8gdXN1w6FyaW8KICAgIEFOVUFMICAgIC8vIFRvZG9zIG9zIG1lc2VzIGRvIGFubwp9Cg==
