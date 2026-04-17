@@ -1,1 +1,254 @@
-cGFja2FnZSBici5jb20uaW5mb2F0aXZhLmZpc2NhbC54bWw7CgppbXBvcnQgb3JnLnNsZjRqLkxvZ2dlcjsKaW1wb3J0IG9yZy5zbGY0ai5Mb2dnZXJGYWN0b3J5OwoKaW1wb3J0IGphdmEuc2VjdXJpdHkuTWVzc2FnZURpZ2VzdDsKaW1wb3J0IGphdmEuc3FsLio7CmltcG9ydCBqYXZhLnRpbWUuTG9jYWxEYXRlOwppbXBvcnQgamF2YS50aW1lLkxvY2FsRGF0ZVRpbWU7CgovKioKICogUmVwb3NpdMOzcmlvIHBhcmEgYSB0YWJlbGEgWE1MX1BST0NFU1NBRE9TLgogKiBJbXBsZW1lbnRhIGNhY2hlIGludGVsaWdlbnRlOiBJTlNFUlQgLyBVUERBVEUgLyBJR05PUkUgYmFzZWFkbyBlbSBIQVNIIGUgU1RBVFVTLgogKiBBdXRvLWNyaWEgYSB0YWJlbGEgZSDDrW5kaWNlcyBzZSBuw6NvIGV4aXN0aXJlbS4KICovCnB1YmxpYyBjbGFzcyBYbWxDYWNoZVJlcG9zaXRvcnkgewoKICAgIHByaXZhdGUgc3RhdGljIGZpbmFsIExvZ2dlciBsb2cgPSBMb2dnZXJGYWN0b3J5LmdldExvZ2dlcihYbWxDYWNoZVJlcG9zaXRvcnkuY2xhc3MpOwogICAgcHJpdmF0ZSBmaW5hbCBDb25uZWN0aW9uIGNvbm5lY3Rpb247CgogICAgcHVibGljIFhtbENhY2hlUmVwb3NpdG9yeShDb25uZWN0aW9uIGNvbm5lY3Rpb24pIHsKICAgICAgICB0aGlzLmNvbm5lY3Rpb24gPSBjb25uZWN0aW9uOwogICAgfQoKICAgIC8vIOKUgOKUgCBBdXRvLWNyaWHDp8OjbyBkYSBlc3RydXR1cmEg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgogICAgcHVibGljIHZvaWQgZW5zdXJlVGFibGVFeGlzdHMoKSB7CiAgICAgICAgU3RyaW5nIGNyZWF0ZVRhYmxlID0gIiIiCiAgICAgICAgICAgIENSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIFhNTF9QUk9DRVNTQURPUyAoCiAgICAgICAgICAgICAgICBDSEFWRSAgICAgICAgICAgVkFSQ0hBUig0NCkgIE5PVCBOVUxMLAogICAgICAgICAgICAgICAgREFUQV9FTUlTU0FPICAgIERBVEUsCiAgICAgICAgICAgICAgICBDQU1JTkhPICAgICAgICAgVkFSQ0hBUig1MDApLAogICAgICAgICAgICAgICAgU1RBVFVTICAgICAgICAgIFZBUkNIQVIoMzApLAogICAgICAgICAgICAgICAgSEFTSCAgICAgICAgICAgIFZBUkNIQVIoNjQpLAogICAgICAgICAgICAgICAgU1RBVFVTX1BST0NFU1NBTUVOVE8gVkFSQ0hBUigxMCkgREVGQVVMVCAnT0snLAogICAgICAgICAgICAgICAgREFUQV9QUk9DRVNTQU1FTlRPICAgVElNRVNUQU1QLAogICAgICAgICAgICAgICAgREFUQV9BVFVBTElaQUNBTyAgICAgVElNRVNUQU1QLAogICAgICAgICAgICAgICAgQ09OU1RSQUlOVCBQS19YTUxfUFJPQ0VTU0FET1MgUFJJTUFSWSBLRVkgKENIQVZFKQogICAgICAgICAgICApCiAgICAgICAgICAgICIiIjsKCiAgICAgICAgLy8gRmlyZWJpcmQgbsOjbyBzdXBvcnRhIElGIE5PVCBFWElTVFMgbm8gRERMIOKAlCB1c2FyIGV4Y2VwdGlvbiBoYW5kbGluZwogICAgICAgIHRyeSAoU3RhdGVtZW50IHN0ID0gY29ubmVjdGlvbi5jcmVhdGVTdGF0ZW1lbnQoKSkgewogICAgICAgICAgICBzdC5leGVjdXRlKGNyZWF0ZVRhYmxlKTsKICAgICAgICAgICAgbG9nLmluZm8oIlRhYmVsYSBYTUxfUFJPQ0VTU0FET1MgdmVyaWZpY2FkYS9jcmlhZGEiKTsKICAgICAgICB9IGNhdGNoIChTUUxFeGNlcHRpb24gZSkgewogICAgICAgICAgICBpZiAoZS5nZXRFcnJvckNvZGUoKSA9PSAzMzU1NDQzNTEgfHwgZS5nZXRNZXNzYWdlKCkuY29udGFpbnMoImFscmVhZHkgZXhpc3RzIikpIHsKICAgICAgICAgICAgICAgIGxvZy5kZWJ1ZygiVGFiZWxhIFhNTF9QUk9DRVNTQURPUyBqYSBleGlzdGUiKTsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGxvZy5lcnJvcigiRXJybyBhbyBjcmlhciB0YWJlbGEgWE1MX1BST0NFU1NBRE9TIiwgZSk7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgZW5zdXJlSW5kZXhlcygpOwogICAgfQoKICAgIHByaXZhdGUgdm9pZCBlbnN1cmVJbmRleGVzKCkgewogICAgICAgIGNyZWF0ZUluZGV4U2FmZSgiSURYX1hNTF9EQVRBX0VNSVNTQU8iLCAKICAgICAgICAgICAgIkNSRUFURSBJTkRFWCBJRFhfWE1MX0RBVEFfRU1JU1NBTyBPTiBYTUxfUFJPQ0VTU0FET1MgKERBVEFfRU1JU1NBTykiKTsKICAgICAgICBjcmVhdGVJbmRleFNhZmUoIklEWF9YTUxfU1RBVFVTIiwgCiAgICAgICAgICAgICJDUkVBVEUgSU5ERVggSURYX1hNTF9TVEFUVVMgT04gWE1MX1BST0NFU1NBRE9TIChTVEFUVVMpIik7CiAgICAgICAgY3JlYXRlSW5kZXhTYWZlKCJJRFhfWE1MX1NUQVRVU19QUk9DIiwKICAgICAgICAgICAgIkNSRUFURSBJTkRFWCBJRFhfWE1MX1NUQVRVU19QUk9DIE9OIFhNTF9QUk9DRVNTQURPUyAoU1RBVFVTX1BST0NFU1NBTUVOVE8pIik7CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIGNyZWF0ZUluZGV4U2FmZShTdHJpbmcgbmFtZSwgU3RyaW5nIGRkbCkgewogICAgICAgIHRyeSAoU3RhdGVtZW50IHN0ID0gY29ubmVjdGlvbi5jcmVhdGVTdGF0ZW1lbnQoKSkgewogICAgICAgICAgICBzdC5leGVjdXRlKGRkbCk7CiAgICAgICAgfSBjYXRjaCAoU1FMRXhjZXB0aW9uIGUpIHsKICAgICAgICAgICAgaWYgKCFlLmdldE1lc3NhZ2UoKS5jb250YWlucygiYWxyZWFkeSBleGlzdHMiKSAmJiBlLmdldEVycm9yQ29kZSgpICE9IDMzNTU0NDM1MSkgewogICAgICAgICAgICAgICAgbG9nLmRlYnVnKCJJbmRpY2Uge30gbmFvIGNyaWFkbzoge30iLCBuYW1lLCBlLmdldE1lc3NhZ2UoKSk7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgLy8g4pSA4pSAIFByb2Nlc3NhbWVudG8gaW50ZWxpZ2VudGUgSU5TRVJUIC8gVVBEQVRFIC8gSUdOT1JFIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAoKICAgIHB1YmxpYyBlbnVtIFByb2Nlc3NSZXN1bHQgeyBJTlNFUlRFRCwgVVBEQVRFRCwgSUdOT1JFRCwgRVJST1IgfQoKICAgIC8qKgogICAgICogUHJvY2Vzc2EgdW0gWE1MOiBpbnNlcmUgbm92bywgYXR1YWxpemEgc2UgbXVkb3UsIGlnbm9yYSBzZSBpZ3VhbC4KICAgICAqLwogICAgcHVibGljIFByb2Nlc3NSZXN1bHQgcHJvY2VzcyhTdHJpbmcgY2hhdmUsIExvY2FsRGF0ZSBkYXRhRW1pc3NhbywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFN0cmluZyBjYW1pbmhvLCBTdHJpbmcgc3RhdHVzLCBTdHJpbmcgY29udGV1ZG9IYXNoKSB7CiAgICAgICAgaWYgKGNoYXZlID09IG51bGwgfHwgY2hhdmUuaXNCbGFuaygpKSByZXR1cm4gUHJvY2Vzc1Jlc3VsdC5FUlJPUjsKCiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgWG1sQ2FjaGVFbnRyeSBleGlzdGluZyA9IGZpbmRCeUNoYXZlKGNoYXZlKTsKCiAgICAgICAgICAgIGlmIChleGlzdGluZyA9PSBudWxsKSB7CiAgICAgICAgICAgICAgICBpbnNlcnQoY2hhdmUsIGRhdGFFbWlzc2FvLCBjYW1pbmhvLCBzdGF0dXMsIGNvbnRldWRvSGFzaCk7CiAgICAgICAgICAgICAgICBsb2cuZGVidWcoIlhNTCBJTlNFUklETzogY2hhdmU9e30sIHN0YXR1cz17fSIsIGNoYXZlLCBzdGF0dXMpOwogICAgICAgICAgICAgICAgcmV0dXJuIFByb2Nlc3NSZXN1bHQuSU5TRVJURUQ7CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIC8vIFZlcmlmaWNhciBzZSBtdWRvdSAoSEFTSCBvdSBTVEFUVVMpCiAgICAgICAgICAgIGJvb2xlYW4gaGFzaENoYW5nZWQgPSAhY29udGV1ZG9IYXNoLmVxdWFscyhleGlzdGluZy5oYXNoKCkpOwogICAgICAgICAgICBib29sZWFuIHN0YXR1c0NoYW5nZWQgPSAhc3RhdHVzLmVxdWFscyhleGlzdGluZy5zdGF0dXMoKSk7CgogICAgICAgICAgICBpZiAoaGFzaENoYW5nZWQgfHwgc3RhdHVzQ2hhbmdlZCkgewogICAgICAgICAgICAgICAgdXBkYXRlKGNoYXZlLCBjYW1pbmhvLCBzdGF0dXMsIGNvbnRldWRvSGFzaCk7CiAgICAgICAgICAgICAgICBpZiAoc3RhdHVzQ2hhbmdlZCkgewogICAgICAgICAgICAgICAgICAgIGxvZy5pbmZvKCJYTUwgQVRVQUxJWkFETyAoc3RhdHVzOiB7fSAtPiB7fSk6IGNoYXZlPXt9IiwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZXhpc3Rpbmcuc3RhdHVzKCksIHN0YXR1cywgY2hhdmUpOwogICAgICAgICAgICAgICAgICAgIC8vIERldGVjdGFyIG11ZGFuw6dhIENPTlRJTkdFTkNJQSAtPiBBVVRPUklaQURBCiAgICAgICAgICAgICAgICAgICAgaWYgKGlzQ29udGluZ2VuY2lhKGV4aXN0aW5nLnN0YXR1cygpKSAmJiBpc0F1dG9yaXphZGEoc3RhdHVzKSkgewogICAgICAgICAgICAgICAgICAgICAgICBsb2cuaW5mbygiQ09OVElOR0VOQ0lBIFJFR1VMQVJJWkFEQTogY2hhdmU9e30iLCBjaGF2ZSk7CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICBsb2cuZGVidWcoIlhNTCBBVFVBTElaQURPIChoYXNoIG11ZG91KTogY2hhdmU9e30iLCBjaGF2ZSk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICByZXR1cm4gUHJvY2Vzc1Jlc3VsdC5VUERBVEVEOwogICAgICAgICAgICB9CgogICAgICAgICAgICBsb2cuZGVidWcoIlhNTCBJR05PUkFETyAoc2VtIGFsdGVyYWNhbyk6IGNoYXZlPXt9IiwgY2hhdmUpOwogICAgICAgICAgICByZXR1cm4gUHJvY2Vzc1Jlc3VsdC5JR05PUkVEOwoKICAgICAgICB9IGNhdGNoIChTUUxFeGNlcHRpb24gZSkgewogICAgICAgICAgICBsb2cuZXJyb3IoIkVycm8gYW8gcHJvY2Vzc2FyIGNhY2hlIGRvIFhNTDogY2hhdmU9e30iLCBjaGF2ZSwgZSk7CiAgICAgICAgICAgIG1hcmtFcnJvcihjaGF2ZSk7CiAgICAgICAgICAgIHJldHVybiBQcm9jZXNzUmVzdWx0LkVSUk9SOwogICAgICAgIH0KICAgIH0KCiAgICAvLyDilIDilIAgQ29uc3VsdGEgaGlzdMOzcmljYSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKCiAgICBwdWJsaWMgYm9vbGVhbiBleGlzdHNJblBlcmlvZChMb2NhbERhdGUgaW5pY2lvLCBMb2NhbERhdGUgZmltKSB0aHJvd3MgU1FMRXhjZXB0aW9uIHsKICAgICAgICBTdHJpbmcgc3FsID0gIlNFTEVDVCBDT1VOVCgqKSBGUk9NIFhNTF9QUk9DRVNTQURPUyAiICsKICAgICAgICAgICAgICAgICAgICAgIldIRVJFIERBVEFfRU1JU1NBTyBCRVRXRUVOID8gQU5EID8gIiArCiAgICAgICAgICAgICAgICAgICAgICJBTkQgU1RBVFVTX1BST0NFU1NBTUVOVE8gPSAnT0snIjsKICAgICAgICB0cnkgKFByZXBhcmVkU3RhdGVtZW50IHBzID0gY29ubmVjdGlvbi5wcmVwYXJlU3RhdGVtZW50KHNxbCkpIHsKICAgICAgICAgICAgcHMuc2V0RGF0ZSgxLCBEYXRlLnZhbHVlT2YoaW5pY2lvKSk7CiAgICAgICAgICAgIHBzLnNldERhdGUoMiwgRGF0ZS52YWx1ZU9mKGZpbSkpOwogICAgICAgICAgICB0cnkgKFJlc3VsdFNldCBycyA9IHBzLmV4ZWN1dGVRdWVyeSgpKSB7CiAgICAgICAgICAgICAgICByZXR1cm4gcnMubmV4dCgpICYmIHJzLmdldEludCgxKSA+IDA7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgcHVibGljIGludCBjb3VudENvbnRpbmdlbmNpYXNOb1Jlc29sdmlkYXMoTG9jYWxEYXRlIGluaWNpbywgTG9jYWxEYXRlIGZpbSkgdGhyb3dzIFNRTEV4Y2VwdGlvbiB7CiAgICAgICAgU3RyaW5nIHNxbCA9ICJTRUxFQ1QgQ09VTlQoKikgRlJPTSBYTUxfUFJPQ0VTU0FET1MgIiArCiAgICAgICAgICAgICAgICAgICAgICJXSEVSRSBEQVRBX0VNSVNTQU8gQkVUV0VFTiA/IEFORCA/ICIgKwogICAgICAgICAgICAgICAgICAgICAiQU5EIChTVEFUVVMgTElLRSAnJUNPTlRJTkdFTkNJQSUnIE9SIFNUQVRVUyBMSUtFICclQ09OVElOR8OKTkNJQSUnKSI7CiAgICAgICAgdHJ5IChQcmVwYXJlZFN0YXRlbWVudCBwcyA9IGNvbm5lY3Rpb24ucHJlcGFyZVN0YXRlbWVudChzcWwpKSB7CiAgICAgICAgICAgIHBzLnNldERhdGUoMSwgRGF0ZS52YWx1ZU9mKGluaWNpbykpOwogICAgICAgICAgICBwcy5zZXREYXRlKDIsIERhdGUudmFsdWVPZihmaW0pKTsKICAgICAgICAgICAgdHJ5IChSZXN1bHRTZXQgcnMgPSBwcy5leGVjdXRlUXVlcnkoKSkgewogICAgICAgICAgICAgICAgcmV0dXJuIHJzLm5leHQoKSA/IHJzLmdldEludCgxKSA6IDA7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgLy8g4pSA4pSAIENSVUQg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgogICAgcHJpdmF0ZSBYbWxDYWNoZUVudHJ5IGZpbmRCeUNoYXZlKFN0cmluZyBjaGF2ZSkgdGhyb3dzIFNRTEV4Y2VwdGlvbiB7CiAgICAgICAgU3RyaW5nIHNxbCA9ICJTRUxFQ1QgQ0hBVkUsIERBVEFfRU1JU1NBTywgQ0FNSU5ITywgU1RBVFVTLCBIQVNILCBTVEFUVVNfUFJPQ0VTU0FNRU5UTyAiICsKICAgICAgICAgICAgICAgICAgICAgIkZST00gWE1MX1BST0NFU1NBRE9TIFdIRVJFIENIQVZFID0gPyI7CiAgICAgICAgdHJ5IChQcmVwYXJlZFN0YXRlbWVudCBwcyA9IGNvbm5lY3Rpb24ucHJlcGFyZVN0YXRlbWVudChzcWwpKSB7CiAgICAgICAgICAgIHBzLnNldFN0cmluZygxLCBjaGF2ZSk7CiAgICAgICAgICAgIHRyeSAoUmVzdWx0U2V0IHJzID0gcHMuZXhlY3V0ZVF1ZXJ5KCkpIHsKICAgICAgICAgICAgICAgIGlmICghcnMubmV4dCgpKSByZXR1cm4gbnVsbDsKICAgICAgICAgICAgICAgIHJldHVybiBuZXcgWG1sQ2FjaGVFbnRyeSgKICAgICAgICAgICAgICAgICAgICBycy5nZXRTdHJpbmcoIkNIQVZFIiksCiAgICAgICAgICAgICAgICAgICAgcnMuZ2V0RGF0ZSgiREFUQV9FTUlTU0FPIikgIT0gbnVsbCA/IHJzLmdldERhdGUoIkRBVEFfRU1JU1NBTyIpLnRvTG9jYWxEYXRlKCkgOiBudWxsLAogICAgICAgICAgICAgICAgICAgIHJzLmdldFN0cmluZygiQ0FNSU5ITyIpLAogICAgICAgICAgICAgICAgICAgIHJzLmdldFN0cmluZygiU1RBVFVTIiksCiAgICAgICAgICAgICAgICAgICAgcnMuZ2V0U3RyaW5nKCJIQVNIIiksCiAgICAgICAgICAgICAgICAgICAgcnMuZ2V0U3RyaW5nKCJTVEFUVVNfUFJPQ0VTU0FNRU5UTyIpCiAgICAgICAgICAgICAgICApOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQoKICAgIHByaXZhdGUgdm9pZCBpbnNlcnQoU3RyaW5nIGNoYXZlLCBMb2NhbERhdGUgZGF0YUVtaXNzYW8sIFN0cmluZyBjYW1pbmhvLAogICAgICAgICAgICAgICAgICAgICAgICAgU3RyaW5nIHN0YXR1cywgU3RyaW5nIGhhc2gpIHRocm93cyBTUUxFeGNlcHRpb24gewogICAgICAgIFN0cmluZyBzcWwgPSAiSU5TRVJUIElOVE8gWE1MX1BST0NFU1NBRE9TICIgKwogICAgICAgICAgICAgICAgICAgICAiKENIQVZFLCBEQVRBX0VNSVNTQU8sIENBTUlOSE8sIFNUQVRVUywgSEFTSCwgU1RBVFVTX1BST0NFU1NBTUVOVE8sICIgKwogICAgICAgICAgICAgICAgICAgICAiREFUQV9QUk9DRVNTQU1FTlRPLCBEQVRBX0FUVUFMSVpBQ0FPKSBWQUxVRVMgKD8sPyw/LD8sPywnT0snLD8sPykiOwogICAgICAgIHRyeSAoUHJlcGFyZWRTdGF0ZW1lbnQgcHMgPSBjb25uZWN0aW9uLnByZXBhcmVTdGF0ZW1lbnQoc3FsKSkgewogICAgICAgICAgICBwcy5zZXRTdHJpbmcoMSwgY2hhdmUpOwogICAgICAgICAgICBwcy5zZXREYXRlKDIsIGRhdGFFbWlzc2FvICE9IG51bGwgPyBEYXRlLnZhbHVlT2YoZGF0YUVtaXNzYW8pIDogbnVsbCk7CiAgICAgICAgICAgIHBzLnNldFN0cmluZygzLCBjYW1pbmhvKTsKICAgICAgICAgICAgcHMuc2V0U3RyaW5nKDQsIHN0YXR1cyk7CiAgICAgICAgICAgIHBzLnNldFN0cmluZyg1LCBoYXNoKTsKICAgICAgICAgICAgVGltZXN0YW1wIG5vdyA9IFRpbWVzdGFtcC52YWx1ZU9mKExvY2FsRGF0ZVRpbWUubm93KCkpOwogICAgICAgICAgICBwcy5zZXRUaW1lc3RhbXAoNiwgbm93KTsKICAgICAgICAgICAgcHMuc2V0VGltZXN0YW1wKDcsIG5vdyk7CiAgICAgICAgICAgIHBzLmV4ZWN1dGVVcGRhdGUoKTsKICAgICAgICAgICAgY29ubmVjdGlvbi5jb21taXQoKTsKICAgICAgICB9CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIHVwZGF0ZShTdHJpbmcgY2hhdmUsIFN0cmluZyBjYW1pbmhvLCBTdHJpbmcgc3RhdHVzLCBTdHJpbmcgaGFzaCkgdGhyb3dzIFNRTEV4Y2VwdGlvbiB7CiAgICAgICAgU3RyaW5nIHNxbCA9ICJVUERBVEUgWE1MX1BST0NFU1NBRE9TIFNFVCBDQU1JTkhPPT8sIFNUQVRVUz0/LCBIQVNIPT8sICIgKwogICAgICAgICAgICAgICAgICAgICAiREFUQV9BVFVBTElaQUNBTz0/LCBTVEFUVVNfUFJPQ0VTU0FNRU5UTz0nT0snIFdIRVJFIENIQVZFPT8iOwogICAgICAgIHRyeSAoUHJlcGFyZWRTdGF0ZW1lbnQgcHMgPSBjb25uZWN0aW9uLnByZXBhcmVTdGF0ZW1lbnQoc3FsKSkgewogICAgICAgICAgICBwcy5zZXRTdHJpbmcoMSwgY2FtaW5obyk7CiAgICAgICAgICAgIHBzLnNldFN0cmluZygyLCBzdGF0dXMpOwogICAgICAgICAgICBwcy5zZXRTdHJpbmcoMywgaGFzaCk7CiAgICAgICAgICAgIHBzLnNldFRpbWVzdGFtcCg0LCBUaW1lc3RhbXAudmFsdWVPZihMb2NhbERhdGVUaW1lLm5vdygpKSk7CiAgICAgICAgICAgIHBzLnNldFN0cmluZyg1LCBjaGF2ZSk7CiAgICAgICAgICAgIHBzLmV4ZWN1dGVVcGRhdGUoKTsKICAgICAgICAgICAgY29ubmVjdGlvbi5jb21taXQoKTsKICAgICAgICB9CiAgICB9CgogICAgcHJpdmF0ZSB2b2lkIG1hcmtFcnJvcihTdHJpbmcgY2hhdmUpIHsKICAgICAgICB0cnkgewogICAgICAgICAgICBTdHJpbmcgc3FsID0gIlVQREFURSBYTUxfUFJPQ0VTU0FET1MgU0VUIFNUQVRVU19QUk9DRVNTQU1FTlRPPSdFUlJPJywgIiArCiAgICAgICAgICAgICAgICAgICAgICAgICAiREFUQV9BVFVBTElaQUNBTz0/IFdIRVJFIENIQVZFPT8iOwogICAgICAgICAgICB0cnkgKFByZXBhcmVkU3RhdGVtZW50IHBzID0gY29ubmVjdGlvbi5wcmVwYXJlU3RhdGVtZW50KHNxbCkpIHsKICAgICAgICAgICAgICAgIHBzLnNldFRpbWVzdGFtcCgxLCBUaW1lc3RhbXAudmFsdWVPZihMb2NhbERhdGVUaW1lLm5vdygpKSk7CiAgICAgICAgICAgICAgICBwcy5zZXRTdHJpbmcoMiwgY2hhdmUpOwogICAgICAgICAgICAgICAgcHMuZXhlY3V0ZVVwZGF0ZSgpOwogICAgICAgICAgICAgICAgY29ubmVjdGlvbi5jb21taXQoKTsKICAgICAgICAgICAgfQogICAgICAgIH0gY2F0Y2ggKFNRTEV4Y2VwdGlvbiBpZ25vcmVkKSB7fQogICAgfQoKICAgIC8vIOKUgOKUgCBIZWxwZXJzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAoKICAgIHByaXZhdGUgYm9vbGVhbiBpc0NvbnRpbmdlbmNpYShTdHJpbmcgc3RhdHVzKSB7CiAgICAgICAgaWYgKHN0YXR1cyA9PSBudWxsKSByZXR1cm4gZmFsc2U7CiAgICAgICAgcmV0dXJuIHN0YXR1cy50b1VwcGVyQ2FzZSgpLmNvbnRhaW5zKCJDT05USU5HRU5DIik7CiAgICB9CgogICAgcHJpdmF0ZSBib29sZWFuIGlzQXV0b3JpemFkYShTdHJpbmcgc3RhdHVzKSB7CiAgICAgICAgaWYgKHN0YXR1cyA9PSBudWxsKSByZXR1cm4gZmFsc2U7CiAgICAgICAgU3RyaW5nIHMgPSBzdGF0dXMudG9VcHBlckNhc2UoKTsKICAgICAgICByZXR1cm4gcy5jb250YWlucygiQVVUT1JJWkEiKSB8fCBzLmVxdWFscygiMTAwIik7CiAgICB9CgogICAgcHVibGljIHN0YXRpYyBTdHJpbmcgY29tcHV0ZUhhc2goYnl0ZVtdIGNvbnRlbnQpIHsKICAgICAgICB0cnkgewogICAgICAgICAgICBNZXNzYWdlRGlnZXN0IG1kID0gTWVzc2FnZURpZ2VzdC5nZXRJbnN0YW5jZSgiU0hBLTI1NiIpOwogICAgICAgICAgICBieXRlW10gaGFzaCA9IG1kLmRpZ2VzdChjb250ZW50KTsKICAgICAgICAgICAgU3RyaW5nQnVpbGRlciBzYiA9IG5ldyBTdHJpbmdCdWlsZGVyKCk7CiAgICAgICAgICAgIGZvciAoYnl0ZSBiIDogaGFzaCkgc2IuYXBwZW5kKFN0cmluZy5mb3JtYXQoIiUwMngiLCBiKSk7CiAgICAgICAgICAgIHJldHVybiBzYi50b1N0cmluZygpOwogICAgICAgIH0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CiAgICAgICAgICAgIHJldHVybiAiaGFzaC1lcnJvciI7CiAgICAgICAgfQogICAgfQoKICAgIC8vIOKUgOKUgCBSZWNvcmQgcGFyYSBlbnRyYWRhIGRvIGNhY2hlIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAoKICAgIHB1YmxpYyByZWNvcmQgWG1sQ2FjaGVFbnRyeSgKICAgICAgICBTdHJpbmcgY2hhdmUsCiAgICAgICAgTG9jYWxEYXRlIGRhdGFFbWlzc2FvLAogICAgICAgIFN0cmluZyBjYW1pbmhvLAogICAgICAgIFN0cmluZyBzdGF0dXMsCiAgICAgICAgU3RyaW5nIGhhc2gsCiAgICAgICAgU3RyaW5nIHN0YXR1c1Byb2Nlc3NhbWVudG8KICAgICkge30KfQo=
+package br.com.infoativa.fiscal.xml;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.security.MessageDigest;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+/**
+ * Repositório para a tabela XML_PROCESSADOS.
+ * Implementa cache inteligente: INSERT / UPDATE / IGNORE baseado em HASH e STATUS.
+ * Auto-cria a tabela e índices se não existirem.
+ */
+public class XmlCacheRepository {
+
+    private static final Logger log = LoggerFactory.getLogger(XmlCacheRepository.class);
+    private final Connection connection;
+
+    public XmlCacheRepository(Connection connection) {
+        this.connection = connection;
+    }
+
+    // ── Auto-criação da estrutura ─────────────────────────────────────────────
+
+    public void ensureTableExists() {
+        String createTable = """
+            CREATE TABLE IF NOT EXISTS XML_PROCESSADOS (
+                CHAVE           VARCHAR(44)  NOT NULL,
+                DATA_EMISSAO    DATE,
+                CAMINHO         VARCHAR(500),
+                STATUS          VARCHAR(30),
+                HASH            VARCHAR(64),
+                STATUS_PROCESSAMENTO VARCHAR(10) DEFAULT 'OK',
+                DATA_PROCESSAMENTO   TIMESTAMP,
+                DATA_ATUALIZACAO     TIMESTAMP,
+                CONSTRAINT PK_XML_PROCESSADOS PRIMARY KEY (CHAVE)
+            )
+            """;
+
+        // Firebird não suporta IF NOT EXISTS no DDL — usar exception handling
+        try (Statement st = connection.createStatement()) {
+            st.execute(createTable);
+            log.info("Tabela XML_PROCESSADOS verificada/criada");
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 335544351 || e.getMessage().contains("already exists")) {
+                log.debug("Tabela XML_PROCESSADOS ja existe");
+            } else {
+                log.error("Erro ao criar tabela XML_PROCESSADOS", e);
+            }
+        }
+        ensureIndexes();
+    }
+
+    private void ensureIndexes() {
+        createIndexSafe("IDX_XML_DATA_EMISSAO", 
+            "CREATE INDEX IDX_XML_DATA_EMISSAO ON XML_PROCESSADOS (DATA_EMISSAO)");
+        createIndexSafe("IDX_XML_STATUS", 
+            "CREATE INDEX IDX_XML_STATUS ON XML_PROCESSADOS (STATUS)");
+        createIndexSafe("IDX_XML_STATUS_PROC",
+            "CREATE INDEX IDX_XML_STATUS_PROC ON XML_PROCESSADOS (STATUS_PROCESSAMENTO)");
+    }
+
+    private void createIndexSafe(String name, String ddl) {
+        try (Statement st = connection.createStatement()) {
+            st.execute(ddl);
+        } catch (SQLException e) {
+            if (!e.getMessage().contains("already exists") && e.getErrorCode() != 335544351) {
+                log.debug("Indice {} nao criado: {}", name, e.getMessage());
+            }
+        }
+    }
+
+    // ── Processamento inteligente INSERT / UPDATE / IGNORE ───────────────────
+
+    public enum ProcessResult { INSERTED, UPDATED, IGNORED, ERROR }
+
+    /**
+     * Processa um XML: insere novo, atualiza se mudou, ignora se igual.
+     */
+    public ProcessResult process(String chave, LocalDate dataEmissao,
+                                  String caminho, String status, String conteudoHash) {
+        if (chave == null || chave.isBlank()) return ProcessResult.ERROR;
+
+        try {
+            XmlCacheEntry existing = findByChave(chave);
+
+            if (existing == null) {
+                insert(chave, dataEmissao, caminho, status, conteudoHash);
+                log.debug("XML INSERIDO: chave={}, status={}", chave, status);
+                return ProcessResult.INSERTED;
+            }
+
+            // Verificar se mudou (HASH ou STATUS)
+            boolean hashChanged = !conteudoHash.equals(existing.hash());
+            boolean statusChanged = !status.equals(existing.status());
+
+            if (hashChanged || statusChanged) {
+                update(chave, caminho, status, conteudoHash);
+                if (statusChanged) {
+                    log.info("XML ATUALIZADO (status: {} -> {}): chave={}", 
+                             existing.status(), status, chave);
+                    // Detectar mudança CONTINGENCIA -> AUTORIZADA
+                    if (isContingencia(existing.status()) && isAutorizada(status)) {
+                        log.info("CONTINGENCIA REGULARIZADA: chave={}", chave);
+                    }
+                } else {
+                    log.debug("XML ATUALIZADO (hash mudou): chave={}", chave);
+                }
+                return ProcessResult.UPDATED;
+            }
+
+            log.debug("XML IGNORADO (sem alteracao): chave={}", chave);
+            return ProcessResult.IGNORED;
+
+        } catch (SQLException e) {
+            log.error("Erro ao processar cache do XML: chave={}", chave, e);
+            markError(chave);
+            return ProcessResult.ERROR;
+        }
+    }
+
+    // ── Consulta histórica ────────────────────────────────────────────────────
+
+    public boolean existsInPeriod(LocalDate inicio, LocalDate fim) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM XML_PROCESSADOS " +
+                     "WHERE DATA_EMISSAO BETWEEN ? AND ? " +
+                     "AND STATUS_PROCESSAMENTO = 'OK'";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setDate(1, Date.valueOf(inicio));
+            ps.setDate(2, Date.valueOf(fim));
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() && rs.getInt(1) > 0;
+            }
+        }
+    }
+
+    public int countContingenciasNoResolvidas(LocalDate inicio, LocalDate fim) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM XML_PROCESSADOS " +
+                     "WHERE DATA_EMISSAO BETWEEN ? AND ? " +
+                     "AND (STATUS LIKE '%CONTINGENCIA%' OR STATUS LIKE '%CONTINGÊNCIA%')";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setDate(1, Date.valueOf(inicio));
+            ps.setDate(2, Date.valueOf(fim));
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getInt(1) : 0;
+            }
+        }
+    }
+
+    // ── CRUD ──────────────────────────────────────────────────────────────────
+
+    private XmlCacheEntry findByChave(String chave) throws SQLException {
+        String sql = "SELECT CHAVE, DATA_EMISSAO, CAMINHO, STATUS, HASH, STATUS_PROCESSAMENTO " +
+                     "FROM XML_PROCESSADOS WHERE CHAVE = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, chave);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) return null;
+                return new XmlCacheEntry(
+                    rs.getString("CHAVE"),
+                    rs.getDate("DATA_EMISSAO") != null ? rs.getDate("DATA_EMISSAO").toLocalDate() : null,
+                    rs.getString("CAMINHO"),
+                    rs.getString("STATUS"),
+                    rs.getString("HASH"),
+                    rs.getString("STATUS_PROCESSAMENTO")
+                );
+            }
+        }
+    }
+
+    private void insert(String chave, LocalDate dataEmissao, String caminho,
+                         String status, String hash) throws SQLException {
+        String sql = "INSERT INTO XML_PROCESSADOS " +
+                     "(CHAVE, DATA_EMISSAO, CAMINHO, STATUS, HASH, STATUS_PROCESSAMENTO, " +
+                     "DATA_PROCESSAMENTO, DATA_ATUALIZACAO) VALUES (?,?,?,?,?,'OK',?,?)";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, chave);
+            ps.setDate(2, dataEmissao != null ? Date.valueOf(dataEmissao) : null);
+            ps.setString(3, caminho);
+            ps.setString(4, status);
+            ps.setString(5, hash);
+            Timestamp now = Timestamp.valueOf(LocalDateTime.now());
+            ps.setTimestamp(6, now);
+            ps.setTimestamp(7, now);
+            ps.executeUpdate();
+            connection.commit();
+        }
+    }
+
+    private void update(String chave, String caminho, String status, String hash) throws SQLException {
+        String sql = "UPDATE XML_PROCESSADOS SET CAMINHO=?, STATUS=?, HASH=?, " +
+                     "DATA_ATUALIZACAO=?, STATUS_PROCESSAMENTO='OK' WHERE CHAVE=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, caminho);
+            ps.setString(2, status);
+            ps.setString(3, hash);
+            ps.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setString(5, chave);
+            ps.executeUpdate();
+            connection.commit();
+        }
+    }
+
+    private void markError(String chave) {
+        try {
+            String sql = "UPDATE XML_PROCESSADOS SET STATUS_PROCESSAMENTO='ERRO', " +
+                         "DATA_ATUALIZACAO=? WHERE CHAVE=?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+                ps.setString(2, chave);
+                ps.executeUpdate();
+                connection.commit();
+            }
+        } catch (SQLException ignored) {}
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    private boolean isContingencia(String status) {
+        if (status == null) return false;
+        return status.toUpperCase().contains("CONTINGENC");
+    }
+
+    private boolean isAutorizada(String status) {
+        if (status == null) return false;
+        String s = status.toUpperCase();
+        return s.contains("AUTORIZA") || s.equals("100");
+    }
+
+    public static String computeHash(byte[] content) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(content);
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hash) sb.append(String.format("%02x", b));
+            return sb.toString();
+        } catch (Exception e) {
+            return "hash-error";
+        }
+    }
+
+    // ── Record para entrada do cache ──────────────────────────────────────────
+
+    public record XmlCacheEntry(
+        String chave,
+        LocalDate dataEmissao,
+        String caminho,
+        String status,
+        String hash,
+        String statusProcessamento
+    ) {}
+}
